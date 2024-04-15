@@ -25,6 +25,10 @@
             color: white;
         }
 
+        h2 {
+            color: rgb(4, 255, 29);
+        }
+
         .container {
             padding: 3em;
         }
@@ -62,6 +66,7 @@
 
         <div class="container">
             <h2>Jewelry Items</h2>
+            <em>itemClassName "Smycken (OU 301)</em>
             <div class="flex-container">
                 <div v-for="item in jewelryItems" :key="item.id" class="item">
                     <img :src="item.image" :alt="item.description">
@@ -69,6 +74,33 @@
                 </div>
             </div>
         </div>
+
+        <br>
+
+        <div class="container">
+            <h2>Ceramic Items (but not really)</h2>
+            <em>itemClassName=Servering och förtäring (OU 264)</em>
+            <div class="flex-container">
+                <div v-for="item in ceramicItems" :key="item.id" class="item">
+                    <img :src="item.image" :alt="item.description">
+                    <p style="color: aqua;">{{ item.description }}</p>
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="container">
+            <h2>Weapon Items</h2>
+            <em>itemClassName "Vapen (OU 411)</em>
+            <div class="flex-container">
+                <div v-for="item in weaponItems" :key="item.id" class="item">
+                    <img :src="item.image" :alt="item.description">
+                    <p style="color: aqua;">{{ item.description }}</p>
+                </div>
+            </div>
+        </div>
+        <!-- End tag of Vue app below -->
     </div>
 
     <!-- Include Vue.js from CDN -->

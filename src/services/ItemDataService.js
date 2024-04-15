@@ -22,20 +22,16 @@ export default {
     }
   },
 
-  async getJewelry() {
+  async fetchItems(url) {
     try {
-      const url = `${BASE_URL}?method=search&version=1.1&query=itemClassName%3D%22Smycken%20(OU%20301)%22%20AND%20thumbnailExists%3Dj`;
       const data = await this.fetchData(url);
   
-      console.log('Raw data:', data); // Log the raw data received from the API
-  
-      // Check if data is present and if it contains records
       if (data && data.result && data.result.totalHits > 0) {
         const totalHits = data.result.totalHits;
-  
-        // Generate an array of random indices
+        const fetchIndicesCount = 9;
         const randomIndices = [];
-        const fetchIndicesCount = 9; // Number of records to fetch
+  
+        // Generate random indices
         while (randomIndices.length < fetchIndicesCount) {
           const randomIndex = Math.floor(Math.random() * totalHits);
           if (!randomIndices.includes(randomIndex)) {
@@ -45,7 +41,7 @@ export default {
   
         // Fetch data for each random index
         const fetchPromises = randomIndices.map(async index => {
-          const fetchUrl = `${BASE_URL}?method=search&version=1.1&query=itemClassName%3D%22Smycken%20(OU%20301)%22%20AND%20thumbnailExists%3Dj&startRecord=${index}&maximumRecords=1`;
+          const fetchUrl = `${url}&startRecord=${index}&maximumRecords=1`;
           const fetchData = await this.fetchData(fetchUrl);
           return fetchData.result.records[0];
         });
@@ -54,7 +50,7 @@ export default {
         const fetchedRecords = await Promise.all(fetchPromises);
   
         // Process fetched records
-        const jewelryItems = fetchedRecords.map(record => {
+        const items = fetchedRecords.map(record => {
           const graph = record.record["@graph"];
           const itemName = graph.find(item => item["@type"] === "ns1:ItemName");
           const thumbnail = graph.find(item => item["@type"] === "ns1:Image");
@@ -62,7 +58,7 @@ export default {
   
           const itemNameText = itemName ? itemName["ns1:name"] : null;
           const thumbnailSource = thumbnail ? (thumbnail.lowresSource || thumbnail.thumbnailSource) : null;
-          const descText = itemDescription ? itemDescription.desc : null;
+          const descText = itemDescription ? itemDescription.desc : "Beskrivning saknas";
   
           return {
             id: record.record["@id"],
@@ -71,36 +67,30 @@ export default {
           };
         });
   
-        console.log('Random jewelry items:', jewelryItems);
-  
-        return jewelryItems;
+        console.log('Random items:', items);
+        return items;
       } else {
-        throw new Error('No jewelry data found');
+        throw new Error('No items found');
       }
     } catch (error) {
-      console.error('Error getting jewelry:', error.message);
+      console.error('Error fetching items:', error.message);
       throw error;
     }
   },
-
+  
+  async getJewelry() {
+    const url = `${BASE_URL}?method=search&version=1.1&query=itemClassName%3D%22Smycken%20(OU%20301)%22%20AND%20thumbnailExists%3Dj`;
+    return await this.fetchItems(url);
+  },
+  
   async getCeramics() {
-    try {
-      const url = `${BASE_URL}?method=search&version=1.1&hitsPerPage=9&query=itemName=keramik%20AND%20thumbnailExists=j`;
-      return await this.fetchData(url);
-    } catch (error) {
-      console.error('Error getting ceramics:', error.message);
-      throw error;
-    }
+    const url = `${BASE_URL}?method=search&version=1.1&hitsPerPage=9&query=itemClassName%3D%22Servering%20och%20f%C3%B6rt%C3%A4ring%20(OU%20264)%22%20AND%20thumbnailExists%3Dj`;
+    return await this.fetchItems(url);
   },
-
+  
   async getWeapons() {
-    try {
-      const url = `${BASE_URL}?method=search&version=1.1&hitsPerPage=9&query=itemName=vapen%20AND%20thumbnailExists=j`;
-      return await this.fetchData(url);
-    } catch (error) {
-      console.error('Error getting weapons:', error.message);
-      throw error;
-    }
+    const url = `${BASE_URL}?method=search&version=1.1&query=itemClassName%3D%22Vapen%20(OU%20411)%22%20AND%20thumbnailExists%3Dj`;
+    return await this.fetchItems(url);
   },
 
   async getRandom() {
