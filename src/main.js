@@ -3,7 +3,7 @@ import ItemDataService from './services/ItemDataService.js';
 const app = {
     data() {
         return {
-            message: 'A fun welcome message!',
+            message: 'Exempeldata',
             jewelryItems: [],
             ceramicItems: [],
             weaponItems: [],
