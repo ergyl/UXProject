@@ -65,25 +65,29 @@
         <h1>{{ message }} </h1>
 
         <div class="container">
-            <h2>Jewelry Items</h2>
-            <em>itemClassName "Smycken (OU 301)</em>
+            <h2>Kategori 1: Runt om i världen</h2>
+            <em>Världskulturmuseets föremål</em>
             <div class="flex-container">
                 <div v-for="item in jewelryItems" :key="item.id" class="item">
-                    <img :src="item.image" :alt="item.description">
-                    <p style="color: aqua;">{{ item.description }}</p>
+                    <img :src="item.image" :alt="item.itemName">
+                    <span><strong>Föremål:</strong> {{ item.itemName }}</span>
+                    <p style="color: aqua">{{ item.description }}</p>
+                    <span>{{ item.context.contextLabel }} mellan {{ item.context.fromTime }} och {{ item.context.toTime }} </span>
                 </div>
             </div>
         </div>
 
         <br>
-
-        <div class="container">
-            <h2>Ceramic Items (but not really)</h2>
-            <em>itemClassName=Servering och förtäring (OU 264)</em>
+     
+             <div class="container">
+            <h2>Kategori 2: Lekar och spel</h2>
+            <em>Föremål/objekt som har med lekar och spel att göra - 1800-tal</em>
             <div class="flex-container">
                 <div v-for="item in ceramicItems" :key="item.id" class="item">
-                    <img :src="item.image" :alt="item.description">
+                    <img :src="item.image" :alt="item.itemName">
+                    <span><strong>Föremål:</strong> {{ item.itemName }}</span>
                     <p style="color: aqua;">{{ item.description }}</p>
+                    <span>{{ item.context.contextLabel }} mellan {{ item.context.fromTime }} och {{ item.context.toTime }} </span>
                 </div>
             </div>
         </div>
@@ -91,15 +95,18 @@
         <br>
 
         <div class="container">
-            <h2>Weapon Items</h2>
-            <em>itemClassName "Vapen (OU 411)</em>
+            <h2>Kategori 3: Inramat</h2>
+            <em>Porträtt från 1600-talet till 1800-talet</em>
             <div class="flex-container">
                 <div v-for="item in weaponItems" :key="item.id" class="item">
-                    <img :src="item.image" :alt="item.description">
+                    <img :src="item.image" :alt="item.itemName">
+                    <span><strong>Föremål:</strong> {{ item.itemName }}</span>
                     <p style="color: aqua;">{{ item.description }}</p>
+                    <span>{{ item.context.contextLabel }} mellan {{ item.context.fromTime }} och {{ item.context.toTime }} </span>
                 </div>
             </div>
         </div>
+ 
         <!-- End tag of Vue app below -->
     </div>
 

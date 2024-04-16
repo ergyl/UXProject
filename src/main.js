@@ -23,11 +23,13 @@ const app = {
             console.error('Error fetching jewelry items:', error.message);
         }
 
+
         try {
             this.weaponItems = await ItemDataService.getWeapons();
         } catch (error) {
             console.error('Error fetching jewelry items:', error.message);
         }
+
     }
 };
 
