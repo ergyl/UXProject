@@ -118,7 +118,7 @@ export default
 
     /** Category 2 */
     async getCeramics() {
-      const url = `${BASE_URL}?method=search&version=1.1&query=itemClassName%3D%22Lekar%20och%20spel%20(OU%20524)%22%20AND%20itemType%3D%22objekt%2Ff%C3%B6rem%C3%A5l%22%20AND%20thumbnailExists%3Dj%20AND%20itemKeyWord%3DLeksaker%20AND%20produce_century%3D1800%20NOT%20itemKeyWord%3D%22Docksk%C3%A5p%22%20NOT%20itemKeyWord%3D%22Dockkl%C3%A4der%22`;
+      const url = `${BASE_URL}?method=search&version=1.1&query=itemClassName%3D%22Lekar%20och%20spel%20(OU%20524)%22%20AND%20itemType%3D%22objekt%2Ff%C3%B6rem%C3%A5l%22%20AND%20thumbnailExists%3Dj%20NOT%20itemKeyWord%3D%22Docksk%C3%A5p%22%20NOT%20itemKeyWord%3D%22Dockkl%C3%A4der%22%20NOT%20itemKeyWord%3D%22M%C3%B6bler%22%20AND%20produce_fromTime%3C=1800%20and%20produce_toTime%3E=1600`;
       return await this.fetchItems(url);
     },
 
