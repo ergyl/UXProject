@@ -112,20 +112,19 @@ export default
 
     /** Category 1 */
     async getJewelry() {
-      const url = `${BASE_URL}?method=search&version=1.1&query=itemType=%22objekt%2Ff%C3%B6rem%C3%A5l%22%20AND%20serviceOrganization=smvk-vkm%20AND%20thumbnailExists%3Dj`;
+      const url = `${BASE_URL}?method=search&version=1.1&query=itemType=%22objekt%2Ff%C3%B6rem%C3%A5l%22%20AND%20serviceOrganization=smvk-vkm%20AND%20thumbnailExists%3Dj%20AND%20itemKeyWord%3Detnografi`;
       return await this.fetchItems(url);
     },
 
     /** Category 2 */
     async getCeramics() {
-      const url = `${BASE_URL}?method=search&version=1.1&query=itemClassName%3D%22Lekar%20och%20spel%20(OU%20524)%22%20AND%20itemType%3D%22objekt%2Ff%C3%B6rem%C3%A5l%22%20AND%20thumbnailExists%3Dj%20NOT%20text%3D%22docksk%C3%A5p%22%20AND%20produce_century%3D1800`;
-      console.log(`trying ceramics.....`)
+      const url = `${BASE_URL}?method=search&version=1.1&query=itemClassName%3D%22Lekar%20och%20spel%20(OU%20524)%22%20AND%20itemType%3D%22objekt%2Ff%C3%B6rem%C3%A5l%22%20AND%20thumbnailExists%3Dj%20AND%20itemKeyWord%3DLeksaker%20AND%20produce_century%3D1800%20NOT%20itemKeyWord%3D%22Docksk%C3%A5p%22%20NOT%20itemKeyWord%3D%22Dockkl%C3%A4der%22`;
       return await this.fetchItems(url);
     },
 
     /** Category 3 */
     async getWeapons() {
-      const url = `${BASE_URL}?method=search&version=1.1&query=itemType%3D%22konstverk%22%20AND%20thumbnailExists%3Dj%20AND%20create_fromTime%3C=1800%20AND%20create_toTime%3E=1600%20AND%20itemKeyWord%3Dportr%C3%A4tt`;
+      const url = `${BASE_URL}?method=search&version=1.1&query=itemClassName%3D%22Bildkonst%20%28OU%20532%29%22%20AND%20itemType%3D%22konstverk%22%20AND%20thumbnailExists%3Dj%20AND%20create_fromTime%3C=1890%20AND%20create_toTime%3E=1500%20AND%20itemKeyWord%3DM%C3%A5lningar`;
       return await this.fetchItems(url);
     },
 
