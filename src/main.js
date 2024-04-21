@@ -4,30 +4,30 @@ const app = {
     data() {
         return {
             message: 'Exempeldata',
-            jewelryItems: [],
-            ceramicItems: [],
-            weaponItems: [],
+            worldItems: [],
+            toyItems: [],
+            artworkItems: [],
         };
     },
 
     async mounted() {
         try {
-            this.jewelryItems = await ItemDataService.getJewelry();
+            this.worldItems = await ItemDataService.getWorldItems();
         } catch (error) {
-            console.error('Error fetching jewelry items:', error.message);
+            console.error('Error fetching world items:', error.message);
         }
 
         try {
-            this.ceramicItems = await ItemDataService.getCeramics();
+            this.toyItems = await ItemDataService.getToys();
         } catch (error) {
-            console.error('Error fetching jewelry items:', error.message);
+            console.error('Error fetching toy items:', error.message);
         }
 
 
         try {
-            this.weaponItems = await ItemDataService.getWeapons();
+            this.artworkItems = await ItemDataService.getArtwork();
         } catch (error) {
-            console.error('Error fetching jewelry items:', error.message);
+            console.error('Error fetching artwork items:', error.message);
         }
 
     }

@@ -29,6 +29,12 @@
             color: rgb(4, 255, 29);
         }
 
+        .itemName {
+            font-size: 3em;
+            color: rgb(210, 235, 99);
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode';
+        }
+
         .container {
             padding: 3em;
         }
@@ -68,9 +74,9 @@
             <h2>Kategori 1: Runt om i världen</h2>
             <em>Världskulturmuseets föremål</em>
             <div class="flex-container">
-                <div v-for="item in jewelryItems" :key="item.id" class="item">
+                <div v-for="item in worldItems" :key="item.id" class="item">
                     <img :src="item.image" :alt="item.itemName">
-                    <span><strong>Föremål:</strong> {{ item.itemName }}</span>
+                    <span><strong class="itemName">{{ item.itemName }}</strong></span>
                     <p style="color: aqua">{{ item.description }}</p>
                     <span>{{ item.context.contextLabel }} mellan {{ item.context.fromTime }} och {{ item.context.toTime }} </span>
                 </div>
@@ -83,9 +89,9 @@
             <h2>Kategori 2: Leksaker och spel</h2>
             <em>Föremål/objekt som har med lekar och spel att göra - 1800-tal</em>
             <div class="flex-container">
-                <div v-for="item in ceramicItems" :key="item.id" class="item">
+                <div v-for="item in toyItems" :key="item.id" class="item">
                     <img :src="item.image" :alt="item.itemName">
-                    <span><strong>Föremål:</strong> {{ item.itemName }}</span>
+                    <span><strong class="itemName">{{ item.itemName }}</strong></span>
                     <p style="color: aqua;">{{ item.description }}</p>
                     <span>{{ item.context.contextLabel }} mellan {{ item.context.fromTime }} och {{ item.context.toTime }} </span>
                 </div>
@@ -98,9 +104,9 @@
             <h2>Kategori 3: Inramat</h2>
             <em>Målningar från 1500 till 1890</em>
             <div class="flex-container">
-                <div v-for="item in weaponItems" :key="item.id" class="item">
+                <div v-for="item in artworkItems" :key="item.id" class="item">
                     <img :src="item.image" :alt="item.itemName">
-                    <span><strong>Föremål:</strong> {{ item.itemName }}</span>
+                    <span><strong class="itemName">{{ item.itemName }}</strong></span>
                     <p style="color: aqua;">{{ item.description }}</p>
                     <span>{{ item.context.contextLabel }} mellan {{ item.context.fromTime }} och {{ item.context.toTime }} </span>
                 </div>
