@@ -138,7 +138,8 @@ function extractDataFromWorldItems(fetchedRecords) {
     const itemNames = graph.filter(item => item["@type"] === "ItemName");
     const thumbnail = graph.find(item => item["@type"] === "ns1:Image" || item["@type"] === "Image");
     const itemDescriptions = graph.filter(item => item["@type"] === "ns1:ItemDescription" || item["@type"] === "ItemDescription");
-    const context = graph.find(obj => obj["@type"] === "ns1:Context");
+    const contexts = graph.filter(item => item["@type"] === "ns1:Context");
+    let origin = graph.find(item => item["country"]);
 
     let itemNameText = 'Föremål';
     itemNames.forEach(itemName => {
@@ -159,16 +160,16 @@ function extractDataFromWorldItems(fetchedRecords) {
         descText = itemDesc.desc["@value"];
       }
     })
+   
 
-    // Extract data about context if object exists
-    const contextLabel = context ? context.contextLabel : null;
-    const fromTime = context ? context.fromTime : null;
-    let toTime = context ? context.toTime : null;
+    // Extracting origin information
+    origin = {
+      context: origin["contextLabel"] ? origin["contextLabel"]["@value"] : null,
+      placeName: origin.placeName ? origin.placeName["@value"] : null,
+      countryName: origin.countryName ? origin.countryName["@value"] : null,
+      continentName: origin.continentName ? origin.continentName["@value"] : null,
+    };
 
-    // If fromTime and toTime have the same value YYYY-mm-dd, return null in
-    if (fromTime === toTime) {
-      toTime = null;
-    }
 
     // Creating a new object with the extracted properties and returning it
     return {
@@ -176,11 +177,7 @@ function extractDataFromWorldItems(fetchedRecords) {
       itemName: itemNameText,
       image: thumbnailSource,
       description: descText,
-      context: {
-        contextLabel,
-        fromTime,
-        toTime
-      }
+      origin,
     };
   });
 }
