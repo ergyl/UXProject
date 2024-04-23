@@ -1,36 +1,13 @@
-import ItemDataService from './services/ItemDataService.js';
+import { createApp } from 'vue'
+import { createPinia } from 'pinia'
+import './assets/index.css'
 
-const app = {
-    data() {
-        return {
-            message: 'Exempeldata',
-            worldItems: [],
-            toyItems: [],
-            artworkItems: [],
-        };
-    },
+import App from './App.vue'
+import router from './router'
 
-    async mounted() {
-        try {
-            this.worldItems = await ItemDataService.getWorldItems();
-        } catch (error) {
-            console.error('Error fetching world items:', error.message);
-        }
+const app = createApp(App)
 
-        try {
-            this.toyItems = await ItemDataService.getToys();
-        } catch (error) {
-            console.error('Error fetching toy items:', error.message);
-        }
+app.use(createPinia())
+app.use(router)
 
-
-        try {
-            this.artworkItems = await ItemDataService.getArtwork();
-        } catch (error) {
-            console.error('Error fetching artwork items:', error.message);
-        }
-
-    }
-};
-
-Vue.createApp(app).mount("#app");
+app.mount('#app')
