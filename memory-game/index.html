@@ -5,9 +5,108 @@
     <link rel="icon" href="/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vite App</title>
+    <style>
+      * {
+          border: 1px solid rgb(224, 186, 166);
+      }
+
+      body {
+          background-color: rgb(255, 235, 224);
+          color: rgb(173, 108, 108);
+          font-family: 'Trebuchet MS', 'Lucida Sans Unicode';
+      }
+
+      h2 {
+          color: rgb(204, 138, 138);
+      }
+
+      .itemName {
+          font-size: 2.5em;
+          color: rgb(222, 172, 172);
+          font-family: 'Trebuchet MS', 'Lucida Sans Unicode';
+      }
+
+      .container {
+          padding: 2em;
+          display: grid;
+          grid-template-columns: repeat(3, 0.1fr);
+          gap: 4em;
+          justify-content: center;
+          align-items: center;
+      }
+      
+      .card {
+          position: relative;
+          width: 150px;
+          height: 150px;
+            transform-style: preserve-3d;
+            margin: 0px;
+          perspective: 1000px;
+      }
+
+      .card img {
+          position: absolute;
+          backface-visibility: hidden;
+          transition: 1s;
+      }
+
+      .card img:nth-child(2) {
+          transform: rotateY(180deg);
+      }
+
+      .card:hover img:nth-child(2) {
+          transform: rotateY(0deg); 
+      }
+
+      .card:hover img:nth-child(1) {
+          transform: rotateY(-180deg); 
+      }
+  </style>
   </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+    <div id="app">
+      <!-- Vue app will be rendered here -->
+      <h1>{{ message }} </h1>
+
+      <!-- Testing the game -->
+      <div class="container">
+          <div class="card">
+          <img src="card_flipped.jpg" style="width: 150px;">
+          <img src="card_hidden.png" style="width: 150px;">
+          </div>
+          <div class="card">
+          <img src="card_flipped.jpg" style="width: 150px;">
+          <img src="card_hidden.png" style="width: 150px;">
+          </div>
+          <div class="card">
+          <img src="card_flipped.jpg" style="width: 150px;">
+          <img src="card_hidden.png" style="width: 150px;">
+          </div>
+          <div class="card">
+          <img src="card_flipped.jpg" style="width: 150px;">
+          <img src="card_hidden.png" style="width: 150px;">
+          </div>
+          <div class="card">
+          <img src="card_flipped.jpg" style="width: 150px;">
+          <img src="card_hidden.png" style="width: 150px;">
+          </div>
+          <div class="card">
+          <img src="card_flipped.jpg" style="width: 150px;">
+          <img src="card_hidden.png" style="width: 150px;">
+          </div>
+          <div class="card">
+          <img src="card_flipped.jpg" style="width: 150px;">
+          <img src="card_hidden.png" style="width: 150px;">
+          </div>
+          <div class="card">
+          <img src="card_flipped.jpg" style="width: 150px;">
+          <img src="card_hidden.png" style="width: 150px;">
+          </div>
+          <div class="card">
+          <img src="card_flipped.jpg" style="width: 150px;">
+          <img src="card_hidden.png" style="width: 150px;">
+          </div>
+      </div>
+
+      <!-- End tag of Vue app below -->
+  </div>
 </html>

@@ -62,32 +62,6 @@
             width: 100%;
             height: auto;
         }
-        
-        .game {
-            position: relative;
-            width: 300px;
-            height: 300px;
-            transform-style: preserve-3d;
-            perspective: 1000px;
-        }
-
-        .game img {
-            position: absolute;
-            backface-visibility: hidden;
-            transition: 1s;
-        }
-
-        .game img:nth-child(2) {
-            transform: rotateY(180deg);
-        }
-
-        .game:hover img:nth-child(2) {
-            transform: rotateY(0deg); 
-        }
-
-        .game:hover img:nth-child(1) {
-            transform: rotateY(-180deg); 
-        }
     </style>
 </head>
 
@@ -95,17 +69,6 @@
     <div id="app">
         <!-- Vue app will be rendered here -->
         <h1>{{ message }} </h1>
-
-    
-        <!-- Testing the game -->
-        <div class="container">
-            <h2>Game!</h2>
-            <em>Please work</em>
-            <div class="game">
-                <img src="src/game/images/card_flipped.jpg" style="width: 300px;">
-                <img src = "src\game\images\card_hidden.png" style="width: 300px;" >
-            </div>
-        </div>
 
         <!-- Testing the API -->
 
