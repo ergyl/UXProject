@@ -5,7 +5,7 @@ import AppLogo from '../components/AppLogo.vue'
 </script>
 
 <template>
-  <main>
+  <div>
     <RouterLink to="/introduction"><AppLogo></AppLogo></RouterLink>
-  </main>
+  </div>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center justify-center h-full bg-blue-200">
+  <div class="flex items-center justify-center h-full">
     <!-- Use Tailwind CSS classes directly -->
     <img
       src="@/assets/images/logo/mullward-logo.svg"
