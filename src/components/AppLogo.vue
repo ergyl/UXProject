@@ -1,12 +1,12 @@
 <template>
-  <div class="flex items-center justify-center h-full">
-    <!-- Use Tailwind CSS classes directly -->
+  <!-- Use Tailwind CSS classes directly -->
+  <figure class="bg-blue-500">
     <img
       src="@/assets/images/logo/mullward-logo.svg"
       alt="Mullvard logo"
       class="object-contain h-auto w-9/12"
     />
-  </div>
+  </figure>
 </template>
 
 <script>
