@@ -10,11 +10,6 @@ export default {
   darkMode: false,
   theme: {
     extend: {
-      aspectRatio: {
-        '3/1': '3 / 1',   // 3:1 ratio
-        '2/1': '2 / 1',   // 2:1 ratio
-        '1/1': '1 / 1',   // 1:1 ratio
-      },
       gridTemplateRows: {
         // Simple 24 row grid
         '24': 'repeat(24, minmax(0, 1fr))',

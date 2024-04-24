@@ -36,16 +36,4 @@ include utitilies for by deafult.
         box-shadow: 0 4px 10px -1px rgba(0, 0, 0, 0.1),
         0 2px 6px -2px rgba(0, 0, 0, 0.2);
     }
-
-    .grid-container {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        grid-template-rows: repeat(24, minmax(0, 1fr));
-        gap: 0.5rem; /* Adjust gap as needed */
-    
-        /* Apply border to all grid items to create grid lines */
-        > * {
-          border: 1px solid #d1d5db; /* Adjust border color as needed */
-        }
-      }
 }
