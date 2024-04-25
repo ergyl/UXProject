@@ -41,11 +41,10 @@ export default {
     </div>
   </div>
 </template>
-  
-  <style scoped>
+
+<style scoped>
 /* Ensure the grid fills the height */
 .grid {
   height: 100vh;
 }
 </style>
-  
