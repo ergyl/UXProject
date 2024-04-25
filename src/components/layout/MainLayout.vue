@@ -12,11 +12,11 @@ export default {
 <template>
   <div class="grid grid-cols-8 grid-rows-24 min-h-screen relative">
     <!-- Top padding rows -->
-    <div class="col-span-2 row-span-3 bg-blue-400" />
-    <div class="col-span-4 row-span-3 bg-green-200" />
-    <div class="col-span-2 row-span-3 bg-blue-400" />
+    <div class="col-span-2 row-span-3 bg-transparent" />
+    <div class="col-span-4 row-span-3 bg-red-400" />
+    <div class="col-span-2 row-span-3 bg-transparent" />
     <!-- Header / Top content row -->
-    <div class="col-span-8 row-span-2 bg-pink-400" />
+    <div class="col-span-8 row-span-2 bg-gray-400" />
 
     <!-- Main content grid -->
     <div class="col-span-8 row-span-18 bg-blue-200">
@@ -34,8 +34,8 @@ export default {
     </div>
 
     <!-- Footer row -->
-    <div class="col-span-8 row-span-1 bg-yellow-100">
-      <footer class="flex items-center justify-center w-full h-full bg-blue-700">
+    <div class="col-span-8 row-span-1 bg-gray-400">
+      <footer class="flex items-center justify-center w-full h-ful">
         &copy;Dörrhandtagshopporna 2024
       </footer>
     </div>
