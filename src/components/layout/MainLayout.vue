@@ -22,14 +22,12 @@ export default {
     <div class="col-span-8 row-span-18 bg-blue-200">
       <!-- Creating a subgrid inside the main content area -->
       <div class="grid grid-cols-8 grid-rows-18 h-full">
-        <main class="col-start-1 col-end-9 row-start-1 row-end-19">
-          <RouterView v-slot="{ Component }">
-            <component
-              :is="Component"
-              v-bind="$route.params"
-            />
-          </RouterView>
-        </main>
+        <RouterView v-slot="{ Component }">
+          <component
+            :is="Component"
+            v-bind="$route.params"
+          />
+        </RouterView>
       </div>
     </div>
 
