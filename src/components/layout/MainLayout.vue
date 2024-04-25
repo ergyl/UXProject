@@ -3,6 +3,26 @@
     Each route renders its content inside the layout.
 -->
 
+<script setup>
+import { ref, watch } from 'vue';
+import { useRoute } from 'vue-router';
+
+const headerMessage = ref('');
+const route = useRoute();
+
+watch(route, (to, from) => {
+  if (to.name === 'landing') {
+    headerMessage.value = 'Välkommen!';
+  } else if (to.name === 'introduction') {
+    headerMessage.value = 'Bakgrund';
+  } else if (to.name === 'home') {
+    headerMessage.value = 'Start';
+  } else {
+    headerMessage.value = 'Some Other Page';
+  }
+}, { immediate: true });
+</script>
+
 <script>
 export default {
   name: "MainLayout",
@@ -16,7 +36,11 @@ export default {
     <div class="col-span-4 row-span-3 bg-red-400" />
     <div class="col-span-2 row-span-3 bg-transparent" />
     <!-- Header / Top content row -->
-    <div class="col-span-8 row-span-2 bg-gray-400" />
+    <div class="col-span-8 row-span-2 bg-gray-400 flex justify-center items-center">
+      <h1 class="text-2xl">
+        {{ headerMessage }}
+      </h1>
+    </div>
 
     <!-- Main content grid -->
     <div class="col-span-8 row-span-18 bg-blue-200">
