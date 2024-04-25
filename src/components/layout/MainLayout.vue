@@ -10,39 +10,36 @@ export default {
 </script>
 
 <template>
-  <div
-    class="grid-container grid grid-cols-8 grid-rows-24 gap-y-0 gap-x-2 min-h-dvh relative"
-  >
-    <!-- Row 1-3: -->
-    <!-- Empty space, spans 2 columns -->
-    <div class="col-span-2 row-span-3 bg-transparent" />
+  <div class="grid grid-cols-8 grid-rows-24 min-h-screen relative">
+    <!-- Top padding rows -->
+    <div class="col-span-2 row-span-3 bg-blue-400" />
+    <div class="col-span-4 row-span-3 bg-green-200" />
+    <div class="col-span-2 row-span-3 bg-blue-400" />
+    <!-- Header / Top content row -->
+    <div class="col-span-8 row-span-2 bg-pink-400" />
 
-    <!-- Container 1, spans 4 columns -->
-    <div class="col-span-4 row-span-3 bg-pink-400" />
-
-    <!-- Empty space, spans 2 columns -->
-    <div class="col-span-2 row-span-3 bg-transparent" />
-
-    <!-- Row 4-6: Container 2, spans 8 columns to maintain the full width -->
-    <div class="col-span-8 row-span-2 bg-green-300" />
-
-    <!-- Row 7-22: Container 3, spans 8 columns to maintain the full width -->
+    <!-- Main content grid -->
     <div class="col-span-8 row-span-18 bg-blue-200">
-      <main>
-        <RouterView v-slot="{ Component }">
-          <component :is="Component" v-bind="$route.params" />
-        </RouterView>
-      </main>
+      <!-- Creating a subgrid inside the main content area -->
+      <div class="grid grid-cols-8 grid-rows-18 h-full">
+        <main class="col-start-1 col-end-9 row-start-1 row-end-19">
+          <RouterView v-slot="{ Component }">
+            <component
+              :is="Component"
+              v-bind="$route.params"
+            />
+          </RouterView>
+        </main>
+      </div>
     </div>
 
-    <!-- Row 23-24: Container 4, spans 8 columns to maintain the full width -->
-    <div class="col-span-8 row-span-1 bg-blue-700">
-      <footer
-        class="flex items-center justify-center w-full h-full bg-yellow-100"
-      >
+    <!-- Footer row -->
+    <div class="col-span-8 row-span-1 bg-yellow-100">
+      <footer class="flex items-center justify-center w-full h-full bg-blue-700">
         &copy;Dörrhandtagshopporna 2024
       </footer>
     </div>
   </div>
 </template>
+
 

@@ -1,5 +1,5 @@
 <template>
-  <figure class="flex justify-center items-center h-full bg-blue-500">
+  <figure class="flex justify-center items-center h-full">
     <img
       src="@/assets/images/logo/mullward-logo.svg"
       alt="Mullward logo"
