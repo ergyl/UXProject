@@ -11,12 +11,30 @@ export default {
   theme: {
     extend: {
       gridTemplateRows: {
-        // Simple 24 row grid
         '24': 'repeat(24, minmax(0, 1fr))',
       },
       gridRow: {
-        // Allowing us to have more than span-10 (or 12? default limit in TailwindCSS...)
         'span-18': 'span 18 / span 18',
+      },
+      gridRowEnd: {
+        '8': '8',
+        '9': '9',
+        '10': '10',
+        '11': '11',
+        '12': '12',
+        '13': '13',
+        '14': '14',
+        '15': '15',
+        '16': '16',
+        '17': '17',
+        '18': '18',
+        '19': '19',
+        '20': '20',
+        '21': '21',
+        '22': '22',
+        '23': '23',
+        '24': '24',
+        '25': '25'
       },
       colors: {
         "silver-white": "#eeecec",

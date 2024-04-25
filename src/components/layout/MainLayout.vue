@@ -17,6 +17,8 @@ watch(route, (to, from) => {
     headerMessage.value = 'Bakgrund';
   } else if (to.name === 'home') {
     headerMessage.value = 'Start';
+  } else if (to.name === 'backpack') {
+    headerMessage.value = 'Din ryggsäck';
   } else {
     headerMessage.value = 'Some Other Page';
   }
