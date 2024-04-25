@@ -10,12 +10,11 @@
 <template>
   <!-- Use the defined grid lines from MainLayout to position the content -->
   <!-- Ensure that the column numbers here match the lines in the MainLayout grid -->
-  <div class="col-start-3 col-end-8 row-start-3 row-end-5">
+  <div class="col-start-2 col-end-8 row-start-2 row-end-5">
     <!-- Content here will be placed within the MainLayout grid -->
     <RouterLink to="/introduction">
       <AppLogo />
     </RouterLink>
-    <!-- Additional content goes here -->
   </div>
 </template>
   
