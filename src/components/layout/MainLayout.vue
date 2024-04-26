@@ -14,7 +14,7 @@ watch(route, (to, from) => {
   if (to.name === 'landing') {
     headerMessage.value = 'Välkommen!';
   } else if (to.name === 'introduction') {
-    headerMessage.value = 'Bakgrund';
+    headerMessage.value = 'Story';
   } else if (to.name === 'home') {
     headerMessage.value = 'Start';
   } else if (to.name === 'backpack') {
