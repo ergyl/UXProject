@@ -17,17 +17,18 @@
       alt="Museum Building"
       class="max-w-full h-auto"
     >
-    <p class="text-center mt-4">
+    <p class="text-center mt-4 pb-5">
       {{ storyText[currentIndex] }}
     </p>
 
     <RouterLink to="/home">
-      <button
+      <fwb-button
         v-if="currentIndex === images.length - 1"
-        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-4"
+        color="default"
+        size="xl"
       >
-        Spela
-      </button>
+        Kom igång
+      </fwb-button>
     </RouterLink>
   </div>
   <div class="col-start-7 col-end-7 row-start-4 row-end-4 flex items-center justify-center">
@@ -46,6 +47,7 @@ import { RouterLink } from "vue-router";
 import firstImage from "@/assets/images/illustrations/story-musem-building.png";
 import secondImage from "@/assets/images/illustrations/story-musem-visitors-border.png";
 import thirdImage from "@/assets/images/illustrations/mullward_left.png";
+import { FwbButton } from 'flowbite-vue';
 
 const images = [firstImage, secondImage, thirdImage];
 const storyText = [
