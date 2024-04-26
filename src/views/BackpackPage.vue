@@ -18,7 +18,7 @@
       alt="Ryggsäck öppen"
     >
   </div>
-  <div class="col-start-1 col-end-9 row-start-2 row-end-2 text-center bg-green-200">
+  <div class="col-start-1 col-end-9 row-start-2 row-end-2 flex justify-center items-center bg-green-200">
     <p>Vilket föremål vill du läsa mer om?</p>
   </div>
 
@@ -30,7 +30,7 @@
     </div>
 
     <!-- Flex container wrapper positioned in the grid -->
-    <div class="flex justify-between gap-4 py-2 px-16 border-2 border-black">
+    <div class="flex justify-center gap-4 py-2 px-16">
       <fwb-button
         color="default"
         size="xl"
