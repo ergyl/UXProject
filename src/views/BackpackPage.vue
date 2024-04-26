@@ -30,15 +30,25 @@
     </div>
 
     <!-- Flex container wrapper positioned in the grid -->
-    <div class="flex gap-4 py-2 px-16">
-      <div class="w-1/2 bg-gray-400 h-12">
-        <fwb-button color="default">
-          Default
-        </fwb-button>
-      </div>
-      <div class="w-1/2 bg-gray-500 h-12">
-        Two
-      </div>
+    <div class="flex justify-between gap-4 py-2 px-16 border-2 border-black">
+      <fwb-button
+        color="default"
+        size="xl"
+      >
+        <template #prefix>
+          <span class="icon-[material-symbols-light--close] w-5 h-5 inline-block align-middle" />
+        </template>
+        Stäng
+      </fwb-button>
+      <fwb-button
+        color="purple"
+        size="xl"
+      >
+        <template #prefix>
+          <span class="icon-[material-symbols-light--handshake-outline] w-5 h-5 inline-block align-middle" />
+        </template>
+        Donera
+      </fwb-button>
     </div>
   </div>
 </template>
