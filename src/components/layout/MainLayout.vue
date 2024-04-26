@@ -59,7 +59,7 @@ export default {
 
     <!-- Footer row -->
     <div class="col-span-8 row-span-1 bg-gray-400">
-      <footer class="flex items-center justify-center w-full h-ful">
+      <footer class="flex justify-center items-center w-full h-ful">
         &copy;Dörrhandtagshopporna 2024
       </footer>
     </div>

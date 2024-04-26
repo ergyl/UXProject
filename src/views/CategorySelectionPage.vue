@@ -1,0 +1,1 @@
+<!--This view will present the available categories to the user.-->
