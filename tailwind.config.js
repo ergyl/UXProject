@@ -1,13 +1,14 @@
+import flowbitePlugin from 'flowbite/plugin';
 import { addDynamicIconSelectors } from '@iconify/tailwind';
 
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
-  purge: {
-    enabled: process.env.NODE_ENV === 'production',
-    content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
-  },
-  darkMode: false,
+  content: [
+    './index.html',
+    './src/**/*.{vue,js,ts,jsx,tsx}',
+    'node_modules/flowbite-vue/**/*.{js,jsx,ts,tsx,vue}',
+    'node_modules/flowbite/**/*.{js,jsx,ts,tsx}'
+  ],
   theme: {
     extend: {
       gridTemplateRows: {
@@ -48,6 +49,7 @@ export default {
     },
   },
   plugins: [
+    flowbitePlugin(),
     addDynamicIconSelectors()
   ],
 }

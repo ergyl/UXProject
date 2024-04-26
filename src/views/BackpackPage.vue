@@ -10,15 +10,19 @@
 <template>
   <!-- Use the defined grid lines from MainLayout to position the content -->
   <!-- Ensure that the column numbers here match the lines in the MainLayout grid -->
-  <div class="col-start-3 col-end-7 row-start-1 row-end-5 bg-red-200">
+  <div class="col-start-3 col-end-7 row-start-1 row-end-1 bg-red-200 flex flex-col items-center justify-center">
     <!-- Content here will be placed within the MainLayout grid -->
-    Open backpack
+    <img
+      class="w-28 h-auto object-contain my-0 mx-auto"
+      :src="BackpackOpenImage"
+      alt="Ryggsäck öppen"
+    >
   </div>
-  <div class="col-start-1 col-end-9 row-start-5 row-end-5 text-center bg-green-200">
+  <div class="col-start-1 col-end-9 row-start-2 row-end-2 text-center bg-green-200">
     <p>Vilket föremål vill du läsa mer om?</p>
   </div>
 
-  <div class="col-start-1 col-end-9 row-start-6 row-end-24 text-center bg-blue-500">
+  <div class="col-start-1 col-end-9 row-start-3 row-end-24 text-center bg-blue-500">
     <div class="grid grid-cols-8">
       <div class="col-start-2 col-end-8 pt-8 pb-4">
         <NineCardsGrid />
@@ -28,7 +32,9 @@
     <!-- Flex container wrapper positioned in the grid -->
     <div class="flex gap-4 py-2 px-16">
       <div class="w-1/2 bg-gray-400 h-12">
-        One
+        <fwb-button color="default">
+          Default
+        </fwb-button>
       </div>
       <div class="w-1/2 bg-gray-500 h-12">
         Two
@@ -40,5 +46,7 @@
     <script setup>
     import { RouterLink } from 'vue-router';
     import NineCardsGrid from '../components/ui/NineCardsGrid.vue';
+    import BackpackOpenImage from '../assets/images/placeholders/backpack-open.png'
+    import { FwbButton } from 'flowbite-vue';
     </script>
     

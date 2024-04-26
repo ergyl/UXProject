@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
+import '../node_modules/flowbite-vue/dist/index.css'
 import './assets/index.css'
 
 import App from './App.vue'
