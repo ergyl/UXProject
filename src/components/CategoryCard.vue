@@ -1,5 +1,5 @@
 <template>
-  <div class="card flex flex-wrap items-center justify-center w-42 h-60">
+  <div class="card flex flex-wrap items-center justify-center w-42 h-52">
     <div class="p-2">
       <img
         :src="imageSource"
