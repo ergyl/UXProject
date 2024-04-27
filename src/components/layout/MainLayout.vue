@@ -13,7 +13,7 @@ const route = useRoute();
 watch(route, (to, from) => {
   if (to.name === 'landing') {
     headerMessage.value = 'Välkommen!';
-  } else if (to.name === 'introduction') {
+  } else if (to.name === 'story') {
     headerMessage.value = 'Story';
   } else if (to.name === 'home') {
     headerMessage.value = 'Vad vill du göra? (startsida)';
