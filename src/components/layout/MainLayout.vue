@@ -22,6 +22,8 @@ watch(route, (to, from) => {
     headerMessage.value = 'Din ryggsäck';
   } else if (to.name === 'tips') {
       headerMessage.value = 'Skrivtips';
+  } else if (to.name === 'choose-category') {
+    headerMessage.value = 'Välj kategori';
     } else {
     headerMessage.value = 'Some Other Page';
   }
