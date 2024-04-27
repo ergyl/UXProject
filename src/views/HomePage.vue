@@ -31,7 +31,7 @@ Use Tailwind CSS by applying classes to html elements in class="..."-->
       <CategoryCard
         :image-source="images[3]"
         :category="'Gräv'"
-        :category-path="'/skrivtips'"
+        :category-path="'/home'"
         :button-color="'default'"
       />
     </div>

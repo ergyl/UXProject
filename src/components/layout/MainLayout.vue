@@ -35,7 +35,7 @@ export default {
 </script>
 
 <template>
-  <div class="grid grid-cols-8 grid-rows-24 min-h-screen relative">
+  <div class="grid grid-cols-8 grid-rows-24 min-h-screen max-h-screen relative">
     <!-- Top padding rows -->
     <div class="col-span-2 row-span-3 bg-transparent" />
     <div class="col-span-4 row-span-3 bg-red-400" />
