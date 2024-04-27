@@ -12,7 +12,7 @@
   <!-- Ensure that the column numbers here match the lines in the MainLayout grid -->
   <div class="col-start-2 col-end-8 row-start-2 row-end-5">
     <!-- Content here will be placed within the MainLayout grid -->
-    <RouterLink to="/introduction">
+    <RouterLink to="/home">
       <AppLogo />
     </RouterLink>
   </div>
