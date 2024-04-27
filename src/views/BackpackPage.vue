@@ -22,7 +22,7 @@
     <p>Vilket föremål vill du läsa mer om?</p>
   </div>
 
-  <div class="col-start-1 col-end-9 row-start-3 row-end-24 text-center bg-blue-500">
+  <div class="col-start-1 col-end-9 row-start-3 row-end-24 text-center bg-blue-500 overflow-scroll">
     <div class="grid grid-cols-8">
       <div class="col-start-2 col-end-8 pt-8 pb-4">
         <NineCardsGrid />

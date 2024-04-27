@@ -5,8 +5,8 @@ Check out https://www.tailwindgen.com/ to generate grid code :)
 Use Tailwind CSS by applying classes to html elements in class="..."-->
 
 <template>
-  <div class="col-start-1 col-end-9 row-start-6 row-end-24">
-    <div class="flex flex-wrap content-between justify-center gap-y-10 gap-x-3 m-4">
+  <div class="col-start-1 col-end-9 row-start-6 row-end-24 overflow-auto">
+    <div class="flex flex-wrap content-between justify-center gap-y-8 gap-x-3 m-4">
       <CategoryCard
         :image-source="images[0]"
         :category="'Läs serien'"
