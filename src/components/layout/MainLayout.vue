@@ -6,6 +6,7 @@
 <script setup>
 import { ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
+import { FwbHeading } from 'flowbite-vue'
 
 const headerMessage = ref('');
 const route = useRoute();
@@ -16,10 +17,12 @@ watch(route, (to, from) => {
   } else if (to.name === 'story') {
     headerMessage.value = 'Story';
   } else if (to.name === 'home') {
-    headerMessage.value = 'Vad vill du göra? (startsida)';
+    headerMessage.value = 'Vad vill du göra?';
   } else if (to.name === 'backpack') {
     headerMessage.value = 'Din ryggsäck';
-  } else {
+  } else if (to.name === 'tips') {
+      headerMessage.value = 'Skrivtips';
+    } else {
     headerMessage.value = 'Some Other Page';
   }
 }, { immediate: true });
@@ -39,9 +42,12 @@ export default {
     <div class="col-span-2 row-span-3 bg-transparent" />
     <!-- Header / Top content row -->
     <div class="col-span-8 row-span-2 bg-gray-400 flex justify-center items-center">
-      <h1 class="text-2xl">
+      <fwb-heading
+        tag="h2"
+        class="text-center"
+      >
         {{ headerMessage }}
-      </h1>
+      </fwb-heading>
     </div>
 
     <!-- Main content grid -->

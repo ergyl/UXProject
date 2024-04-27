@@ -27,7 +27,7 @@ const router = createRouter({
         {
           path: '/tips',
           name: 'tips',
-          component: () => import('../views/BackpackPage.vue')
+          component: () => import('../views/TipsPage.vue')
         },
         {
           path: '/backpack',

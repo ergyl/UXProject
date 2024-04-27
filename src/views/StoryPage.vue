@@ -1,4 +1,4 @@
-<!-- Page 2 in the SPA -->
+<!-- Page in the SPA -->
 
 <template>
   <div class="col-start-2 col-end-2 row-start-4 row-end-4 flex items-center justify-center">
