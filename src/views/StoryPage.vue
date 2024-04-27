@@ -27,7 +27,7 @@
         color="default"
         size="xl"
       >
-        Kom igång
+        Gå tillbaka
       </fwb-button>
     </RouterLink>
   </div>

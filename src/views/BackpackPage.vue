@@ -34,6 +34,7 @@
       <fwb-button
         color="default"
         size="xl"
+        @click="goBack"
       >
         <template #prefix>
           <span class="icon-[material-symbols-light--close] w-5 h-5 inline-block align-middle" />
@@ -54,9 +55,16 @@
 </template>
     
     <script setup>
-    import { RouterLink } from 'vue-router';
+
     import NineCardsGrid from '../components/ui/NineCardsGrid.vue';
     import BackpackOpenImage from '../assets/images/placeholders/backpack-open.png'
     import { FwbButton } from 'flowbite-vue';
+    import { useRouter } from 'vue-router';
+
+    const router = useRouter();
+
+    const goBack = () => {
+      router.back();
+    }
     </script>
     
