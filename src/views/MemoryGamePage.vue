@@ -25,8 +25,16 @@
       
   <div class="col-start-1 col-end-9 row-start-3 row-end-24 text-center bg-green-500 overflow-scroll">
     <div class="grid grid-cols-8">
+      <fwb-spinner
+        v-if="gameStore.readyToPlay"
+        size="12"
+        class="self-center relative left-40"
+      />
+      
       <div class="col-start-2 col-end-8 pt-8 pb-4">
-        <NineCardsGrid />
+        <NineCardsGrid
+          :items="placeHolderArray"
+        />
       </div>
     </div>
       
@@ -56,13 +64,18 @@
 </template>
           
 <script setup>
+import { ref, onMounted } from 'vue';
 import { useGameStore } from '@/stores/gameStore';
-import { FwbProgress } from 'flowbite-vue';
-
-import MullwardMemorizingImage from '@/assets/images/illustrations/game/mullward_memorize.png'
+import { FwbSpinner, FwbProgress } from 'flowbite-vue';
+import Ksamsok from '@/services/Ksamsok.js'; // Import the service class
+import MullwardMemorizingImage from '@/assets/images/illustrations/game/mullward_memorize.png';
 import BackpackOpenImage from '@/assets/images/placeholders/backpack-open.png';
 import NineCardsGrid from '../components/ui/NineCardsGrid.vue';
 
 const gameStore = useGameStore();
 gameStore.startGame();
+
+const items = ref([]);  // Reactive reference to store fetched items
+
+const placeHolderArray = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 </script>

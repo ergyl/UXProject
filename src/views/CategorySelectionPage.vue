@@ -24,8 +24,9 @@
         :height="'h-54'"
         :image-source="images[0]"
         :category="'Leksaker och spel'"
-        :category-path="'/choose-difficulty'" 
+        :category-path="'/choose-difficulty'"
         :button-color="'default'"
+        @click="chooseCategory('toys')"
       />
   
       <CategoryCard
@@ -35,6 +36,7 @@
         :category="'Världen runt'"
         :category-path="'/choose-difficulty'"
         :button-color="'default'"
+        @click="chooseCategory('world')"
       />
   
       <CategoryCard
@@ -44,6 +46,7 @@
         :category="'Inramat'"
         :category-path="'/choose-difficulty'"
         :button-color="'default'"
+        @click="chooseCategory('artwork')"
       />
 
       <!-- Bo back -->
@@ -52,6 +55,7 @@
 </template>
   
   <script>
+  import { useGameStore } from '@/stores/gameStore';
   import { FwbButton } from 'flowbite-vue';
   import CategoryCard from "@/components/CategoryCard.vue";
   import Inramat from "@/assets/images/illustrations/categories/Inramat.png";
@@ -73,7 +77,11 @@
     methods: {
     goBack() {
       this.$router.back();
-    }
+    },
+    chooseCategory(category) {
+      const gameStore = useGameStore();
+      gameStore.setCategory(category);
+    },
   }
   };
   </script>

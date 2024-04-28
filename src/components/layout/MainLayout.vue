@@ -49,36 +49,44 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue';
+import { computed } from 'vue';
 import { useRoute } from 'vue-router';
+import { useGameStore } from '@/stores/gameStore';
 import LogoImage from '@/assets/images/placeholders/logo/svg/logo-no-background.svg'
 
-const headerMessage = ref('');
 const route = useRoute();
+const gameStore = useGameStore();
 
-watch(route, (to, from) => {
-  if (to.name === 'landing') {
-    headerMessage.value = 'Välkommen!';
-  } else if (to.name === 'story') {
-    headerMessage.value = 'Story';
-  } else if (to.name === 'home') {
-    headerMessage.value = 'Vad vill du göra?';
-  } else if (to.name === 'backpack') {
-    headerMessage.value = 'Din ryggsäck';
-  } else if (to.name === 'tips') {
-      headerMessage.value = 'Skrivtips';
-  } else if (to.name === 'choose-category') {
-    headerMessage.value = 'Välj kategori';
-  }  else if (to.name == 'choose-difficulty') {
-      headerMessage.value = 'Välj svårighet'
-        } else {
-    headerMessage.value = 'Some Other Page';
+const headerMessage = computed(() => {
+  // If currently in game-mode
+  switch (gameStore.gameState) {
+    case 'memorize':
+      return 'Memorera';
+    case 'play':
+      return 'Hitta föremålet';
+    case 'finished':
+      return 'Spelet är över';
   }
-}, { immediate: true });
+
+  // If not, determine the message based on the route
+  switch (route.name) {
+    case 'landing':
+      return 'Välkommen!';
+    case 'story':
+      return 'Story';
+    case 'home':
+      return 'Vad vill du göra?';
+    case 'backpack':
+      return 'Din ryggsäck';
+    case 'tips':
+      return 'Skrivtips';
+    case 'choose-category':
+      return 'Välj kategori';
+    case 'choose-difficulty':
+      return 'Välj svårighet';
+    default:
+      return '';
+  }
+});
 </script>
 
-<script>
-export default {
-  name: "MainLayout",
-};
-</script>

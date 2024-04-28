@@ -1,9 +1,10 @@
 import { defineStore } from 'pinia';
+import Ksamsok from '@/services/Ksamsok.js'; // Import the service class
 
 export const useGameStore = defineStore('game', {
   state: () => ({
-    category: null,
-    difficulty: null,
+    category: null, // can be 'toys', 'world' or 'artwork'
+    difficulty: null, // 1-3
     cards: [],
     gameState: 'memorize',  // can be 'memorize', 'play' or 'finished'
     memorizeTimeLeft: 15000, // 15s in ms
@@ -24,6 +25,17 @@ export const useGameStore = defineStore('game', {
     }
   },
   actions: {
+    setCategory(category) {
+      this.category = category;
+      const validCategories = Ksamsok.getValidCategories();
+      if (!validCategories.includes(category)) {
+        throw new Error(`Invalid category: ${category}`);
+      }
+      this.category = category;
+    },
+    setDifficulty(difficulty) {
+      this.difficulty = difficulty;
+    },
     setGameState(state) {
       this.gameState = state;
     },

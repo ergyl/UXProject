@@ -1,12 +1,12 @@
 <template>
   <div class="flex flex-wrap gap-2 border border-black bg-semi-transparent p-2">
     <div
-      v-for="n in 9"
-      :key="n"
+      v-for="item in items"
+      :key="item.id"
       class="square border-2 border-black"
     >
       <div class="content flex items-center justify-center">
-        {{ n }}
+        {{ item }}
       </div>
     </div>
   </div>
@@ -14,7 +14,15 @@
 
 <script>
 export default {
-  name: "NineCardsGrid",
+    name: 'NineCardsGrid',
+    props: {
+        items: {
+          type: Array,
+          default: function() {
+            return [];
+        }
+    }
+  }
 };
 </script>
 

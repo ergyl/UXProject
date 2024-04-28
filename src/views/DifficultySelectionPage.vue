@@ -31,6 +31,7 @@
         :category="'Nivå: 1'"
         :category-path="'/game-play'" 
         :button-color="'green'"
+        @click="chooseDifficulty(1)"
       />
      
       <CategoryCard
@@ -40,6 +41,7 @@
         :category="'Nivå: 2'"
         :category-path="'/game-play'"
         :button-color="'yellow'"
+        @click="chooseDifficulty(2)"
       />
      
       <CategoryCard
@@ -49,6 +51,7 @@
         :category="'Nivå: 3'"
         :category-path="'/game-play'"
         :button-color="'red'"
+        @click="chooseDifficulty(3)"
       />
    
       <!-- Bo back -->
@@ -57,6 +60,7 @@
 </template>
      
      <script>
+       import { useGameStore } from '@/stores/gameStore';
      import { FwbButton } from 'flowbite-vue';
      import CategoryCard from "@/components/CategoryCard.vue";
      import MullwardPictureLeft from "@/assets/images/illustrations/mullward_left.png"
@@ -79,7 +83,11 @@
        methods: {
         goBack() {
           this.$router.back();
-        }
+        },
+        chooseDifficulty(difficulty) {
+          const gameStore = useGameStore();
+          gameStore.setDifficulty(difficulty);
+        },
       }
      };
      </script>
