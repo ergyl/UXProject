@@ -9,14 +9,27 @@
   for the memory game -->
 
 <template>
+  <div class="relative left-8 top-8">
+    <fwb-button
+      color="default"
+      pill
+      square
+      size="l"
+    >
+      <span
+        class="icon-[material-symbols-light--navigate-before] text-4xl cursor-pointer"
+        @click="goBack"
+      />
+    </fwb-button>
+  </div>
   <div class="col-start-1 col-end-9 row-start-2 row-end-28 overflow-auto">
-    <div class="flex flex-col content-between justify-center items-center gap-y-6 mt-9 mb-24">
+    <div class="flex flex-col content-between justify-center items-center gap-y-6 mt-1 mb-24">
       <CategoryCard
         :width="'w-48'"
         :height="'h-54'"
         :image-source="images[0]"
         :category="'Nivå: 1'"
-        :category-path="'/home'" 
+        :category-path="'/game-play'" 
         :button-color="'green'"
       />
      
@@ -25,7 +38,7 @@
         :height="'h-54'"
         :image-source="images[1]"
         :category="'Nivå: 2'"
-        :category-path="'/home'"
+        :category-path="'/game-play'"
         :button-color="'yellow'"
       />
      
@@ -34,7 +47,7 @@
         :height="'h-54'"
         :image-source="images[0]"
         :category="'Nivå: 3'"
-        :category-path="'/home'"
+        :category-path="'/game-play'"
         :button-color="'red'"
       />
    
@@ -44,6 +57,7 @@
 </template>
      
      <script>
+     import { FwbButton } from 'flowbite-vue';
      import CategoryCard from "@/components/CategoryCard.vue";
      import MullwardPictureLeft from "@/assets/images/illustrations/mullward_left.png"
      import MullwardPictureRight from "@/assets/images/illustrations/mullward_right.png";
@@ -52,13 +66,20 @@
      export default {
        name: 'DifficultySelectionPage',
        components: {
-         CategoryCard
+         CategoryCard,
+         FwbButton
        },
      
        data() {
          return {
            images: [ MullwardPictureLeft, MullwardPictureRight]
          };
-       }
+       },
+       
+       methods: {
+        goBack() {
+          this.$router.back();
+        }
+      }
      };
      </script>
