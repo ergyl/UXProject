@@ -8,13 +8,15 @@
     <!-- Top padding rows -->
     <div class="col-span-2 row-span-3 bg-transparent" />
     <div class="col-span-4 row-span-3 bg-red-400">
-      <figure class="h-full w-full">
-        <img
-          :src="LogoImage"
-          alt="Logo"
-          class="object-fit h-full w-full"
-        >
-      </figure>
+      <RouterLink to="/home">
+        <figure class="h-full w-full">
+          <img
+            :src="LogoImage"
+            alt="Logo"
+            class="object-fit h-full w-full"
+          >
+        </figure>
+      </RouterLink>
     </div>
     <div class="col-span-2 row-span-3 bg-transparent" />
     <!-- Header / Top content row -->
