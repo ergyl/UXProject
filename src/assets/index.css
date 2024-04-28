@@ -30,11 +30,11 @@ include utitilies for by deafult.
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-bold
+    @apply select-none
   }
 
   h1 {
-    @apply text-2xl
+    @apply text-2xl font-bold
   }
 
   h2 {

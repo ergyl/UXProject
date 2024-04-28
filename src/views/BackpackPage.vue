@@ -19,7 +19,9 @@
     >
   </div>
   <div class="col-start-1 col-end-9 row-start-2 row-end-2 flex justify-center items-center bg-green-200">
-    <p>Vilket föremål vill du läsa mer om?</p>
+    <h2 class="pt-1 pb-1">
+      Vilket föremål vill du läsa mer om?
+    </h2>
   </div>
 
   <div class="col-start-1 col-end-9 row-start-3 row-end-24 text-center bg-blue-500 overflow-scroll">
