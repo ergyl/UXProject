@@ -9,18 +9,38 @@
   <!-- Ensure that the column numbers here match the lines in the MainLayout grid -->
   <div class="col-start-4 col-end-6 row-start-1 row-end-1 bg-red-200 flex flex-col items-center justify-center mt-4">
     <!-- Content here will be placed within the MainLayout grid -->
-    <img
+    <fwb-tooltip
       v-if="gameStore.readyToPlay"
-      class="w-28 h-auto object-contain my-0 mx-auto"
-      :src="MullwardMemorizingImage"
-      alt="Ryggsäck öppen"
+      placement="bottom"
     >
-    <img
+      <template #trigger>
+        <img
+         
+          class="w-28 h-auto object-contain my-0 mx-auto"
+          :src="MullwardMemorizingImage"
+          alt="Ryggsäck öppen"
+        >
+      </template>
+      <template #content>
+        Titta och memora var föremålen finns.
+      </template>
+    </fwb-tooltip>
+
+    <fwb-tooltip
       v-else
-      class="w-28 h-auto object-contain my-0 mx-auto"
-      :src="BackpackOpenImage"
-      alt="Ryggsäck öppen"
+      placement="bottom"
     >
+      <template #trigger>
+        <img
+          class="w-28 h-auto object-contain my-0 mx-auto"
+          :src="BackpackOpenImage"
+          alt="Ryggsäck öppen"
+        >
+      </template>
+      <template #content>
+        Var finns detta föremål?
+      </template>
+    </fwb-tooltip>
   </div>
       
   <div class="col-start-1 col-end-9 row-start-3 row-end-24 text-center bg-green-500 overflow-scroll">
@@ -66,7 +86,7 @@
 <script setup>
 import { ref, onBeforeUnmount } from 'vue';
 import { useGameStore } from '@/stores/gameStore';
-import { FwbSpinner, FwbProgress } from 'flowbite-vue';
+import { FwbTooltip, FwbSpinner, FwbProgress } from 'flowbite-vue';
 import MullwardMemorizingImage from '@/assets/images/illustrations/game/mullward_memorize.png';
 import BackpackOpenImage from '@/assets/images/placeholders/backpack-open.png';
 import NineCardsGrid from '../components/ui/NineCardsGrid.vue';
