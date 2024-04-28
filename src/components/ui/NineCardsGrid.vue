@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-wrap gap-2 border border-black bg-slate-300 p-2">
+  <div class="flex flex-wrap gap-2 border border-black bg-semi-transparent p-2">
     <div
       v-for="n in 9"
       :key="n"

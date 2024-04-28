@@ -44,7 +44,8 @@ export default {
         "grass-green": "#9b9551",
         "hot-red": "#c2595d",
         "salmon-pink": "#dba6a7",
-        "blackest-black": "#000000"
+        "blackest-black": "#000000",
+        "semi-transparent": "rgba(9, 9, 9, 0.22)",
       },
     },
   },
