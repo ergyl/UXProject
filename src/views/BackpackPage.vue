@@ -8,10 +8,7 @@
   @col-start & end should be between 1-9, @col-start & end should be between 1-25-->
 
 <template>
-  <!-- Use the defined grid lines from MainLayout to position the content -->
-  <!-- Ensure that the column numbers here match the lines in the MainLayout grid -->
   <div class="col-start-3 col-end-7 row-start-1 row-end-1 bg-red-200 flex flex-col items-center justify-center">
-    <!-- Content here will be placed within the MainLayout grid -->
     <img
       class="w-28 h-auto object-contain my-0 mx-auto"
       :src="BackpackOpenImage"
@@ -27,7 +24,7 @@
   <div class="col-start-1 col-end-9 row-start-3 row-end-24 text-center bg-blue-500 overflow-scroll">
     <div class="grid grid-cols-8">
       <div class="col-start-2 col-end-8 pt-8 pb-4">
-        <NineCardsGrid />
+        <NineCardsGrid :items="placeHolderArray" />
       </div>
     </div>
 
@@ -62,6 +59,8 @@
     import BackpackOpenImage from '../assets/images/placeholders/backpack-open.png'
     import { FwbButton } from 'flowbite-vue';
     import { useRouter } from 'vue-router';
+
+    const placeHolderArray = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
     const router = useRouter();
 
