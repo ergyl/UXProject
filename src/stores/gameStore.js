@@ -5,27 +5,49 @@ export const useGameStore = defineStore('game', {
     category: null,
     difficulty: null,
     cards: [],
-    gameTime: null,
+    gameState: null,  // 'memorize' or 'play'
+    memorizeTimeLeft: 30, // Seconds
+    totalMemorizeTime: 30, // To start countdown from
+    gameTimeLeft: 120,
+    totalGameTime: 120,
+    progressColor: 'indigo',
   }),
   getters: {
-    // getters can be added here for computations based on state
+    memorizeTimeLeftPercentage: (state) => {
+      return state.totalMemorizeTime > 0 ? Math.round((state.memorizeTimeLeft / state.totalMemorizeTime) * 100).toString() : '0';
+    },
+    gameTimeLeftPercentage: (state) => {
+      return state.totalGameTime > 0 ? Math.round((state.gameTimeLeft / state.totalGameTime) * 100).toString() : '0';
+    }
   },
   actions: {
-    setCategory(category) {
-      this.category = category;
-    },
-    setDifficulty(difficulty) {
-      this.difficulty = difficulty;
-    },
-    initializeCards(cards) {
-      this.cards = cards;
+    setGameState(state) {
+      this.gameState = state;
     },
     startGame() {
-      // Initialize gameTime and any other game setup logic
+      this.setGameState('memorize');
+      this.startTime = Date.now(); // Set the start time
+      this.gameTimeLeft = this.totalGameTime;
+    },
+    playGame() {
+      this.setGameState('play'); // Change state on game end
+      
+    },
+    updateTimeAndColor() {
+      const elapsed = (Date.now() - this.startTime) / 1000;
+      this.gameTimeLeft = Math.max(0, this.totalGameTime - elapsed);
+      
+      const progress = this.gameTimeLeftPercentage;
+      if (parseInt(progress) > 50) {
+        this.progressColor = 'indigo';
+      } else if (parseInt(progress) > 20) {
+        this.progressColor = 'yellow';
+      } else {
+        this.progressColor = 'red';
+      }
     },
     endGame() {
-      // Handle game ending logic, such as clearing timers
+      // Handle game ending logic here
     },
-    // ... other actions like flipping cards, checking for a match, etc.
   },
 });

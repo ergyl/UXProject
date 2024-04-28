@@ -7,7 +7,7 @@
 <template>
   <!-- Use the defined grid lines from MainLayout to position the content -->
   <!-- Ensure that the column numbers here match the lines in the MainLayout grid -->
-  <div class="col-start-3 col-end-7 row-start-1 row-end-1 bg-red-200 flex flex-col items-center justify-center">
+  <div class="col-start-4 col-end-6 row-start-1 row-end-1 bg-red-200 flex flex-col items-center justify-center mt-4">
     <!-- Content here will be placed within the MainLayout grid -->
     <img
       class="w-28 h-auto object-contain my-0 mx-auto"
@@ -15,13 +15,8 @@
       alt="Ryggsäck öppen"
     >
   </div>
-  <div class="col-start-1 col-end-9 row-start-2 row-end-2 flex justify-center items-center bg-green-200">
-    <h2 class="pt-1 pb-1">
-      Vilket föremål vill du läsa mer om?
-    </h2>
-  </div>
       
-  <div class="col-start-1 col-end-9 row-start-3 row-end-24 text-center bg-blue-500 overflow-scroll">
+  <div class="col-start-1 col-end-9 row-start-3 row-end-24 text-center bg-green-500 overflow-scroll">
     <div class="grid grid-cols-8">
       <div class="col-start-2 col-end-8 pt-8 pb-4">
         <NineCardsGrid />
@@ -29,40 +24,41 @@
     </div>
       
     <!-- Flex container wrapper positioned in the grid -->
-    <div class="flex justify-center gap-4 py-2 px-16">
-      <fwb-button
-        color="default"
-        size="xl"
-        @click="goBack"
-      >
-        <template #prefix>
-          <span class="icon-[material-symbols-light--close] w-5 h-5 inline-block align-middle" />
-        </template>
-        Stäng
-      </fwb-button>
-      <fwb-button
-        color="purple"
-        size="xl"
-      >
-        <template #prefix>
-          <span class="icon-[material-symbols-light--handshake-outline] w-5 h-5 inline-block align-middle" />
-        </template>
-        Donera
-      </fwb-button>
+    <div class="col-start-3 col-end-8 px-16">
+      <fwb-progress
+        :progress="gameStore.gameTimeLeftPercentage"
+        :color="gameStore.progressColor"
+        size="lg"
+        label-position="inside"
+        label-progress
+      />
     </div>
   </div>
 </template>
           
-          <script setup>
-      
-          import NineCardsGrid from '../components/ui/NineCardsGrid.vue';
-          import BackpackOpenImage from '../assets/images/placeholders/backpack-open.png'
-          import { FwbButton } from 'flowbite-vue';
-          import { useRouter } from 'vue-router';
-      
-          const router = useRouter();
-      
-          const goBack = () => {
-            router.back();
-          }
-          </script>
+<script setup>
+import { onMounted, onUnmounted } from 'vue';
+import { useGameStore } from '@/stores/gameStore';
+import { FwbProgress } from 'flowbite-vue';
+
+import NineCardsGrid from '../components/ui/NineCardsGrid.vue';
+import BackpackOpenImage from '../assets/images/placeholders/backpack-open.png';
+
+const gameStore = useGameStore();
+let timerInterval;
+
+onMounted(() => {
+  gameStore.startGame();
+  timerInterval = setInterval(() => {
+    gameStore.updateTimeAndColor();
+    if (gameStore.gameTimeLeft <= 0) {
+      clearInterval(timerInterval);
+      gameStore.endGame();
+    }
+  }, 1000);
+});
+
+onUnmounted(() => {
+  clearInterval(timerInterval);
+});
+</script>
