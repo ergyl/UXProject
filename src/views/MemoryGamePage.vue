@@ -26,18 +26,29 @@
     <!-- Flex container wrapper positioned in the grid -->
     <div class="col-start-3 col-end-8 px-16">
       <fwb-progress
+        v-if="gameStore.readyToPlay"
+        :progress="gameStore.memorizeTimeLeftPercentage"
+        :color="gameStore.progressColor"
+        size="lg"
+        label-position="inside"
+        label-progress
+        label="Memorera"
+      />
+
+      <fwb-progress
+        v-else
         :progress="gameStore.gameTimeLeftPercentage"
         :color="gameStore.progressColor"
         size="lg"
         label-position="inside"
         label-progress
+        label="Spela"
       />
     </div>
   </div>
 </template>
           
 <script setup>
-import { onMounted, onUnmounted } from 'vue';
 import { useGameStore } from '@/stores/gameStore';
 import { FwbProgress } from 'flowbite-vue';
 
@@ -45,20 +56,5 @@ import NineCardsGrid from '../components/ui/NineCardsGrid.vue';
 import BackpackOpenImage from '../assets/images/placeholders/backpack-open.png';
 
 const gameStore = useGameStore();
-let timerInterval;
-
-onMounted(() => {
-  gameStore.startGame();
-  timerInterval = setInterval(() => {
-    gameStore.updateTimeAndColor();
-    if (gameStore.gameTimeLeft <= 0) {
-      clearInterval(timerInterval);
-      gameStore.endGame();
-    }
-  }, 1000);
-});
-
-onUnmounted(() => {
-  clearInterval(timerInterval);
-});
+gameStore.startGame();
 </script>
