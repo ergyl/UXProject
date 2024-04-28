@@ -6,8 +6,14 @@
 <template>
   <div class="grid grid-cols-8 grid-rows-24 min-h-screen max-h-screen relative">
     <!-- Top padding rows -->
-    <div class="col-span-2 row-span-3 bg-transparent" />
-    <div class="col-span-4 row-span-3 bg-red-400">
+    <div
+      v-show="route.name !== 'landing'"
+      class="col-span-2 row-span-3 bg-transparent"
+    />
+    <div
+      v-show="route.name !== 'landing'"
+      class="col-span-4 row-span-3 bg-red-400"
+    >
       <RouterLink to="/home">
         <figure class="h-full w-full">
           <img
@@ -18,9 +24,15 @@
         </figure>
       </RouterLink>
     </div>
-    <div class="col-span-2 row-span-3 bg-transparent" />
+    <div
+      v-show="route.name !== 'landing'"
+      class="col-span-2 row-span-3 bg-transparent"
+    />
     <!-- Header / Top content row -->
-    <div class="col-span-8 row-span-2 bg-gray-400 flex justify-center items-center">
+    <div
+      v-show="route.name !== 'landing'"
+      class="col-span-8 row-span-2 bg-gray-400 flex justify-center items-center"
+    >
       <h1
         class="text-center"
       >
