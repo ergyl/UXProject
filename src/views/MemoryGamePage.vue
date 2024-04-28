@@ -64,10 +64,9 @@
 </template>
           
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onBeforeUnmount } from 'vue';
 import { useGameStore } from '@/stores/gameStore';
 import { FwbSpinner, FwbProgress } from 'flowbite-vue';
-import Ksamsok from '@/services/Ksamsok.js'; // Import the service class
 import MullwardMemorizingImage from '@/assets/images/illustrations/game/mullward_memorize.png';
 import BackpackOpenImage from '@/assets/images/placeholders/backpack-open.png';
 import NineCardsGrid from '../components/ui/NineCardsGrid.vue';
@@ -78,4 +77,9 @@ gameStore.startGame();
 const items = ref([]);  // Reactive reference to store fetched items
 
 const placeHolderArray = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+onBeforeUnmount(() => {
+  gameStore.resetGame();
+});
+
 </script>
