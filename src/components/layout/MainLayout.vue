@@ -6,7 +6,6 @@
 <script setup>
 import { ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
-import { FwbHeading } from 'flowbite-vue'
 
 const headerMessage = ref('');
 const route = useRoute();
@@ -24,7 +23,9 @@ watch(route, (to, from) => {
       headerMessage.value = 'Skrivtips';
   } else if (to.name === 'choose-category') {
     headerMessage.value = 'Välj kategori';
-    } else {
+  }  else if (to.name == 'choose-difficulty') {
+      headerMessage.value = 'Välj svårighet'
+        } else {
     headerMessage.value = 'Some Other Page';
   }
 }, { immediate: true });
@@ -66,7 +67,7 @@ export default {
 
     <!-- Footer row -->
     <div class="col-span-8 row-span-1 bg-gray-400">
-      <footer class="flex justify-center items-center w-full h-ful">
+      <footer class="flex justify-center items-center w-full h-full">
         &copy;Dörrhandtagshopporna 2024
       </footer>
     </div>
