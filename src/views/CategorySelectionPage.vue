@@ -1,34 +1,37 @@
-<!-- Page 3 in the SPA -->
+<!-- Page in the SPA -->
+
+<!--This view will allow the user to choose a category
+  for the memory game -->
 
 <!-- The outer div in the template should be a grid container that places items in its grid layout
 Check out https://www.tailwindgen.com/ to generate grid code :) 
 Use Tailwind CSS by applying classes to html elements in class="..."-->
 
 <template>
-    <div class="col-start-2 col-end-8 row-start-2 row-end-28 overflow-auto">
-      <div class="flex flex-wrap content-between justify-center gap-y-3 gap-x-3 m-1">
-        <CategoryCard
-          :image-source="images[0]"
-          :category="'Leksaker och spel'"
-          :category-path="'/home'" 
-          :button-color="'default'"
-        />
+  <div class="col-start-2 col-end-8 row-start-2 row-end-28 overflow-auto">
+    <div class="flex flex-wrap content-between justify-center gap-y-3 gap-x-3 m-1">
+      <CategoryCard
+        :image-source="images[0]"
+        :category="'Leksaker och spel'"
+        :category-path="'/home'" 
+        :button-color="'default'"
+      />
   
-        <CategoryCard
-          :image-source="images[1]"
-          :category="'Världen runt'"
-          :category-path="'/home'"
-          :button-color="'default'"
-        />
+      <CategoryCard
+        :image-source="images[1]"
+        :category="'Världen runt'"
+        :category-path="'/home'"
+        :button-color="'default'"
+      />
   
-        <CategoryCard
-          :image-source="images[2]"
-          :category="'Inramat'"
-          :category-path="'/home'"
-          :button-color="'default'"
-        />
+      <CategoryCard
+        :image-source="images[2]"
+        :category="'Inramat'"
+        :category-path="'/home'"
+        :button-color="'default'"
+      />
 
-        <!--
+      <!--
             <CategoryCard
             :image-source="images[3]"
             :category="'Tillbaka'"
@@ -36,9 +39,9 @@ Use Tailwind CSS by applying classes to html elements in class="..."-->
             :button-color="'default'"
               />
         -->
-      </div>
     </div>
-  </template>
+  </div>
+</template>
   
   <script>
   import CategoryCard from "@/components/CateGoryOptions.vue";

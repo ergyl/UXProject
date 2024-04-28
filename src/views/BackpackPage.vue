@@ -1,4 +1,4 @@
-<!-- Page ? in the SPA -->
+<!-- Page in the SPA -->
 
 <!--The MainLayout has defined a grid with 8 columns and 24 rows, 
   which means the grid lines for columns are numbered from 1 to 9 

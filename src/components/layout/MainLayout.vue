@@ -44,12 +44,11 @@ export default {
     <div class="col-span-2 row-span-3 bg-transparent" />
     <!-- Header / Top content row -->
     <div class="col-span-8 row-span-2 bg-gray-400 flex justify-center items-center">
-      <fwb-heading
-        tag="h2"
+      <h1
         class="text-center"
       >
         {{ headerMessage }}
-      </fwb-heading>
+      </h1>
     </div>
 
     <!-- Main content grid -->

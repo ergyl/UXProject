@@ -1,4 +1,4 @@
-<!-- Page 3 in the SPA -->
+<!-- Page in the SPA -->
 
 <!-- The outer div in the template should be a grid container that places items in its grid layout
 Check out https://www.tailwindgen.com/ to generate grid code :) 
