@@ -3,45 +3,19 @@
     Each route renders its content inside the layout.
 -->
 
-<script setup>
-import { ref, watch } from 'vue';
-import { useRoute } from 'vue-router';
-
-const headerMessage = ref('');
-const route = useRoute();
-
-watch(route, (to, from) => {
-  if (to.name === 'landing') {
-    headerMessage.value = 'Välkommen!';
-  } else if (to.name === 'story') {
-    headerMessage.value = 'Story';
-  } else if (to.name === 'home') {
-    headerMessage.value = 'Vad vill du göra?';
-  } else if (to.name === 'backpack') {
-    headerMessage.value = 'Din ryggsäck';
-  } else if (to.name === 'tips') {
-      headerMessage.value = 'Skrivtips';
-  } else if (to.name === 'choose-category') {
-    headerMessage.value = 'Välj kategori';
-  }  else if (to.name == 'choose-difficulty') {
-      headerMessage.value = 'Välj svårighet'
-        } else {
-    headerMessage.value = 'Some Other Page';
-  }
-}, { immediate: true });
-</script>
-
-<script>
-export default {
-  name: "MainLayout",
-};
-</script>
-
 <template>
   <div class="grid grid-cols-8 grid-rows-24 min-h-screen max-h-screen relative">
     <!-- Top padding rows -->
     <div class="col-span-2 row-span-3 bg-transparent" />
-    <div class="col-span-4 row-span-3 bg-red-400" />
+    <div class="col-span-4 row-span-3 bg-red-400">
+      <figure class="h-full w-full">
+        <img
+          :src="LogoImage"
+          alt="Logo"
+          class="object-fit h-full w-full"
+        >
+      </figure>
+    </div>
     <div class="col-span-2 row-span-3 bg-transparent" />
     <!-- Header / Top content row -->
     <div class="col-span-8 row-span-2 bg-gray-400 flex justify-center items-center">
@@ -74,4 +48,37 @@ export default {
   </div>
 </template>
 
+<script setup>
+import { ref, watch } from 'vue';
+import { useRoute } from 'vue-router';
+import LogoImage from '@/assets/images/placeholders/logo/svg/logo-no-background.svg'
 
+const headerMessage = ref('');
+const route = useRoute();
+
+watch(route, (to, from) => {
+  if (to.name === 'landing') {
+    headerMessage.value = 'Välkommen!';
+  } else if (to.name === 'story') {
+    headerMessage.value = 'Story';
+  } else if (to.name === 'home') {
+    headerMessage.value = 'Vad vill du göra?';
+  } else if (to.name === 'backpack') {
+    headerMessage.value = 'Din ryggsäck';
+  } else if (to.name === 'tips') {
+      headerMessage.value = 'Skrivtips';
+  } else if (to.name === 'choose-category') {
+    headerMessage.value = 'Välj kategori';
+  }  else if (to.name == 'choose-difficulty') {
+      headerMessage.value = 'Välj svårighet'
+        } else {
+    headerMessage.value = 'Some Other Page';
+  }
+}, { immediate: true });
+</script>
+
+<script>
+export default {
+  name: "MainLayout",
+};
+</script>
