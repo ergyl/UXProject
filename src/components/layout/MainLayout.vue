@@ -49,13 +49,19 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
+import { computed, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { useGameStore } from '@/stores/gameStore';
 import LogoImage from '@/assets/images/placeholders/logo/svg/logo-no-background.svg'
 
 const route = useRoute();
 const gameStore = useGameStore();
+
+watch(route, (to, from) => {
+  if (to.name !== 'game-play') { // Assuming 'memory-game' is the route name for the MemoryGamePage
+    gameStore.resetGame();
+  }
+}, { immediate: true });
 
 const headerMessage = computed(() => {
   // If currently in game-mode

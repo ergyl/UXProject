@@ -1,3 +1,7 @@
+/**
+ * State management for the memory game
+ */
+
 import { defineStore } from 'pinia';
 import Ksamsok from '@/services/Ksamsok.js'; // Import the service class
 
@@ -89,5 +93,16 @@ export const useGameStore = defineStore('game', {
       this.gameState = 'finished';
       if (this.playTimer) clearInterval(this.playTimer);
     },
+    resetGame() {
+      this.category = null;
+      this.difficulty = null;
+      this.cards = [];
+      this.gameState = null;
+      this.memorizeTimeLeft = this.totalMemorizeTime;
+      this.gameTimeLeft = this.totalGameTime;
+      this.progressColor = 'indigo';
+      if (this.memorizeTimer) clearInterval(this.memorizeTimer);
+      if (this.playTimer) clearInterval(this.playTimer);
+    }
   },
 });
