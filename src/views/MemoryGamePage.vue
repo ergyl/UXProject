@@ -10,6 +10,13 @@
   <div class="col-start-4 col-end-6 row-start-1 row-end-1 bg-red-200 flex flex-col items-center justify-center mt-4">
     <!-- Content here will be placed within the MainLayout grid -->
     <img
+      v-if="gameStore.readyToPlay"
+      class="w-28 h-auto object-contain my-0 mx-auto"
+      :src="MullwardMemorizingImage"
+      alt="Ryggsäck öppen"
+    >
+    <img
+      v-else
       class="w-28 h-auto object-contain my-0 mx-auto"
       :src="BackpackOpenImage"
       alt="Ryggsäck öppen"
@@ -52,8 +59,9 @@
 import { useGameStore } from '@/stores/gameStore';
 import { FwbProgress } from 'flowbite-vue';
 
+import MullwardMemorizingImage from '@/assets/images/illustrations/game/mullward_memorize.png'
+import BackpackOpenImage from '@/assets/images/placeholders/backpack-open.png';
 import NineCardsGrid from '../components/ui/NineCardsGrid.vue';
-import BackpackOpenImage from '../assets/images/placeholders/backpack-open.png';
 
 const gameStore = useGameStore();
 gameStore.startGame();
