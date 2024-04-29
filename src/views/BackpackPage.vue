@@ -32,7 +32,7 @@
     <div class="flex justify-center gap-4 py-2 px-16">
       <fwb-button
         color="default"
-        size="xl"
+        size="lg"
         @click="goBack"
       >
         <template #prefix>
@@ -42,7 +42,7 @@
       </fwb-button>
       <fwb-button
         color="purple"
-        size="xl"
+        size="lg"
       >
         <template #prefix>
           <span class="icon-[material-symbols-light--handshake-outline] w-5 h-5 inline-block align-middle" />

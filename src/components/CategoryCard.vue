@@ -1,6 +1,6 @@
 <template>
   <div :class="['card', props.width, props.height]">
-    <div class="w-full p-2 flex justify-center items-center">
+    <div class="w-full p-2 flex flex-col justify-center items-center">
       <img
         :src="imageSource"
         :alt="category"
@@ -10,7 +10,7 @@
     
     <fwb-button
       :color="buttonColor"
-      size="xl"
+      :size="buttonSize"
       class="mb-2 ml-4 mr-4 whitespace-nowrap"
       @click="navigateToCategory"
     >
@@ -27,11 +27,11 @@ import { useRouter } from 'vue-router';
 const props = defineProps({
   width: {
     type: String,
-    default: 'w-40',
+    default: 'w-full',
   },
   height: {
     type: String,
-    default: 'h-30',
+    default: 'h-full',
   },
     imageSource: {
         type: String,
@@ -51,8 +51,16 @@ const props = defineProps({
         validator: (value) => {
             const validColors = ['default', 'alternative', 'dark', 'light', 'green', 'red', 'yellow', 'purple', 'pink'];
             return validColors.includes(value);
-    },
-}
+    }
+  },
+  buttonSize: { 
+        type: String,
+        default: 'xl',
+        validator: (value) => {
+            const validSizes= ['xs', 'sm', 'md', 'lg', 'xl'];
+            return validSizes.includes(value);
+    }
+  },
 });
 
 const router = useRouter();

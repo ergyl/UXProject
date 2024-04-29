@@ -26,6 +26,7 @@
         :category="'Leksaker och spel'"
         :category-path="'/choose-difficulty'"
         :button-color="'default'"
+        :button-size="'md'"
         @click="chooseCategory('toys')"
       />
   
@@ -36,6 +37,7 @@
         :category="'Världen runt'"
         :category-path="'/choose-difficulty'"
         :button-color="'default'"
+        :button-size="'md'"
         @click="chooseCategory('world')"
       />
   
@@ -46,6 +48,7 @@
         :category="'Inramat'"
         :category-path="'/choose-difficulty'"
         :button-color="'default'"
+        :button-size="'md'"
         @click="chooseCategory('artwork')"
       />
 

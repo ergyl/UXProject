@@ -6,33 +6,38 @@ Use Tailwind CSS by applying classes to html elements in class="..."-->
 
 <template>
   <div class="col-start-1 col-end-9 row-start-6 row-end-24 overflow-auto">
-    <div class="flex flex-wrap content-between justify-center gap-y-8 gap-x-3 m-4">
+    <div class="flex flex-wrap items-stretch justify-center gap-y-8 gap-x-3 m-4">
       <CategoryCard
+        class="adjusted-width flex flex-col"
         :image-source="images[0]"
         :category="'Läs serien'"
         :category-path="'/story'"
         :button-color="'default'"
+        :button-size="'lg'"
       />
-
       <CategoryCard
+        class="adjusted-width flex flex-col"
         :image-source="images[1]"
         :category="'Skrivtips'"
         :category-path="'/tips'"
         :button-color="'default'"
+        :button-size="'lg'"
       />
-
       <CategoryCard
+        class="adjusted-width flex flex-col"
         :image-source="images[2]"
         :category="'Ryggsäck'"
         :category-path="'/backpack'"
         :button-color="'default'"
+        :button-size="'lg'"
       />
-
       <CategoryCard
+        class="adjusted-width flex flex-col"
         :image-source="images[3]"
         :category="'Gräv'"
         :category-path="'/choose-category'"
         :button-color="'default'"
+        :button-size="'lg'"
       />
     </div>
   </div>
@@ -58,3 +63,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.adjusted-width {
+  width: calc(50% - 0.75rem); /* Adjust the 12px to whatever half your gap-x value is */
+}
+</style>

@@ -86,7 +86,7 @@
     <div class="ml-5">
       <fwb-button
         color="default"
-        size="xl"
+        size="lg"
         class="m-4"
         @click="goBack"
       >

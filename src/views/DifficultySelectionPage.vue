@@ -25,32 +25,35 @@
   <div class="col-start-1 col-end-9 row-start-2 row-end-28 overflow-auto">
     <div class="flex flex-col content-between justify-center items-center gap-y-6 mb-24">
       <CategoryCard
-        :width="'w-40'"
-        :height="'h-48'"
+        :width="'w-44'"
+        :height="'h-40'"
         :image-source="images[0]"
         :category="'Nivå: 1'"
         :category-path="'/game-play'" 
         :button-color="'green'"
+        :button-size="'md'"
         @click="chooseDifficulty(1)"
       />
      
       <CategoryCard
-        :width="'w-40'"
-        :height="'h-48'"
+        :width="'w-44'"
+        :height="'h-40'"
         :image-source="images[1]"
         :category="'Nivå: 2'"
         :category-path="'/game-play'"
         :button-color="'yellow'"
+        :button-size="'md'"
         @click="chooseDifficulty(2)"
       />
      
       <CategoryCard
-        :width="'w-40'"
-        :height="'h-48'"
+        :width="'w-44'"
+        :height="'h-40'"
         :image-source="images[0]"
         :category="'Nivå: 3'"
         :category-path="'/game-play'"
         :button-color="'red'"
+        :button-size="'md'"
         @click="chooseDifficulty(3)"
       />
    
