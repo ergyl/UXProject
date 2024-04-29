@@ -1,10 +1,10 @@
 <template>
   <div :class="['card', props.width, props.height]">
-    <div class="w-full p-2">
+    <div class="w-full p-2 flex justify-center items-center">
       <img
         :src="imageSource"
         :alt="category"
-        class="w-full h-auto object-cover border border-black"
+        class="w-3/5 h-auto border border-black"
       >
     </div>
     

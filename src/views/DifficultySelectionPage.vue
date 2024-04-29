@@ -23,10 +23,10 @@
     </fwb-button>
   </div>
   <div class="col-start-1 col-end-9 row-start-2 row-end-28 overflow-auto">
-    <div class="flex flex-col content-between justify-center items-center gap-y-6 mt-1 mb-24">
+    <div class="flex flex-col content-between justify-center items-center gap-y-6 mb-24">
       <CategoryCard
-        :width="'w-48'"
-        :height="'h-54'"
+        :width="'w-40'"
+        :height="'h-48'"
         :image-source="images[0]"
         :category="'Nivå: 1'"
         :category-path="'/game-play'" 
@@ -35,8 +35,8 @@
       />
      
       <CategoryCard
-        :width="'w-48'"
-        :height="'h-54'"
+        :width="'w-40'"
+        :height="'h-48'"
         :image-source="images[1]"
         :category="'Nivå: 2'"
         :category-path="'/game-play'"
@@ -45,8 +45,8 @@
       />
      
       <CategoryCard
-        :width="'w-48'"
-        :height="'h-54'"
+        :width="'w-40'"
+        :height="'h-48'"
         :image-source="images[0]"
         :category="'Nivå: 3'"
         :category-path="'/game-play'"
