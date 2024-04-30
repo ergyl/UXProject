@@ -94,7 +94,7 @@ import NineCardsGrid from '../components/ui/NineCardsGrid.vue';
 const gameStore = useGameStore();
 gameStore.startGame();
 
-const items = ref([]);  // Reactive reference to store fetched items
+const items = ref([1, 2, 3, 4, 5, 6, 7, 8, 9]);  // Reactive reference to store fetched items
 
 const placeHolderArray = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
