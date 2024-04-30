@@ -53,7 +53,7 @@
       
       <div class="col-start-2 col-end-8 pt-8 pb-4">
         <NineCardsGrid
-          :items="placeHolderArray"
+          :thumbnails="thumbnailURLs"
         />
       </div>
     </div>
@@ -84,19 +84,69 @@
 </template>
           
 <script setup>
-import { ref, onBeforeUnmount } from 'vue';
+import { ref, onBeforeUnmount, onMounted, watch } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 import { useGameStore } from '@/stores/gameStore';
 import { FwbTooltip, FwbSpinner, FwbProgress } from 'flowbite-vue';
+import Ksamsok from '@/services/Ksamsok.js'; // Import the service class
 import MullwardMemorizingImage from '@/assets/images/illustrations/game/mullward_memorize.png';
 import BackpackOpenImage from '@/assets/images/placeholders/backpack-open.png';
 import NineCardsGrid from '../components/ui/NineCardsGrid.vue';
 
 const gameStore = useGameStore();
-gameStore.startGame();
-
-const items = ref([1, 2, 3, 4, 5, 6, 7, 8, 9]);  // Reactive reference to store fetched items
 
 const placeHolderArray = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+const items = ref([]);  // Use ref to create a reactive reference
+const thumbnailURLs = ref([]);
+const router = useRouter();
+const route = useRoute();
+
+async function getItems() {
+    if (!gameStore.category) return;
+    try {
+        switch (gameStore.category) {
+            case 'toys':
+                items.value = await Ksamsok.getToys();
+                getThumbnails();
+                break;
+            case 'world':
+                items.value = await Ksamsok.getWorldItems();
+                break;
+            case 'artwork':
+                items.value = await Ksamsok.getArtwork();
+                break;
+            default:
+                console.error('Unrecognized category:', gameStore.category);
+        }
+    } catch (error) {
+        console.error('Error fetching items for category:', gameStore.category, error.message);
+    }
+}
+
+async function getThumbnails() {
+  items.value.forEach((obj) => {
+    thumbnailURLs.value.push(obj.image);
+  });
+  console.log("Items:", items.value);
+  console.log("Thumbnails:", thumbnailURLs.value);
+}
+
+// Fetch items when the route is entered
+onMounted(() => {
+  console.log("Chosen category:", gameStore.category);
+    getItems();
+    gameStore.startGame();
+});
+
+// Handle route updates (for example, navigating away and back to the page)
+if (router && route) {
+    watch(() => route.path, () => {
+        if (route.name === 'game-play') {
+            getItems();
+        }
+    });
+}
 
 onBeforeUnmount(() => {
   gameStore.resetGame();

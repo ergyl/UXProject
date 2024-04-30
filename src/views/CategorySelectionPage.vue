@@ -26,6 +26,7 @@
         :category="'Leksaker och spel'"
         :category-path="'/choose-difficulty'"
         :button-color="'default'"
+        :button-size="'md'"
         @click="chooseCategory('toys')"
       />
   
@@ -36,6 +37,7 @@
         :category="'Världen runt'"
         :category-path="'/choose-difficulty'"
         :button-color="'default'"
+        :button-size="'md'"
         @click="chooseCategory('world')"
       />
   
@@ -46,6 +48,7 @@
         :category="'Inramat'"
         :category-path="'/choose-difficulty'"
         :button-color="'default'"
+        :button-size="'md'"
         @click="chooseCategory('artwork')"
       />
 
@@ -62,6 +65,8 @@
   import Leksaker from "@/assets/images/illustrations/categories/Leksaker.png";
   import Runtom from "@/assets/images/illustrations/categories/Runtom.png";
   
+  const gameStore = useGameStore();
+
   export default {
     name: 'CategorySelectionPage',
     components: {
@@ -79,7 +84,7 @@
       this.$router.back();
     },
     chooseCategory(category) {
-      const gameStore = useGameStore();
+      console.log("Setting category from", this.category, "to", category);
       gameStore.setCategory(category);
     },
   }

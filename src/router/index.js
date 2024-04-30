@@ -11,7 +11,7 @@ const router = createRouter({
         {
           path: '', // Default child path
           name: 'landing',
-          component: () => import('../views/LandingPage.vue')
+          component: () => import('../views/LandingPage.vue') // Route level code-splitting
         },
         {
           path: '/home',
@@ -21,7 +21,6 @@ const router = createRouter({
         {
           path: '/story',
           name: 'story',
-          // Route level code-splitting
           component: () => import('../views/StoryPage.vue')
         },
         {

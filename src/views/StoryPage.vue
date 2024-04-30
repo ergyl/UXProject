@@ -8,7 +8,7 @@
       color="default"
       pill
       square
-      size="l"
+      size="md"
     >
       <span
         class="icon-[material-symbols-light--navigate-before] text-4xl cursor-pointer"
@@ -32,7 +32,7 @@
       <fwb-button
         v-if="currentIndex === images.length - 1"
         color="default"
-        size="xl"
+        size="lg"
       >
         Gå tillbaka
       </fwb-button>
@@ -46,7 +46,7 @@
       color="default"
       pill
       square
-      size="l"
+      size="md"
     >
       <span
         class="icon-[material-symbols-light--navigate-next] text-4xl cursor-pointer"
@@ -66,9 +66,8 @@ import { FwbButton } from 'flowbite-vue';
 
 const images = [firstImage, secondImage, thirdImage];
 const storyText = [
-  "Det var en gång ett fantastiskt museum...",
-  "..fullt av fascinerande historiska föremål och nyfikna besökare.",
-  "Mullward läste i tidningen att det varit inbrott på muséet. Nu är det din tur - Mullward behöver din hjälp!",
+  "En dag, när Mullward bläddrade igenom morgontidingen, upptäckte han den chockerande nyheten.",
+  
 ];
 const currentIndex = ref(0);
 
