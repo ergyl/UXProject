@@ -46,13 +46,14 @@
   <div class="col-start-1 col-end-9 row-start-3 row-end-24 text-center bg-green-500 overflow-scroll">
     <div class="grid grid-cols-8">
       <fwb-spinner
-        v-if="gameStore.readyToPlay"
+        v-if="!thumbnailsLoaded"
         size="12"
         class="self-center relative left-40"
       />
       
       <div class="col-start-2 col-end-8 pt-8 pb-4">
         <NineCardsGrid
+          v-if="thumbnailsLoaded"
           :thumbnails="thumbnailURLs"
         />
       </div>
@@ -61,7 +62,7 @@
     <!-- Flex container wrapper positioned in the grid -->
     <div class="col-start-3 col-end-8 px-16">
       <fwb-progress
-        v-if="gameStore.readyToPlay"
+        v-if="gameStore.readyToPlay && thumbnailsLoaded"
         :progress="gameStore.memorizeTimeLeftPercentage"
         :color="gameStore.progressColor"
         size="lg"
@@ -95,12 +96,11 @@ import NineCardsGrid from '../components/ui/NineCardsGrid.vue';
 
 const gameStore = useGameStore();
 
-const placeHolderArray = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
 const items = ref([]);  // Use ref to create a reactive reference
 const thumbnailURLs = ref([]);
 const router = useRouter();
 const route = useRoute();
+let thumbnailsLoaded = false;
 
 async function getItems() {
     if (!gameStore.category) return;
@@ -112,9 +112,11 @@ async function getItems() {
                 break;
             case 'world':
                 items.value = await Ksamsok.getWorldItems();
+                getThumbnails();
                 break;
             case 'artwork':
                 items.value = await Ksamsok.getArtwork();
+                getThumbnails();
                 break;
             default:
                 console.error('Unrecognized category:', gameStore.category);
@@ -130,6 +132,7 @@ async function getThumbnails() {
   });
   console.log("Items:", items.value);
   console.log("Thumbnails:", thumbnailURLs.value);
+  thumbnailsLoaded = true;
 }
 
 // Fetch items when the route is entered
