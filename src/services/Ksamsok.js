@@ -121,7 +121,7 @@ function extractDataFromWorldItems(fetchedRecords) {
     const thumbnail = graph.find(item => item["@type"] === "ns1:Image" || item["@type"] === "Image");
     const itemDescriptions = graph.filter(item => item["@type"] === "ns1:ItemDescription" || item["@type"] === "ItemDescription");
     const contexts = graph.filter(item => item["@type"] === "ns1:Context");
-    let origin = graph.find(item => item["country"]);
+    let origin = graph.find(item => item["country"] || { });
 
     let itemNameText = 'Föremål';
     itemNames.forEach(itemName => {

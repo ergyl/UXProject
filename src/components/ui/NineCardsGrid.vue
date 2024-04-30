@@ -1,12 +1,17 @@
 <template>
   <div class="flex flex-wrap gap-2 border border-black bg-semi-transparent p-2">
     <div
-      v-for="item in items"
-      :key="item.id"
+      v-for="(thumbnail, index) in thumbnails"
+      :key="thumbnail.id"
       class="square border-2 border-black"
     >
-      <div class="content flex items-center justify-center">
-        {{ item }}
+      <div class="content flex items-center justify-center bg-black">
+        <img
+          :key="index"
+          :src="thumbnail"
+          alt="Föremål"
+          class="h-full w-auto object-cover"
+        >
       </div>
     </div>
   </div>
@@ -16,7 +21,7 @@
 export default {
     name: 'NineCardsGrid',
     props: {
-        items: {
+        thumbnails: {
           type: Array,
           default: function() {
             return [];

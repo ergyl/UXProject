@@ -65,6 +65,8 @@
   import Leksaker from "@/assets/images/illustrations/categories/Leksaker.png";
   import Runtom from "@/assets/images/illustrations/categories/Runtom.png";
   
+  const gameStore = useGameStore();
+
   export default {
     name: 'CategorySelectionPage',
     components: {
@@ -82,7 +84,7 @@
       this.$router.back();
     },
     chooseCategory(category) {
-      const gameStore = useGameStore();
+      console.log("Setting category from", this.category, "to", category);
       gameStore.setCategory(category);
     },
   }

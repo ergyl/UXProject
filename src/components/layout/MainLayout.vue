@@ -7,11 +7,9 @@
   <div class="grid grid-cols-8 grid-rows-24 min-h-screen max-h-screen relative">
     <!-- Top padding rows -->
     <div
-      v-show="route.name !== 'landing'"
       class="col-span-2 row-span-3 bg-transparent"
     />
     <div
-      v-show="route.name !== 'landing'"
       class="col-span-4 row-span-3 bg-red-400"
     >
       <RouterLink to="/home">
@@ -25,12 +23,10 @@
       </RouterLink>
     </div>
     <div
-      v-show="route.name !== 'landing'"
       class="col-span-2 row-span-3 bg-transparent"
     />
     <!-- Header / Top content row -->
     <div
-      v-show="route.name !== 'landing'"
       class="col-span-8 row-span-2 bg-gray-400 flex justify-center items-center"
     >
       <h1
@@ -90,8 +86,6 @@ const headerMessage = computed(() => {
 
   // If not, determine the message based on the route
   switch (route.name) {
-    case 'landing':
-      return 'Välkommen!';
     case 'story':
       return 'Story';
     case 'home':
