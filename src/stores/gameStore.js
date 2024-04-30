@@ -9,7 +9,7 @@ export const useGameStore = defineStore('game', {
   state: () => ({
     category: null, // can be 'toys', 'world' or 'artwork'
     difficulty: null, // 1-3
-    cards: [],
+    cards: [], // should we use this for the memory cards??
     gameState: 'memorize',  // can be 'memorize', 'play' or 'finished'
     memorizeTimeLeft: 15000, // 15s in ms
     totalMemorizeTime: 15000, // To start countdown from
@@ -30,6 +30,7 @@ export const useGameStore = defineStore('game', {
   },
   actions: {
     setCategory(category) {
+      console.log("gameStore setting category to:", category);
       this.category = category;
       const validCategories = Ksamsok.getValidCategories();
       if (!validCategories.includes(category)) {
