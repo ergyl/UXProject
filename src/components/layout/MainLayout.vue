@@ -100,6 +100,8 @@ const headerMessage = computed(() => {
       return 'Välj svårighet';
     case 'about-game':
       return 'Om spelet';
+    case 'for-teachers':
+      return 'För lärare';
     default:
       return '';
   }
