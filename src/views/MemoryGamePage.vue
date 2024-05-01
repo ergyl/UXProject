@@ -10,15 +10,15 @@
   <div class="col-start-4 col-end-6 row-start-1 row-end-1 bg-red-200 flex flex-col items-center justify-center mt-4">
     <!-- Content here will be placed within the MainLayout grid -->
     <fwb-tooltip
-      v-if="gameStore.readyToPlay"
+      v-if="!gameStore.isPlaying"
       placement="bottom"
     >
       <template #trigger>
         <img
-         
           class="w-28 h-auto object-contain my-0 mx-auto"
           :src="MullwardMemorizingImage"
-          alt="Ryggsäck öppen"
+          alt="Mullward memorerar bilder"
+          @load="mullwardMemorizingImageLoaded"
         >
       </template>
       <template #content>
@@ -27,7 +27,7 @@
     </fwb-tooltip>
 
     <fwb-tooltip
-      v-else
+      v-if="gameStore.isPlaying"
       placement="bottom"
     >
       <template #trigger>
@@ -51,10 +51,13 @@
         class="self-center relative left-40"
       />
       
-      <div class="col-start-2 col-end-8 pt-8 pb-4">
-        <NineCardsGrid
-          v-if="thumbnailsLoaded"
-          :thumbnails="thumbnailURLs"
+      <div
+        v-if="thumbnailsLoaded"
+        class="col-start-2 col-end-8 pt-8 pb-4"
+      >
+        <MemoryCardsGrid
+          :front-images="thumbnailURLs"
+          :back-images="tileImages"
         />
       </div>
     </div>
@@ -72,7 +75,7 @@
       />
 
       <fwb-progress
-        v-else
+        v-if="gameStore.isPlaying"
         :progress="gameStore.gameTimeLeftPercentage"
         :color="gameStore.progressColor"
         size="lg"
@@ -92,15 +95,28 @@ import { FwbTooltip, FwbSpinner, FwbProgress } from 'flowbite-vue';
 import Ksamsok from '@/services/Ksamsok.js'; // Import the service class
 import MullwardMemorizingImage from '@/assets/images/illustrations/game/mullward_memorize.png';
 import BackpackOpenImage from '@/assets/images/placeholders/backpack-open.png';
-import NineCardsGrid from '../components/ui/NineCardsGrid.vue';
+import MemoryCardsGrid from '@/components/game/MemoryCardsGrid.vue';
+
+import image1 from '@/assets/images/illustrations/game/tile1.png';
+import image2 from '@/assets/images/illustrations/game/tile2.png';
+import image3 from '@/assets/images/illustrations/game/tile3.png';
+import image4 from '@/assets/images/illustrations/game/tile4.png';
+import image5 from '@/assets/images/illustrations/game/tile5.png';
+import image6 from '@/assets/images/illustrations/game/tile6.png';
+import image7 from '@/assets/images/illustrations/game/tile7.png';
+import image8 from '@/assets/images/illustrations/game/tile8.png';
+import image9 from '@/assets/images/illustrations/game/tile9.png';
+
+const tileImages = [image1, image2, image3, image4, image5, image6, image7, image8, image9];
 
 const gameStore = useGameStore();
 
-const items = ref([]);  // Use ref to create a reactive reference
-const thumbnailURLs = ref([]);
+const items = ref([]);   // JSON objects of items returned by Ksamsok API
+const thumbnailURLs = ref([]); // the front images for the memory cards
 const router = useRouter();
 const route = useRoute();
-let thumbnailsLoaded = false;
+const mullwardLoaded = ref(false);
+const thumbnailsLoaded = ref(false);
 
 async function getItems() {
     if (!gameStore.category) return;
@@ -126,21 +142,16 @@ async function getItems() {
     }
 }
 
-async function getThumbnails() {
-  items.value.forEach((obj) => {
-    thumbnailURLs.value.push(obj.image);
-  });
-  console.log("Items:", items.value);
-  console.log("Thumbnails:", thumbnailURLs.value);
-  thumbnailsLoaded = true;
-}
-
 // Fetch items when the route is entered
 onMounted(() => {
   console.log("Chosen category:", gameStore.category);
     getItems();
-    gameStore.startGame();
 });
+
+function mullwardMemorizingImageLoaded() {
+console.log("MullwardMemorizingImage loaded");
+mullwardLoaded.value = true;
+}
 
 // Handle route updates (for example, navigating away and back to the page)
 if (router && route) {
@@ -151,8 +162,27 @@ if (router && route) {
     });
 }
 
+async function getThumbnails() {
+  items.value.forEach((obj) => {
+    thumbnailURLs.value.push(obj.image);
+  });
+  console.log("Items:", items.value);
+  console.log("Thumbnails:", thumbnailURLs.value);
+  thumbnailsLoaded.value = true;
+  checkStartConditions();
+}
+
+function checkStartConditions() {
+  console.log('Checking start conditions:', thumbnailsLoaded.value, mullwardLoaded.value);
+  if (thumbnailsLoaded.value && mullwardLoaded.value) {
+    console.log('All images loaded, starting the game...');
+    gameStore.startGame();
+  }
+}
+
 onBeforeUnmount(() => {
+  console.log(`gameStore object: ${gameStore}`); // Should log the store object
+  console.log('resetGame method:', gameStore.resetGame);
   gameStore.resetGame();
 });
-
 </script>

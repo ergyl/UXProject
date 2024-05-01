@@ -5,7 +5,6 @@ export const useGameStore = defineStore('game', {
   state: () => ({
     category: null,
     difficulty: null,
-    cards: [],
     gameState: 'memorize',
     memorizeTimeLeft: 15000,
     totalMemorizeTime: 15000,
@@ -15,9 +14,13 @@ export const useGameStore = defineStore('game', {
     memorizeTimer: null,
     playTimer: null,
   }),
+
   getters: {
     readyToPlay(state) {
       return state.gameState === 'memorize';
+    },
+    isPlaying(state) {
+      return state.gameState === 'play';
     },
     memorizeTimeLeftPercentage(state) {
       return state.totalMemorizeTime > 0 ? Math.round((state.memorizeTimeLeft / state.totalMemorizeTime) * 100).toString() : '0';
@@ -26,6 +29,7 @@ export const useGameStore = defineStore('game', {
       return state.totalGameTime > 0 ? Math.round((state.gameTimeLeft / state.totalGameTime) * 100).toString() : '0';
     }
   },
+
   actions: {
     setCategory(category) {
       console.log("gameStore setting category to:", category);
@@ -35,22 +39,59 @@ export const useGameStore = defineStore('game', {
       }
       this.category = category;
     },
+
     setDifficulty(difficulty) {
       this.difficulty = difficulty;
     },
+
     setGameState(state) {
       this.gameState = state;
     },
+
     startGame() {
+      console.log('startGame called, current state:', this.gameState);
       this.setGameState('memorize');
+      this.startMemorizeTimerWithDelay(); // start play timer with 3s delay after memorize timer reached 0
+    },
+
+    startMemorizeTimerWithDelay() {
+      console.log('Setting up delay for startMemorizeTimer');
+      if (this.memorizeTimerDelay) {
+        console.log('Clearing previous timeout');
+        clearTimeout(this.memorizeTimerDelay);
+      }
+      this.memorizeTimerDelay = setTimeout(() => {
+        console.log('Executing startMemorizeTimer');
+        this.startMemorizeTimer();
+      }, 2000); // 2s delay
+    },
+
+    startMemorizeTimer() {
+      console.log('started timer for memorize');
       this.memorizeStartTime = Date.now();
       this.memorizeTimeLeft = this.totalMemorizeTime;
       this.memorizeTimer = setInterval(() => {
         this.updateCountDown();
       }, 1000);
     },
+
     playGame() {
       this.setGameState('play');
+    },
+
+    startPlayTimerWithDelay() {
+      console.log('3s delay before starting play timer');
+      if (this.playTimerDelay) {
+        clearTimeout(this.playTimerDelay);
+      } else {
+        this.playTimerDelay = setTimeout(() => {
+          this.startPlayTimer();
+        }, 2000); // 2s delay
+      }
+    },
+
+    startPlayTimer() {
+      console.log('started timer for play');
       this.gameStartTime = Date.now();
       this.gameTimeLeft = this.totalGameTime;
       this.updateCountDown();
@@ -58,24 +99,28 @@ export const useGameStore = defineStore('game', {
         this.updateCountDown();
       }, 1000);
     },
+
     updateCountDown() {
-      if (this.gameState === 'memorize') {
+      if (this.gameState === 'memorize' && this.memorizeTimer) {
         const elapsed = Date.now() - this.memorizeStartTime;
         this.memorizeTimeLeft = Math.max(0, this.totalMemorizeTime - elapsed);
         if (this.memorizeTimeLeft <= 0) {
           clearInterval(this.memorizeTimer);
-          this.playGame();
+          this.memorizeTimer = null;
+          this.playGame(); // switch state to play game when countdown reaches
         }
-      } else if (this.gameState === 'play') {
+      } else if (this.gameState === 'play' && this.playTimer) {
         const elapsed = Date.now() - this.gameStartTime;
         this.gameTimeLeft = Math.max(0, this.totalGameTime - elapsed);
         if (this.gameTimeLeft <= 0) {
           clearInterval(this.playTimer);
+          this.playTimer = null;
           this.endGame();
         }
       }
       this.updateProgressBarColor();
     },
+
     updateProgressBarColor() {
       const progress = this.gameState === 'memorize' ? this.memorizeTimeLeftPercentage : this.gameTimeLeftPercentage;
       switch (true) {
@@ -90,20 +135,28 @@ export const useGameStore = defineStore('game', {
           break;
       }
     },
+
     endGame() {
       this.gameState = 'finished';
       clearInterval(this.playTimer);
     },
+
     resetGame() {
+      console.log('called resetGame()')
       this.category = null;
       this.difficulty = null;
-      this.cards = [];
-      this.gameState = null;
+      this.gameState = 'memorize';
       this.memorizeTimeLeft = this.totalMemorizeTime;
       this.gameTimeLeft = this.totalGameTime;
       this.progressColor = 'indigo';
+      clearInterval(this.memorizeTimerDelay);
       clearInterval(this.memorizeTimer);
+      clearInterval(this.playTimerDelay);
       clearInterval(this.playTimer);
+      this.memorizeTimerDelay = null;
+      this.memorizeTimer = null;
+      this.playTimerDelay = null;
+      this.playTimer = null;
     }
   },
 });
