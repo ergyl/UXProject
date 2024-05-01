@@ -112,9 +112,11 @@ async function getItems() {
                 break;
             case 'world':
                 items.value = await Ksamsok.getWorldItems();
+                getThumbnails();
                 break;
             case 'artwork':
                 items.value = await Ksamsok.getArtwork();
+                getThumbnails();
                 break;
             default:
                 console.error('Unrecognized category:', gameStore.category);
