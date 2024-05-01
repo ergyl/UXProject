@@ -94,6 +94,10 @@ const headerMessage = computed(() => {
       return 'Välj svårighet';
     case 'game-finished':
       return 'Utgrävningens fynd'
+    case 'about-game':
+      return 'Om spelet';
+    case 'for-teachers':
+      return 'För lärare';
     default:
       return '';
   }
