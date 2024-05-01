@@ -5,7 +5,7 @@ export const useGameStore = defineStore('game', {
   state: () => ({
     category: null,
     difficulty: null,
-    gameState: 'memorize',
+    gameState: 'memorize', // 1 memorize -> play -> 3 finished
     memorizeTimeLeft: 15000,
     totalMemorizeTime: 15000,
     gameTimeLeft: 120000,
@@ -51,13 +51,12 @@ export const useGameStore = defineStore('game', {
     startGame() {
       console.log('startGame called, current state:', this.gameState);
       this.setGameState('memorize');
-      this.startMemorizeTimerWithDelay(); // start play timer with 3s delay after memorize timer reached 0
+      this.startMemorizeTimerWithDelay();
     },
 
     startMemorizeTimerWithDelay() {
       console.log('Setting up delay for startMemorizeTimer');
       if (this.memorizeTimerDelay) {
-        console.log('Clearing previous timeout');
         clearTimeout(this.memorizeTimerDelay);
       }
       this.memorizeTimerDelay = setTimeout(() => {
@@ -77,10 +76,10 @@ export const useGameStore = defineStore('game', {
 
     playGame() {
       this.setGameState('play');
+      this.startPlayTimerWithDelay();
     },
 
     startPlayTimerWithDelay() {
-      console.log('3s delay before starting play timer');
       if (this.playTimerDelay) {
         clearTimeout(this.playTimerDelay);
       } else {
@@ -101,27 +100,31 @@ export const useGameStore = defineStore('game', {
     },
 
     updateCountDown() {
-      if (this.gameState === 'memorize' && this.memorizeTimer) {
-        const elapsed = Date.now() - this.memorizeStartTime;
-        this.memorizeTimeLeft = Math.max(0, this.totalMemorizeTime - elapsed);
-        if (this.memorizeTimeLeft <= 0) {
-          clearInterval(this.memorizeTimer);
-          this.memorizeTimer = null;
-          this.playGame(); // switch state to play game when countdown reaches
-        }
-      } else if (this.gameState === 'play' && this.playTimer) {
-        const elapsed = Date.now() - this.gameStartTime;
-        this.gameTimeLeft = Math.max(0, this.totalGameTime - elapsed);
-        if (this.gameTimeLeft <= 0) {
-          clearInterval(this.playTimer);
+      try {
+        if (this.gameState === 'memorize' && this.memorizeTimer) {
+          const elapsed = Date.now() - this.memorizeStartTime;
+          this.memorizeTimeLeft = Math.max(0, this.totalMemorizeTime - elapsed);
+          if (this.memorizeTimeLeft <= 0) {
+            clearInterval(this.memorizeTimer);
+            this.memorizeTimer = null;
+            this.playGame(); // switch state to play game when countdown reaches
+          }
+        } else if (this.gameState === 'play' && this.playTimer) {
+          const elapsed = Date.now() - this.gameStartTime;
+          this.gameTimeLeft = Math.max(0, this.totalGameTime - elapsed);
+          if (this.gameTimeLeft <= 0) {
+            clearInterval(this.playTimer);
           this.playTimer = null;
           this.endGame();
         }
       }
       this.updateProgressBarColor();
-    },
+    } catch (error) {
+      console.error('Error in updateCountDown:', error);
+    }
+  },
 
-    updateProgressBarColor() {
+  updateProgressBarColor() {
       const progress = this.gameState === 'memorize' ? this.memorizeTimeLeftPercentage : this.gameTimeLeftPercentage;
       switch (true) {
         case parseInt(progress) > 50:
@@ -137,6 +140,7 @@ export const useGameStore = defineStore('game', {
     },
 
     endGame() {
+      console.log('game finished')
       this.gameState = 'finished';
       clearInterval(this.playTimer);
     },

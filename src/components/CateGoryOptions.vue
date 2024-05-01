@@ -1,27 +1,26 @@
 <template>
-    <div class="card flex flex-wrap items-center justify-center w-62 h-34">
-      <div class="p-2">
-        <img
-          :src="imageSource"
-          :alt="category"
-          class="w-36 h-auto border border-black"
-        >
-      </div>
-      
-      <fwb-button
-        :color="buttonColor"
-        size="sm"
-        class="mb-2 ml-4 mr-4 whitespace-nowrap"
-        @click="navigateToCategory"
+  <div class="card flex flex-wrap items-center justify-center w-62 h-34">
+    <div class="p-2">
+      <img
+        :src="imageSource"
+        :alt="category"
+        class="w-36 h-auto border border-black"
       >
-        {{ category }}
-      </fwb-button>
     </div>
-  </template>
+      
+    <fwb-button
+      :color="buttonColor"
+      size="sm"
+      class="mb-2 ml-4 mr-4 whitespace-nowrap"
+      @click="navigateToCategory"
+    >
+      {{ category }}
+    </fwb-button>
+  </div>
+</template>
   
   <script setup>
   import { FwbButton } from 'flowbite-vue'
-  import { defineProps } from 'vue';
   import { useRouter } from 'vue-router';
   
   const props = defineProps({

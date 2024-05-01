@@ -21,7 +21,6 @@
 
 <script setup>
 import { FwbButton } from 'flowbite-vue'
-import { defineProps } from 'vue';
 import { useRouter } from 'vue-router';
 
 const props = defineProps({

@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { useGameStore } from '@/stores/gameStore';
 import MainLayout from '@/components/layout/MainLayout.vue'
 
 const router = createRouter({
@@ -56,6 +57,14 @@ const router = createRouter({
       ]
     }
   ]
-})
+});
+
+router.beforeEach((to, from, next) => {
+  const gameStore = useGameStore();
+  if (from.name === 'game-play') {
+    gameStore.resetGame();
+  }
+  next();
+});
 
 export default router

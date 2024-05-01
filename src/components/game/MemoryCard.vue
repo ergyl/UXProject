@@ -4,7 +4,7 @@ either front or back image-->
 <template>
   <div
     class="memory-card cursor-pointer content flex object-contain items-center justify-center"
-    @click="flip"
+    @click="toggle"
   >
     <img
       v-if="!isFlipped"
@@ -13,29 +13,27 @@ either front or back image-->
       class="item-thumbnail w-full h-auto"
     >
     <img
-      v-else
+      v-if="isFlipped"
       :src="backImage"
       alt="Back"
       class="item-thumbnail w-full h-auto"
     >
   </div>
 </template>
-  
+    
   <script>
   import { useGameStore } from '@/stores/gameStore';
-
-  const gameStore = useGameStore();
-
+  
   export default {
     name: 'MemoryCard',
     props: {
       frontImage: {
         type: String,
-        default: '',
+        required: true
       },
       backImage: {
         type: String,
-        default: '',
+        required: true
       }
     },
     data() {
@@ -43,9 +41,31 @@ either front or back image-->
         isFlipped: false
       };
     },
+    computed: {
+      gameStore() {
+        return useGameStore();
+      },
+      gameState() {
+        return this.gameStore.gameState;
+      }
+    },
+    watch: {
+      gameState(newVal) {
+        if (newVal === 'play') {
+          this.flip(true);
+        } else {
+          this.flip(false);
+        }
+      }
+    },
     methods: {
-      flip() {
+      toggle() {
+        // Toggle flip state on click
         this.isFlipped = !this.isFlipped;
+      },
+      flip(showBack) {
+        // Method to set isFlipped based on argument
+        this.isFlipped = showBack;
       }
     }
   };
@@ -59,6 +79,7 @@ either front or back image-->
   .item-thumbnail {
     backface-visibility: hidden;
   }
-</style>
+  </style>
+  
 
   

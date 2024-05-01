@@ -8,13 +8,12 @@
   <!-- Use the defined grid lines from MainLayout to position the content -->
   <!-- Ensure that the column numbers here match the lines in the MainLayout grid -->
   <div class="col-start-4 col-end-6 row-start-1 row-end-1 bg-red-200 flex flex-col items-center justify-center mt-4">
-    <!-- Content here will be placed within the MainLayout grid -->
     <fwb-tooltip
-      v-if="!gameStore.isPlaying"
       placement="bottom"
     >
       <template #trigger>
         <img
+          v-if="!gameStore.isPlaying"
           class="w-28 h-auto object-contain my-0 mx-auto"
           :src="MullwardMemorizingImage"
           alt="Mullward memorerar bilder"
@@ -44,15 +43,19 @@
   </div>
       
   <div class="col-start-1 col-end-9 row-start-3 row-end-24 text-center bg-green-500 overflow-scroll">
-    <div class="grid grid-cols-8">
+    <div
+      v-if="!thumbnailsLoaded || !mullwardLoaded"
+      class="flex w-full h-full justify-center items-center"
+    >
       <fwb-spinner
-        v-if="!thumbnailsLoaded"
         size="12"
-        class="self-center relative left-40"
+        class="self-center"
       />
-      
+    </div>
+
+    <div class="grid grid-cols-8">
       <div
-        v-if="thumbnailsLoaded"
+        v-if="thumbnailsLoaded && mullwardLoaded"
         class="col-start-2 col-end-8 pt-8 pb-4"
       >
         <MemoryCardsGrid
@@ -142,7 +145,6 @@ async function getItems() {
     }
 }
 
-// Fetch items when the route is entered
 onMounted(() => {
   console.log("Chosen category:", gameStore.category);
     getItems();
@@ -162,6 +164,12 @@ if (router && route) {
     });
 }
 
+watch(() => gameStore.gameState, (newState) => {
+  if (newState === 'finished') {
+    router.push({ name: 'game-finished' });
+  }
+});
+
 async function getThumbnails() {
   items.value.forEach((obj) => {
     thumbnailURLs.value.push(obj.image);
@@ -173,12 +181,10 @@ async function getThumbnails() {
 }
 
 function checkStartConditions() {
-  console.log('Checking start conditions:', thumbnailsLoaded.value, mullwardLoaded.value);
   if (thumbnailsLoaded.value && mullwardLoaded.value) {
-    console.log('All images loaded, starting the game...');
-    gameStore.startGame();
+      gameStore.startGame();
+    }
   }
-}
 
 onBeforeUnmount(() => {
   console.log(`gameStore object: ${gameStore}`); // Should log the store object
