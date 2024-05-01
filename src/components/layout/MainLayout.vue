@@ -98,6 +98,8 @@ const headerMessage = computed(() => {
       return 'Välj kategori';
     case 'choose-difficulty':
       return 'Välj svårighet';
+    case 'about-game':
+      return 'Om spelet';
     default:
       return '';
   }
