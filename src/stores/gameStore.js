@@ -55,12 +55,10 @@ export const useGameStore = defineStore('game', {
     },
 
     startMemorizeTimerWithDelay() {
-      console.log('Setting up delay for startMemorizeTimer');
       if (this.memorizeTimerDelay) {
         clearTimeout(this.memorizeTimerDelay);
       }
       this.memorizeTimerDelay = setTimeout(() => {
-        console.log('Executing startMemorizeTimer');
         this.startMemorizeTimer();
       }, 2000); // 2s delay
     },
