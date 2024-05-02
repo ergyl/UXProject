@@ -1,17 +1,18 @@
 <template>
-  <div class="flex flex-wrap gap-2 border border-black bg-semi-transparent p-2">
+  <div class="flex flex-wrap border border-black bg-semi-transparent p-2">
     <div
       v-for="(item, index) in items"
-      :key="item.id"
+      :key="index"
       class="square border border-black"
+      @click="logIndex(index)"
     >
-      <div class="content flex items-center justify-center contain-content bg-black">
+      <div class="content">
         <!-- Slot for custom content such as images or buttons -->
         <slot
           :name="'item-slot'"
           :item="item"
           :index="index"
-          class="cover-image"
+          class="bg-cover bg-center"
         />
       </div>
     </div>
@@ -28,7 +29,18 @@ export default {
             return [];
         }
     }
-  }
+  },
+  data() {
+    return {
+      clickedIndex: null,
+    }
+  },
+  methods: {
+      logIndex(index) {
+        this.clickedIndex = index;
+        console.log("Clicked item with index:", index);
+      }
+    },
 };
 </script>
 
@@ -48,10 +60,5 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.cover-image {
-  background-size: cover;
-  background-position: center;
 }
 </style>

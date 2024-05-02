@@ -8,7 +8,6 @@ MemoryCard components in the grid -->
         :key="index"
         :front-image="item"
         :back-image="backImages[index]"
-        @click="logIndex"
       />
     </template>
   </NineCardsGrid>
@@ -33,11 +32,5 @@ export default {
       default: () => [],
     }
   },
-  methods: {
-      logIndex(index) {
-        this.clickedIndex = index;
-        console.log(index);
-      }
-    },
 };
 </script>

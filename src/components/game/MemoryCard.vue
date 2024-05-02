@@ -3,22 +3,11 @@ either front or back image-->
 
 <template>
   <div
-    class="memory-card cursor-pointer content flex object-contain items-center justify-center"
+    class="memory-card flex items-center justify-center h-full w-full object-cover bg-cover bg-center"
+    :class="{ 'cursor-pointer': gameState === 'play' }"
+    :style="{ backgroundImage: `url(${isFlipped ? backImage : frontImage})` }"
     @click="toggle"
-  >
-    <img
-      v-if="!isFlipped"
-      :src="frontImage"
-      alt="Front"
-      class="item-thumbnail w-full h-auto"
-    >
-    <img
-      v-if="isFlipped"
-      :src="backImage"
-      alt="Back"
-      class="item-thumbnail w-full h-auto"
-    >
-  </div>
+  />
 </template>
     
   <script>
@@ -47,8 +36,8 @@ either front or back image-->
       },
       gameState() {
         return this.gameStore.gameState;
-      }
-    },
+    }
+  },
     watch: {
       gameState(newVal) {
         if (newVal === 'play') {
@@ -59,16 +48,17 @@ either front or back image-->
       }
     },
     methods: {
-      toggle() {
-        // Toggle flip state on click
-        this.isFlipped = !this.isFlipped;
-      },
-      flip(showBack) {
-        // Method to set isFlipped based on argument
-        this.isFlipped = showBack;
-      }
-    }
-  };
+    toggle() {
+        const currentGameState = useGameStore().gameState;
+        if (currentGameState === 'play' && this.gameStore.playTimer !== null) {
+            this.isFlipped = !this.isFlipped;
+        }
+    },
+    flip(showBack) {
+      this.isFlipped = showBack;
+    },
+  }
+};
   </script>
   
   <style scoped>
