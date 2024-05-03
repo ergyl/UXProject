@@ -13,7 +13,7 @@
     >
       <template #trigger>
         <img
-          v-if="!gameStore.isPlaying"
+          v-if="gameStore.gameState !== 'play'"
           class="w-28 h-auto object-contain my-0 mx-auto"
           :src="MullwardMemorizingImage"
           alt="Mullward memorerar bilder"
@@ -26,7 +26,7 @@
     </fwb-tooltip>
 
     <fwb-tooltip
-      v-if="gameStore.isPlaying"
+      v-if="gameStore.gameState === 'play'"
       placement="bottom"
     >
       <template #trigger>
@@ -68,7 +68,7 @@
     <!-- Flex container wrapper positioned in the grid -->
     <div class="col-start-3 col-end-8 px-16">
       <fwb-progress
-        v-if="gameStore.readyToPlay && thumbnailsLoaded"
+        v-if="gameStore.gameState === 'memorize' && thumbnailsLoaded"
         :progress="gameStore.memorizeTimeLeftPercentage"
         :color="gameStore.progressColor"
         size="lg"
@@ -78,7 +78,7 @@
       />
 
       <fwb-progress
-        v-if="gameStore.isPlaying"
+        v-if="gameStore.gameState === 'play'"
         :progress="gameStore.gameTimeLeftPercentage"
         :color="gameStore.progressColor"
         size="lg"

@@ -16,17 +16,13 @@ export const useGameStore = defineStore('game', {
   }),
 
   getters: {
-    readyToPlay(state) {
-      return state.gameState === 'memorize';
-    },
-    isPlaying(state) {
-      return state.gameState === 'play';
-    },
     memorizeTimeLeftPercentage(state) {
-      return state.totalMemorizeTime > 0 ? Math.round((state.memorizeTimeLeft / state.totalMemorizeTime) * 100).toString() : '0';
+      const percentage = state.totalMemorizeTime > 0 ? Math.round((state.memorizeTimeLeft / state.totalMemorizeTime) * 100).toString() : '0';
+      return percentage;
     },
     gameTimeLeftPercentage(state) {
-      return state.totalGameTime > 0 ? Math.round((state.gameTimeLeft / state.totalGameTime) * 100).toString() : '0';
+      const percentage = state.totalGameTime > 0 ? Math.round((state.gameTimeLeft / state.totalGameTime) * 100).toString() : '0';
+      return percentage;
     }
   },
 
