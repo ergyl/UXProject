@@ -9,7 +9,7 @@ export const useGameStore = defineStore('game', {
     memorizeTimeLeft: 15000,
     totalMemorizeTime: 15000,
     gameTimeLeft: 120000,
-    totalGameTime: 120000,
+    totalGameTime: 120000, // 2 min, default for difficulty 1 (easy)
     progressColor: 'indigo',
     memorizeTimer: null,
     playTimer: null,
@@ -38,6 +38,26 @@ export const useGameStore = defineStore('game', {
 
     setDifficulty(difficulty) {
       this.difficulty = difficulty;
+      this.adjustGameTime(difficulty);
+    },
+
+    adjustGameTime(difficulty) {
+      const baseTime = 120000;
+      switch (difficulty) {
+        case 1:
+          this.totalGameTime = baseTime; // 2 min
+          console.log('difficulty 1. ', this.totalGameTime)
+          break;
+        case 2:
+          this.totalGameTime = baseTime * 0.5; // 1 min
+          console.log('difficulty 2. ', this.totalGameTime)
+          break;
+        case 3:
+          this.totalGameTime = 30000 // 30 sec
+          console.log('difficulty 3. ', this.totalGameTime)
+          break;
+      }
+      this.gameTimeLeft = this.totalGameTime; 
     },
 
     setGameState(state) {
