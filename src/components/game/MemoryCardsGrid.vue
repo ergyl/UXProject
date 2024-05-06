@@ -2,12 +2,14 @@
 MemoryCard components in the grid -->
 
 <template>
-  <NineCardsGrid :items="frontImages">
+  <NineCardsGrid :items="items">
     <template #item-slot="{ item, index }">
       <MemoryCard
         :key="index"
-        :front-image="item"
+        :item="item"
+        :front-image="item.image"
         :back-image="backImages[index]"
+        @select-item="$emit('select-item', $event)"
       />
     </template>
   </NineCardsGrid>
@@ -23,7 +25,7 @@ export default {
     MemoryCard,
   },
   props: {
-    frontImages: {
+    items: {
       type: Array,
       default: () => [],
     },
@@ -32,5 +34,6 @@ export default {
       default: () => [],
     }
   },
+  emits: ['select-item'],
 };
 </script>

@@ -13,6 +13,7 @@ export const useGameStore = defineStore('game', {
     progressColor: 'indigo',
     memorizeTimer: null,
     playTimer: null,
+    items: [] // array to store memory game items
   }),
 
   getters: {
@@ -62,6 +63,14 @@ export const useGameStore = defineStore('game', {
 
     setGameState(state) {
       this.gameState = state;
+    },
+
+    addItems(newItems) {
+      if (newItems && Array.isArray(newItems)) {
+        this.items = newItems;
+      } else {
+        console.error('Invalid items array:', newItems);
+      }
     },
 
     startGame() {
@@ -159,6 +168,10 @@ export const useGameStore = defineStore('game', {
       clearInterval(this.playTimer);
     },
 
+    clearItems() {
+      this.items = [];
+    },
+
     resetGame() {
       console.log('called resetGame()')
       this.category = null;
@@ -175,6 +188,7 @@ export const useGameStore = defineStore('game', {
       this.memorizeTimer = null;
       this.playTimerDelay = null;
       this.playTimer = null;
+      this.clearItems();
     }
   },
 });

@@ -16,6 +16,10 @@ either front or back image-->
   export default {
     name: 'MemoryCard',
     props: {
+      item: {
+        type: Object,
+        required: true
+      },
       frontImage: {
         type: String,
         required: true
@@ -25,6 +29,7 @@ either front or back image-->
         required: true
       }
     },
+    emits: ['select-item'],
     data() {
       return {
         isFlipped: false
@@ -52,6 +57,8 @@ either front or back image-->
         const currentGameState = useGameStore().gameState;
         if (currentGameState === 'play' && this.gameStore.playTimer !== null) {
             this.isFlipped = !this.isFlipped;
+        } else if (currentGameState === 'finished') {
+          this.$emit('select-item', this.item);
         }
     },
     flip(showBack) {

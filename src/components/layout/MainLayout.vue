@@ -75,7 +75,7 @@ const headerMessage = computed(() => {
       case 'play':
         return 'Hitta föremålet';
       case 'finished':
-        return 'Utgrävningens gynd'
+        return 'Utgrävningens fynd'
       default:
         return '';
     }
