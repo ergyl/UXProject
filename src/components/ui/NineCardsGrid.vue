@@ -8,10 +8,10 @@
     >
       <div 
         class="content flex items-center justify-center cover-image"
-        :style="clickedIndex === index ? {} : { backgroundImage: `url(${images[index]})` }"
+        :style="clickedIndex === index || gameStore.gameState === 'memorize' ? {} : { backgroundImage: `url(${images[index]})` }"
       >
         <img
-          v-if="clickedIndex === index"
+          v-if="clickedIndex === index || gameStore.gameState === 'memorize'"
           :key="index"
           :src="thumbnail"
           alt="Föremål"
@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import { useGameStore } from '@/stores/gameStore';
 import image1 from '@/assets/images/illustrations/game/tile1.png';
 import image2 from '@/assets/images/illustrations/game/tile2.png';
 import image3 from '@/assets/images/illustrations/game/tile3.png';
@@ -33,6 +34,8 @@ import image6 from '@/assets/images/illustrations/game/tile6.png';
 import image7 from '@/assets/images/illustrations/game/tile7.png';
 import image8 from '@/assets/images/illustrations/game/tile8.png';
 import image9 from '@/assets/images/illustrations/game/tile9.png';
+
+const gameStore = useGameStore();
 
 export default {
   name: 'NineCardsGrid',
@@ -47,18 +50,20 @@ export default {
   data() {
     return {
       clickedIndex: null,
-      images: [image1, image2, image3, image4, image5, image6, image7, image8, image9]
+      images: [image1, image2, image3, image4, image5, image6, image7, image8, image9],
+      gameStore: gameStore
     }
   },
   methods: {
     logIndex(index) {
       this.clickedIndex = index;
       console.log(index);
+
+      console.log("Gamestore state: " + this.gameStore.gameState);
     }
   }
 };
 </script>
-
 <style scoped>
 .square {
   flex: 1 0 31%; /* slightly less than 1/3 to accommodate the gap */
