@@ -7,7 +7,10 @@
 <template>
   <!-- Use the defined grid lines from MainLayout to position the content -->
   <!-- Ensure that the column numbers here match the lines in the MainLayout grid -->
-  <div class="col-start-4 col-end-6 row-start-1 row-end-1 bg-red-200 flex flex-col items-center justify-center mt-4">
+  <div
+    v-if="gameStore.gameState !== 'finished'"
+    class="col-start-4 col-end-6 row-start-1 row-end-1 bg-red-200 flex flex-col items-center justify-center mt-4"
+  >
     <fwb-tooltip
       placement="bottom"
     >
@@ -42,7 +45,10 @@
     </fwb-tooltip>
   </div>
       
-  <div class="col-start-1 col-end-9 row-start-3 row-end-24 text-center bg-green-500 overflow-scroll">
+  <div
+    v-if="gameStore.gameState !== 'finished'"
+    class="col-start-1 col-end-9 row-start-3 row-end-24 text-center bg-green-500 overflow-scroll"
+  >
     <div
       v-if="!thumbnailsLoaded || !mullwardLoaded"
       class="flex w-full h-full justify-center items-center"
@@ -88,13 +94,58 @@
       />
     </div>
   </div>
+
+  <!-- Game finished -->
+  <div
+    v-if="gameStore.gameState === 'finished'"
+    class="col-start-1 col-end-9 row-start-1 row-end-1 h-8"
+  />
+  <div
+    v-if="gameStore.gameState === 'finished'"
+    class="col-start-1 col-end-9 row-start-2 row-end-2 flex justify-center items-center bg-green-200"
+  >
+    <h2 class="pt-1 pb-1">
+      Vilket föremål vill du läsa mer om?
+    </h2>
+  </div>
+  
+  <div
+    v-if="gameStore.gameState === 'finished'"
+    class="col-start-1 col-end-9 row-start-3 row-end-24 text-center bg-blue-500 overflow-scroll"
+  >
+    <p class="pt-8">
+      Du måste titta på föremål och spara dem i ryggsäcken. Annars försvinner de!
+    </p>
+    <div
+      v-if="gameStore.gameState === 'finished'"
+      class="grid grid-cols-8"
+    >
+      <div class="col-start-2 col-end-8 pt-8 pb-4">
+        <MemoryCardsGrid
+          :front-images="thumbnailURLs"
+          :back-images="tileImages"
+        />
+      </div>
+    </div>
+  
+    <div class="flex justify-start py-2 px-16 pb-8">
+      <fwb-button
+        color="default"
+        size="md"
+        @click="router.push('home')"
+      >
+        Lämna <br>
+        utgrävningsplatsen
+      </fwb-button>
+    </div>
+  </div>
 </template>
           
 <script setup>
 import { ref, onBeforeUnmount, onMounted, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useGameStore } from '@/stores/gameStore';
-import { FwbTooltip, FwbSpinner, FwbProgress } from 'flowbite-vue';
+import { FwbTooltip, FwbSpinner, FwbProgress, FwbButton } from 'flowbite-vue';
 import Ksamsok from '@/services/Ksamsok.js'; // Import the service class
 import MullwardMemorizingImage from '@/assets/images/illustrations/game/mullward_memorize.png';
 import BackpackOpenImage from '@/assets/images/placeholders/backpack-open.png';
@@ -164,11 +215,10 @@ if (router && route) {
     });
 }
 
-watch(() => gameStore.gameState, (newState) => {
+/** watch(() => gameStore.gameState, (newState) => {
   if (newState === 'finished') {
-    router.push({ name: 'game-finished' });
   }
-});
+}); */
 
 async function getThumbnails() {
   items.value.forEach((obj) => {
