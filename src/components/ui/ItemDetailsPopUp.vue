@@ -20,12 +20,20 @@
         <p class="font-normal text-gray-700 dark:text-gray-400 max-h-20 overflow-scroll">
           {{ item.description }} 
         </p>
-        <button
-          class="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
-          @click="closePopup"
-        >
-          Stäng
-        </button>
+        <div class="flex justify-evenly">
+          <button
+            class="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
+            @click="closePopup"
+          >
+            Stäng
+          </button>
+          <button
+            class="mt-4 px-4 py-2 bg-purple-500 text-white rounded hover:bg-purple-700"
+            @click="closePopup"
+          >
+            Lägg i ryggsäck
+          </button>
+        </div>
       </div>
     </fwb-card>
   </div>
