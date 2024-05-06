@@ -1,5 +1,5 @@
 <template>
-  <div :class="['card', props.width, props.height]">
+  <div :class="['category-card', props.width, props.height]">
     <div class="w-full p-2 flex flex-col justify-center items-center">
       <img
         :src="imageSource"
@@ -21,7 +21,6 @@
 
 <script setup>
 import { FwbButton } from 'flowbite-vue'
-import { defineProps } from 'vue';
 import { useRouter } from 'vue-router';
 
 const props = defineProps({
@@ -70,8 +69,8 @@ const navigateToCategory= () => {
 }
 </script>
 
-<style>
-  .card {
+<style scoped>
+  .category-card {
     @apply flex flex-col items-center justify-center;
     background-color: #f1f1f1;
     border-radius: 8px;

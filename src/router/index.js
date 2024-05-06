@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { useGameStore } from '@/stores/gameStore';
 import MainLayout from '@/components/layout/MainLayout.vue'
 
 const router = createRouter({
@@ -53,9 +54,27 @@ const router = createRouter({
           name: 'game-finished',
           component: () => import('../views/GameFinishedPage.vue')
         },
+        {
+          path: '/about-game',
+          name: 'about-game',
+          component: () => import('../views/AboutGamePage.vue')
+        },
+        {
+          path: '/for-teachers',
+          name: 'for-teachers',
+          component: () => import('../views/ForTeachersPage.vue')
+        },
       ]
     }
   ]
-})
+});
+
+router.beforeEach((to, from, next) => {
+  const gameStore = useGameStore();
+  if (from.name === 'game-play') {
+    gameStore.resetGame();
+  }
+  next();
+});
 
 export default router

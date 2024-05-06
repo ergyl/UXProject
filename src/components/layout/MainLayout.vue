@@ -59,7 +59,7 @@
 </template>
 
 <script setup>
-import { computed, watch } from 'vue';
+import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { useGameStore } from '@/stores/gameStore';
 import LogoImage from '@/assets/images/placeholders/logo/svg/logo-no-background.svg'
@@ -67,24 +67,18 @@ import LogoImage from '@/assets/images/placeholders/logo/svg/logo-no-background.
 const route = useRoute();
 const gameStore = useGameStore();
 
-watch(route, (to, from) => {
-  if (to.name !== 'game-play') { // Assuming 'memory-game' is the route name for the MemoryGamePage
-    gameStore.resetGame();
-  }
-}, { immediate: true });
-
 const headerMessage = computed(() => {
-  // If currently in game-mode
-  switch (gameStore.gameState) {
-    case 'memorize':
-      return 'Memorera';
-    case 'play':
-      return 'Hitta föremålet';
-    case 'finished':
-      return 'Spelet är över';
+  if (route.name === 'game-play') {
+    switch (gameStore.gameState) {
+      case 'memorize':
+        return 'Memorera';
+      case 'play':
+        return 'Hitta föremålet';
+      default:
+        return '';
+    }
   }
-
-  // If not, determine the message based on the route
+  // If not in game-play, determine the message based on the route
   switch (route.name) {
     case 'story':
       return 'Story';
@@ -98,6 +92,12 @@ const headerMessage = computed(() => {
       return 'Välj kategori';
     case 'choose-difficulty':
       return 'Välj svårighet';
+    case 'game-finished':
+      return 'Utgrävningens fynd'
+    case 'about-game':
+      return 'Om spelet';
+    case 'for-teachers':
+      return 'För lärare';
     default:
       return '';
   }
