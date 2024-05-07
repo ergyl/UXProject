@@ -46,6 +46,13 @@ export const useGameStore = defineStore('game', {
     },
     setTargetItem()
     {
+      if (this.items.length === this.guessedItems.length) 
+      {
+        console.log('all items guessed')
+        this.endGame();
+        return;
+      }
+
       let selectedItem = this.items[Math.floor(Math.random() * 9)];
       if (this.guessedItems.includes(selectedItem)) 
       {
