@@ -7,7 +7,10 @@
 <template>
   <!-- Use the defined grid lines from MainLayout to position the content -->
   <!-- Ensure that the column numbers here match the lines in the MainLayout grid -->
-  <div class="col-start-4 col-end-6 row-start-1 row-end-1 bg-red-200 flex flex-col items-center justify-center mt-4">
+  <div
+    v-if="gameStore.gameState !== 'finished'"
+    class="col-start-4 col-end-6 row-start-1 row-end-1 bg-red-200 flex flex-col items-center justify-center mt-4"
+  >
     <fwb-tooltip
       placement="bottom"
     >
@@ -42,7 +45,10 @@
     </fwb-tooltip>
   </div>
       
-  <div class="col-start-1 col-end-9 row-start-3 row-end-24 text-center bg-green-500 overflow-scroll">
+  <div
+    v-if="gameStore.gameState !== 'finished'"
+    class="col-start-1 col-end-9 row-start-3 row-end-24 text-center bg-green-500 overflow-scroll"
+  >
     <div
       v-if="!thumbnailsLoaded || !mullwardLoaded"
       class="flex w-full h-full justify-center items-center"
@@ -59,8 +65,9 @@
         class="col-start-2 col-end-8 pt-8 pb-4"
       >
         <MemoryCardsGrid
-          :front-images="thumbnailURLs"
+          :items="gameStore.items"
           :back-images="tileImages"
+          @select-item="selectedItem = $event"
         />
       </div>
     </div>
@@ -88,17 +95,71 @@
       />
     </div>
   </div>
+
+  <!-- Game finished -->
+  <div
+    v-if="gameStore.gameState === 'finished'"
+    class="col-start-1 col-end-9 row-start-1 row-end-1 h-8"
+  />
+  <div
+    v-if="gameStore.gameState === 'finished'"
+    class="col-start-1 col-end-9 row-start-2 row-end-2 flex justify-center items-center bg-green-200"
+  >
+    <h2 class="pt-1 pb-1">
+      Vilket föremål vill du läsa mer om?
+    </h2>
+  </div>
+  
+  <div
+    v-if="gameStore.gameState === 'finished'"
+    class="col-start-1 col-end-9 row-start-3 row-end-24 text-center bg-blue-500 overflow-scroll"
+  >
+    <p class="pt-8">
+      Du måste titta på föremål och spara dem i ryggsäcken. Annars försvinner de!
+    </p>
+    <div
+      v-if="gameStore.gameState === 'finished'"
+      class="grid grid-cols-8"
+    >
+      <div class="col-start-2 col-end-8 pt-8 pb-4">
+        <MemoryCardsGrid
+          :items="gameStore.items"
+          :back-images="tileImages"
+          @select-item="selectedItem = $event"
+        />
+      </div>
+    </div>
+
+    <!-- Item Details Popup -->
+    <ItemDetailsPopup
+      v-if="selectedItem"
+      :item="selectedItem"
+      @close="selectedItem = null"
+    />
+  
+    <div class="flex justify-start py-2 px-16 pb-8">
+      <fwb-button
+        color="default"
+        size="md"
+        @click="router.push('home')"
+      >
+        Lämna <br>
+        utgrävningsplatsen
+      </fwb-button>
+    </div>
+  </div>
 </template>
           
 <script setup>
 import { ref, onBeforeUnmount, onMounted, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useGameStore } from '@/stores/gameStore';
-import { FwbTooltip, FwbSpinner, FwbProgress } from 'flowbite-vue';
+import { FwbTooltip, FwbSpinner, FwbProgress, FwbButton } from 'flowbite-vue';
 import Ksamsok from '@/services/Ksamsok.js'; // Import the service class
 import MullwardMemorizingImage from '@/assets/images/illustrations/game/mullward_memorize.png';
 import BackpackOpenImage from '@/assets/images/placeholders/backpack-open.png';
 import MemoryCardsGrid from '@/components/game/MemoryCardsGrid.vue';
+import ItemDetailsPopup from '@/components/ui/ItemDetailsPopUp.vue'
 
 import image1 from '@/assets/images/illustrations/game/tile1.png';
 import image2 from '@/assets/images/illustrations/game/tile2.png';
@@ -113,36 +174,42 @@ import image9 from '@/assets/images/illustrations/game/tile9.png';
 const tileImages = [image1, image2, image3, image4, image5, image6, image7, image8, image9];
 
 const gameStore = useGameStore();
-
-const items = ref([]);   // JSON objects of items returned by Ksamsok API
-const thumbnailURLs = ref([]); // the front images for the memory cards
 const router = useRouter();
 const route = useRoute();
+
 const mullwardLoaded = ref(false);
 const thumbnailsLoaded = ref(false);
+const selectedItem = ref(null);
 
 async function getItems() {
-    if (!gameStore.category) return;
-    try {
-        switch (gameStore.category) {
-            case 'toys':
-                items.value = await Ksamsok.getToys();
-                getThumbnails();
-                break;
-            case 'world':
-                items.value = await Ksamsok.getWorldItems();
-                getThumbnails();
-                break;
-            case 'artwork':
-                items.value = await Ksamsok.getArtwork();
-                getThumbnails();
-                break;
-            default:
-                console.error('Unrecognized category:', gameStore.category);
-        }
-    } catch (error) {
-        console.error('Error fetching items for category:', gameStore.category, error.message);
+  if (!gameStore.category) return;
+  let items;
+  try {
+    switch (gameStore.category) {
+      case 'toys':
+        items = await Ksamsok.getToys();
+        break;
+      case 'world':
+        items = await Ksamsok.getWorldItems();
+        break;
+      case 'artwork':
+        items = await Ksamsok.getArtwork();
+        break;
+      default:
+        console.error('Unrecognized category:', gameStore.category);
+        return; // Exit if category is unrecognized
     }
+    console.log('API Returned Items:', items); // Check what the API returned
+    if (items) {
+      gameStore.addItems(items);
+      thumbnailsLoaded.value = true;
+      checkStartConditions();
+    } else {
+      console.error('No items fetched for category:', gameStore.category);
+    }
+  } catch (error) {
+    console.error('Error fetching items for category:', gameStore.category, error.message);
+  }
 }
 
 onMounted(() => {
@@ -164,21 +231,11 @@ if (router && route) {
     });
 }
 
-watch(() => gameStore.gameState, (newState) => {
+/** watch(() => gameStore.gameState, (newState) => {
   if (newState === 'finished') {
-    router.push({ name: 'game-finished' });
   }
-});
+}); */
 
-async function getThumbnails() {
-  items.value.forEach((obj) => {
-    thumbnailURLs.value.push(obj.image);
-  });
-  console.log("Items:", items.value);
-  console.log("Thumbnails:", thumbnailURLs.value);
-  thumbnailsLoaded.value = true;
-  checkStartConditions();
-}
 
 function checkStartConditions() {
   if (thumbnailsLoaded.value && mullwardLoaded.value) {

@@ -4,7 +4,6 @@
       v-for="(item, index) in items"
       :key="index"
       class="square border border-black"
-      @click="logIndex(index)"
     >
       <div class="content">
         <!-- Slot for custom content such as images or buttons -->
@@ -30,17 +29,6 @@ export default {
         }
     }
   },
-  data() {
-    return {
-      clickedIndex: null,
-    }
-  },
-  methods: {
-      logIndex(index) {
-        this.clickedIndex = index;
-        console.log("Clicked item with index:", index);
-      }
-    },
 };
 </script>
 

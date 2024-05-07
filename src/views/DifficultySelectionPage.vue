@@ -63,7 +63,7 @@
 </template>
      
      <script>
-       import { useGameStore } from '@/stores/gameStore';
+     import { useGameStore } from '@/stores/gameStore';
      import { FwbButton } from 'flowbite-vue';
      import CategoryCard from "@/components/CategoryCard.vue";
      import MullwardPictureLeft from "@/assets/images/illustrations/mullward_left.png"

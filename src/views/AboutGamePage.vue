@@ -64,21 +64,21 @@
         </fwb-accordion>
       </div>
   
-      <div class="ml-5">
-        <fwb-button
-          color="default"
-          size="lg"
-          class="m-4"
-          @click="goBack"
-        >
-          <template #prefix>
-            <span class="icon-[material-symbols-light--close] w-5 h-5 inline-block align-middle" />
-          </template>
-          Stäng
-        </fwb-button>
-      </div>
+    <div class="ml-5">
+      <fwb-button
+        color="default"
+        size="lg"
+        class="m-4"
+        @click="goBack"
+      >
+        <template #prefix>
+          <span class="icon-[material-symbols-light--close] w-5 h-5 inline-block align-middle" />
+        </template>
+        Stäng
+      </fwb-button>
     </div>
-  </template>
+  </div>
+</template>
     
     <script setup>
     import { useRouter } from 'vue-router';
