@@ -49,6 +49,17 @@
       </div>
     </div>
 
+    <template v-if="route.name === 'home'">
+      <div class="col-span-8 row-span-1 bg-gray-400">
+        <footer class="flex justify-center items-center w-full h-full">
+          <li><router-link to="/about-game">Om spelet</router-link></li>
+          <span class="mx-4"></span>
+          <li><router-link to="/for-teachers">För lärare</router-link></li>
+        </footer>
+      </div>
+    </template>
+
+
     <!-- Footer row -->
     <div class="col-span-8 row-span-1 bg-gray-400">
       <footer class="flex justify-center items-center w-full h-full">
@@ -101,6 +112,6 @@ const headerMessage = computed(() => {
     default:
       return '';
   }
-});
+}); 
 </script>
 

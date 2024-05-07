@@ -41,6 +41,7 @@ Use Tailwind CSS by applying classes to html elements in class="..."-->
       />
     </div>
   </div>
+
 </template>
 
 <script>
