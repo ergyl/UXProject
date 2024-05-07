@@ -35,7 +35,7 @@
       <template #trigger>
         <img
           class="w-28 h-auto object-contain my-0 mx-auto"
-          :src="BackpackOpenImage"
+          :src="gameStore.targetItem?.image"
           alt="Ryggsäck öppen"
         >
       </template>
@@ -157,7 +157,6 @@ import { useGameStore } from '@/stores/gameStore';
 import { FwbTooltip, FwbSpinner, FwbProgress, FwbButton } from 'flowbite-vue';
 import Ksamsok from '@/services/Ksamsok.js'; // Import the service class
 import MullwardMemorizingImage from '@/assets/images/illustrations/game/mullward_memorize.png';
-import BackpackOpenImage from '@/assets/images/placeholders/backpack-open.png';
 import MemoryCardsGrid from '@/components/game/MemoryCardsGrid.vue';
 import ItemDetailsPopup from '@/components/ui/ItemDetailsPopUp.vue'
 
@@ -202,6 +201,8 @@ async function getItems() {
     console.log('API Returned Items:', items); // Check what the API returned
     if (items) {
       gameStore.addItems(items);
+        gameStore.setTargetItem();
+      console.log('Target item selected: ' + gameStore.targetItem);
       thumbnailsLoaded.value = true;
       checkStartConditions();
     } else {

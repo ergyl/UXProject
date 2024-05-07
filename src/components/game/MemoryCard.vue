@@ -32,7 +32,8 @@ either front or back image-->
     emits: ['select-item'],
     data() {
       return {
-        isFlipped: false
+        isFlipped: false,
+        isFound: false
       };
     },
     computed: {
@@ -55,8 +56,29 @@ either front or back image-->
     methods: {
     toggle() {
         const currentGameState = useGameStore().gameState;
+
+        if (this.isFound === true || this.gameStore.onCooldown === true) {
+          return;
+        }
+
         if (currentGameState === 'play' && this.gameStore.playTimer !== null) {
             this.isFlipped = !this.isFlipped;
+
+            this.gameStore.startCooldown(1500);
+
+            if (this.gameStore.targetItem === this.item) {
+              this.isFound = true;
+              console.log('Correct item!');
+              this.gameStore.guessItem(this.item);
+              this.gameStore.setTargetItem();
+            }
+            else {
+              setTimeout(() => {
+                this.flip(true);
+              }, 1500);
+            }
+
+            
         } else if (currentGameState === 'finished') {
           this.$emit('select-item', this.item);
         }

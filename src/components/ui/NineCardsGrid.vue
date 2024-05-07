@@ -31,7 +31,6 @@ export default {
   },
 };
 </script>
-
 <style scoped>
 .square {
   flex: 1 0 31%; /* slightly less than 1/3 to accommodate the gap */
