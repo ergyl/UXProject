@@ -1,128 +1,13 @@
-<!-- Temporary index.html file - Manually created before setting up Node.js and Vite -->
 <!DOCTYPE html>
 <html lang="sv">
-
-<head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vue App - Temporary web</title>
-
-    <!--Fav icon stuff-->
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
-    <style>
-        * {
-            border: 1px solid rebeccapurple;
-        }
-
-        body {
-            background-color: black;
-            color: white;
-        }
-
-        h2 {
-            color: rgb(4, 255, 29);
-        }
-
-        .itemName {
-            font-size: 2.5em;
-            color: rgb(210, 235, 99);
-            font-family: 'Trebuchet MS', 'Lucida Sans Unicode';
-        }
-
-        .container {
-            padding: 3em;
-        }
-
-        .flex-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-evenly;
-            align-items: center;
-            width: 100%;
-        }
-
-        .item {
-            flex: 1 1 auto;
-            margin: 0.5em;
-            max-width: calc(33.33% - 1em);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .item img {
-            max-width: 200px;
-            width: 100%;
-            height: auto;
-        }
-    </style>
-</head>
-
-<body>
-    <div id="app">
-        <!-- Vue app will be rendered here -->
-        <h1>{{ message }} </h1>
-
-        <div class="container">
-            <h2>Kategori 1: Runt om i världen</h2>
-            <em>Världskulturmuseets föremål</em>
-            <div class="flex-container">
-                <div v-for="item in worldItems" :key="item.id" class="item">
-                    <img :src="item.image" :alt="item.itemName">
-                    <span><strong class="itemName">{{ item.itemName }}</strong></span>
-                    <p style="color: aqua">{{ item.description }}</p>
-                    <span>Ursprung: {{ item.origin.placename }}, {{ item.origin.countryName }}, {{ item.origin.continentName }} </span>
-                </div>
-            </div>
-        </div>
-
-        <br>
-
-        <div class="container">
-            <h2>Kategori 2: Leksaker och spel</h2>
-            <em>Föremål/objekt som har med lekar och spel att göra - 1800-tal</em>
-            <div class="flex-container">
-                <div v-for="item in toyItems" :key="item.id" class="item">
-                    <img :src="item.image" :alt="item.itemName">
-                    <span><strong class="itemName">{{ item.itemName }}</strong></span>
-                    <p style="color: aqua;">{{ item.description }}</p>
-                    <span>{{ item.context.contextLabel }} mellan {{ item.context.fromTime }} och {{ item.context.toTime
-                        }} </span>
-                </div>
-            </div>
-        </div>
-
-        <br>
-
-        <div class="container">
-            <h2>Kategori 3: Inramat</h2>
-            <em>Målningar från 1500 till 1890</em>
-            <div class="flex-container">
-                <div v-for="item in artworkItems" :key="item.id" class="item">
-                    <img :src="item.image" :alt="item.itemName">
-                    <span><strong class="itemName">{{ item.itemName }}</strong></span>
-                    <p style="color: aqua;">{{ item.description }}</p>
-                    <span>{{ item.context.contextLabel }} mellan {{ item.context.fromTime }} och {{ item.context.toTime
-                        }} </span>
-                </div>
-            </div>
-        </div>
-
-        <!-- End tag of Vue app below -->
-    </div>
-
-    <!-- Include Vue.js from CDN -->
-    <script src="https://unpkg.com/vue@3.2.47"
-        integrity="sha384-mgp1hnBYcnmsGPH4Gggyec1hk0SHNDFRiPziZ9r5ZfLLV9nr5uLprnqdOCR5sQHQ"
-        crossorigin="anonymous"></script>
-    <!-- The main entry point of our application where we initialize Vue -->
-    <script type="module" src="src/main.js"></script>
-    <!-- Include DataService.js for API calls -->
-    <script type="module" src="src/services/ItemDataService.js"></script>
+    <title>Mullward räddar museet</title>
+  </head>
+  <body class="bg-sand-beige">
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
