@@ -57,6 +57,10 @@ either front or back image-->
         const currentGameState = useGameStore().gameState;
         if (currentGameState === 'play' && this.gameStore.playTimer !== null) {
             this.isFlipped = !this.isFlipped;
+
+            if (this.gameStore.targetItem === this.item) {
+              console.log('Correct item!');
+            }
         } else if (currentGameState === 'finished') {
           this.$emit('select-item', this.item);
         }

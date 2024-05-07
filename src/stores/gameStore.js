@@ -13,7 +13,8 @@ export const useGameStore = defineStore('game', {
     progressColor: 'indigo',
     memorizeTimer: null,
     playTimer: null,
-    items: [] // array to store memory game items
+    items: [], // array to store memory game items
+    targetItem: null,
   }),
 
   getters: {
@@ -28,6 +29,11 @@ export const useGameStore = defineStore('game', {
   },
 
   actions: {
+
+    setTargetItem()
+    {
+      this.targetItem = this.items[Math.floor(Math.random() * 9)];
+    },
     setCategory(category) {
       console.log("gameStore setting category to:", category);
       const validCategories = Ksamsok.getValidCategories();
