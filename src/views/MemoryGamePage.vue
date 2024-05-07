@@ -212,7 +212,6 @@ async function getItems() {
   }
 }
 
-
 onMounted(() => {
   console.log("Chosen category:", gameStore.category);
     getItems();

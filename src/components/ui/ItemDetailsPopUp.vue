@@ -7,9 +7,9 @@
     @click.self="closePopup"
   >
     <fwb-card
-      class="max-w-lg"
+      class="max-w-72 flex flex-col items-center"
       :img-src="item.image"
-      img-alt="{{ item.itemName }}"
+      :img-alt="item.itemName"
       variant="image"
       @click.stop
     >
@@ -20,9 +20,9 @@
         <p class="font-normal text-gray-700 dark:text-gray-400 max-h-20 overflow-scroll">
           {{ item.description }} 
         </p>
-        <div class="flex justify-evenly">
+        <div>
           <button
-            class="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
+            class="mt-4 mr-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
             @click="closePopup"
           >
             Stäng
@@ -39,21 +39,26 @@
   </div>
 </template>
   
-<script setup>
-import { FwbCard } from 'flowbite-vue'
+<script>
+import { FwbCard } from 'flowbite-vue';
 
-defineProps({
-  item: {
-    type: Object,
-    required: true  // Mark the prop as required
+export default {
+  components: {
+    FwbCard
+  },
+  props: {
+    item: {
+      type: Object,
+      required: true
+    }
+  },
+  emits: ['close'],
+  methods: {
+    closePopup() {
+      this.$emit('close');
+    }
   }
-});
-
-const emit = defineEmits(['close']);
-
-function closePopup() {
-  emit('close');
 }
 </script>
-  
+
   
