@@ -9,10 +9,11 @@ export const useGameStore = defineStore('game', {
     memorizeTimeLeft: 15000,
     totalMemorizeTime: 15000,
     gameTimeLeft: 120000,
-    totalGameTime: 120000,
+    totalGameTime: 120000, // 2 min, default for difficulty 1 (easy)
     progressColor: 'indigo',
     memorizeTimer: null,
     playTimer: null,
+    items: [] // array to store memory game items
   }),
 
   getters: {
@@ -38,10 +39,38 @@ export const useGameStore = defineStore('game', {
 
     setDifficulty(difficulty) {
       this.difficulty = difficulty;
+      this.adjustGameTime(difficulty);
+    },
+
+    adjustGameTime(difficulty) {
+      const baseTime = 120000;
+      switch (difficulty) {
+        case 1:
+          this.totalGameTime = baseTime; // 2 min
+          console.log('difficulty 1. ', this.totalGameTime)
+          break;
+        case 2:
+          this.totalGameTime = baseTime * 0.5; // 1 min
+          console.log('difficulty 2. ', this.totalGameTime)
+          break;
+        case 3:
+          this.totalGameTime = 30000 // 30 sec
+          console.log('difficulty 3. ', this.totalGameTime)
+          break;
+      }
+      this.gameTimeLeft = this.totalGameTime; 
     },
 
     setGameState(state) {
       this.gameState = state;
+    },
+
+    addItems(newItems) {
+      if (newItems && Array.isArray(newItems)) {
+        this.items = newItems;
+      } else {
+        console.error('Invalid items array:', newItems);
+      }
     },
 
     startGame() {
@@ -139,6 +168,10 @@ export const useGameStore = defineStore('game', {
       clearInterval(this.playTimer);
     },
 
+    clearItems() {
+      this.items = [];
+    },
+
     resetGame() {
       console.log('called resetGame()')
       this.category = null;
@@ -155,6 +188,7 @@ export const useGameStore = defineStore('game', {
       this.memorizeTimer = null;
       this.playTimerDelay = null;
       this.playTimer = null;
+      this.clearItems();
     }
   },
 });

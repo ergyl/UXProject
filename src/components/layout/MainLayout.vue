@@ -74,6 +74,8 @@ const headerMessage = computed(() => {
         return 'Memorera';
       case 'play':
         return 'Hitta föremålet';
+      case 'finished':
+        return 'Utgrävningens fynd'
       default:
         return '';
     }
@@ -92,8 +94,6 @@ const headerMessage = computed(() => {
       return 'Välj kategori';
     case 'choose-difficulty':
       return 'Välj svårighet';
-    case 'game-finished':
-      return 'Utgrävningens fynd'
     case 'about-game':
       return 'Om spelet';
     case 'for-teachers':
