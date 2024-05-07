@@ -68,6 +68,7 @@ const images = [firstImage, secondImage, thirdImage];
 const storyText = [
   "En dag, när Mullward bläddrade igenom morgontidingen, upptäckte han den chockerande nyheten.",
   
+  "hejsan bacon"
 ];
 const currentIndex = ref(0);
 

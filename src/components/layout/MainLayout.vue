@@ -49,16 +49,15 @@
       </div>
     </div>
 
-    <template v-if="route.name === 'home'">
-      <div class="col-span-8 row-span-1 bg-gray-400">
+      <div v-if="route.name === 'home'" class="col-span-8 row-span-1 bg-gray-400">
         <footer class="flex justify-center items-center w-full h-full">
-          <li><router-link to="/about-game">Om spelet</router-link></li>
-          <span class="mx-4"></span>
-          <li><router-link to="/for-teachers">För lärare</router-link></li>
+          <nav>
+            <router-link to="/about-game" class="text-indigo-900 hover:text-green-900 font-bold">Om spelet</router-link>
+            <span class="mx-4"></span>
+            <router-link to="/for-teachers" class="text-indigo-900 hover:text-green-900 font-bold">För lärare</router-link>
+          </nav>
         </footer>
       </div>
-    </template>
-
 
     <!-- Footer row -->
     <div class="col-span-8 row-span-1 bg-gray-400">

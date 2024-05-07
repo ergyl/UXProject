@@ -14,7 +14,7 @@
             <fwb-accordion-content>
               <div>
                 <p class="mb-2 text-gray-500">
-                    <ul>
+                    <ul class="list-disc">
                         <li>Introducera spelet och karaktären Mullvard till eleverna.</li><br>
                         <li>Berätta att de ska använda föremålen de samlat in under spelet som inspiration för att skriva berättelser.</li><br>
                         <li>Låt eleverna spela och samla historiska föremål.</li>
@@ -30,8 +30,8 @@
             <fwb-accordion-content>
               <div>
                   <p class="mb-2 text-gray-500">
-                  <ul>
-                      <li>Be eleverna välja ett eller flera föremål från sina ryggsäckar som de vill skriva en berättelse om.</li><br>
+                  <ul class="list-disc">
+                    <li>Be eleverna välja ett eller flera föremål från sina ryggsäckar som de vill skriva en berättelse om.</li><br>
                     <li>Ge dem tid att planera sina berättelser. För inspiration - se "Skriv historia"</li>
                     
                 </ul>
@@ -46,9 +46,9 @@
             <fwb-accordion-content>
               <div>
                 <p class="mb-2 text-gray-500">
-                <ul>
-                    <li>Eleverna ska:</li><br>
-                    <li>Använda de historiska föremålen i sin skattkista som inspiration för att skriva berättelser</li><br>
+                  <p class="pb-2 font-bold">Eleverna ska:<br></p>
+                <ul class="list-disc">
+                    <li class="pb-1">Använda de historiska föremålen i sin skattkista som inspiration för att skriva berättelser</li>
                     <li>Utveckla sina skrivfärdigheter genom att skapa tydliga och sammanhängande texter</li>
                 </ul>
                 </p>
@@ -64,7 +64,7 @@
                 <p class="mb-2 text-gray-500">
                 <p>Svenska, centralt innehåll<br>
                    Årskurs 1-3 samt 4-6</p>
-                <ul>
+                <ul class="list-disc">
                     <li>Skapande av texter där ord och bild samspelar (Skolverket, 2022, s.226-227)</li>
                 </ul>
                 </p>
