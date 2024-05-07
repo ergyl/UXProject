@@ -14,7 +14,9 @@ export const useGameStore = defineStore('game', {
     memorizeTimer: null,
     playTimer: null,
     items: [], // array to store memory game items
+    guessedItems: [],
     targetItem: null,
+    onCooldown: false,
   }),
 
   getters: {
@@ -30,9 +32,27 @@ export const useGameStore = defineStore('game', {
 
   actions: {
 
+    guessItem(item)
+    {
+      this.guessedItems.push(item);
+    },
+
+    startCooldown(time) {
+      this.onCooldown = true;
+
+      setTimeout(() => {
+        this.onCooldown = false;
+      }, time);
+    },
     setTargetItem()
     {
-      this.targetItem = this.items[Math.floor(Math.random() * 9)];
+      let selectedItem = this.items[Math.floor(Math.random() * 9)];
+      if (this.guessedItems.includes(selectedItem)) 
+      {
+        this.setTargetItem(); // try again
+        return;
+      }
+      this.targetItem = selectedItem;
     },
     setCategory(category) {
       console.log("gameStore setting category to:", category);
