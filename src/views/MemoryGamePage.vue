@@ -81,7 +81,6 @@
         :color="gameStore.progressColor"
         size="lg"
         label-position="inside"
-        label-progress
         label="Memorera"
       />
 
@@ -91,7 +90,6 @@
         :color="gameStore.progressColor"
         size="lg"
         label-position="inside"
-        label-progress
         label="Spela"
       />
     </div>
