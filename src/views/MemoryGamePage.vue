@@ -106,8 +106,18 @@
     v-if="gameStore.gameState === 'finished'"
     class="col-start-1 col-end-9 row-start-2 row-end-2 flex justify-center items-center bg-green-200"
   >
-    <h2 class="pt-1 pb-1">
+    <h2
+      v-if="gameStore.allItemsGuessed === true"
+      class="pt-1 pb-1"
+    >
       Vilket föremål vill du läsa mer om?
+    </h2>
+
+    <h2
+      v-else
+      class="pt-1 pb-1"
+    >
+      Ajdå. Försök igen!
     </h2>
   </div>
   
@@ -115,8 +125,18 @@
     v-if="gameStore.gameState === 'finished'"
     class="col-start-1 col-end-9 row-start-3 row-end-24 text-center bg-blue-500 overflow-scroll"
   >
-    <p class="pt-8">
+    <p
+      v-if="gameStore.allItemsGuessed === true"
+      class="pt-8"
+    >
       Du måste titta på föremål och spara dem i ryggsäcken. Annars försvinner de!
+    </p>
+
+    <p
+      v-else
+      class="pt-8"
+    >
+      Du lyckas säkert bättre nästa gång.
     </p>
     <div
       v-if="gameStore.gameState === 'finished'"
@@ -124,6 +144,7 @@
     >
       <div class="col-start-2 col-end-8 pt-8 pb-4">
         <MemoryCardsGrid
+          v-if="gameStore.allItemsGuessed === true"
           :items="gameStore.items"
           :back-images="tileImages"
           @select-item="selectedItem = $event"
@@ -138,13 +159,22 @@
       @close="selectedItem = null"
     />
   
-    <div class="flex justify-start py-2 px-16 pb-8">
+    <div class="flex justify-evenly py-2 px-16 pb-8">
+      <fwb-button
+        color="green"
+        size="md"
+        class="mr-4"
+        @click="router.push('choose-category')"
+      >
+        Spela igen
+      </fwb-button>
+
       <fwb-button
         color="default"
         size="md"
         @click="router.push('home')"
       >
-        Lämna <br>
+        Lämna<br>
         utgrävningsplatsen
       </fwb-button>
     </div>

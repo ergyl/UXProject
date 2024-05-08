@@ -45,6 +45,7 @@ export const useGameStore = defineStore('game', {
         this.onCooldown = false;
       }, time);
     },
+
     setTargetItem()
     {
       if (this.items.length === this.guessedItems.length) 
@@ -63,6 +64,7 @@ export const useGameStore = defineStore('game', {
       }
       this.targetItem = selectedItem;
     },
+    
     setCategory(category) {
       console.log("gameStore setting category to:", category);
       const validCategories = Ksamsok.getValidCategories();
