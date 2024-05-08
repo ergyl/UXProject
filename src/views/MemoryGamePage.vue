@@ -17,7 +17,7 @@
       <template #trigger>
         <img
           v-if="gameStore.gameState !== 'play'"
-          class="w-28 h-auto object-contain my-0 mx-auto"
+          class="w-24 h-24 object-cover my-0 mx-auto"
           :src="MullwardMemorizingImage"
           alt="Mullward memorerar bilder"
           @load="mullwardMemorizingImageLoaded"
@@ -33,10 +33,11 @@
       placement="bottom"
     >
       <template #trigger>
+        <!--- Target item -->
         <img
-          class="w-28 h-auto object-contain my-0 mx-auto"
+          class="w-24 h-24 object-cover my-0 mx-auto"
           :src="gameStore.targetItem?.image"
-          alt="Ryggsäck öppen"
+          alt="Föremål att hitta"
         >
       </template>
       <template #content>

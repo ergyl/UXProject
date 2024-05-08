@@ -17,6 +17,7 @@ export const useGameStore = defineStore('game', {
     guessedItems: [],
     targetItem: null,
     onCooldown: false,
+    allItemsGuessed: false,
   }),
 
   getters: {
@@ -49,6 +50,7 @@ export const useGameStore = defineStore('game', {
       if (this.items.length === this.guessedItems.length) 
       {
         console.log('all items guessed')
+        this.allItemsGuessed = true;
         this.endGame();
         return;
       }
@@ -203,6 +205,10 @@ export const useGameStore = defineStore('game', {
 
     clearItems() {
       this.items = [];
+      this.guessedItems = [];
+      this.targetItem = null;
+      this.onCooldown = false;
+      this.allItemsGuessed = false;
     },
 
     resetGame() {
