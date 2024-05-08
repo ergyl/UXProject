@@ -3,7 +3,7 @@
 
 <template>
   <div
-    class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center"
+    class="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center"
     @click.self="closePopup"
   >
     <div 

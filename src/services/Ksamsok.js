@@ -121,6 +121,7 @@ function extractDataFromWorldItems(fetchedRecords) {
     const thumbnail = graph.find(item => item["@type"] === "ns1:Image" || item["@type"] === "Image");
     const itemDescriptions = graph.filter(item => item["@type"] === "ns1:ItemDescription" || item["@type"] === "ItemDescription");
     const contexts = graph.filter(item => item["@type"] === "ns1:Context");
+    const entity = graph.find(item => item["@type"] === 'ns1:Entity' || item["@type"] === 'Entity');
     let origin = graph.find(item => item["country"] || { });
 
     let itemNameText = 'Föremål';
@@ -142,7 +143,8 @@ function extractDataFromWorldItems(fetchedRecords) {
         descText = itemDesc.desc["@value"];
       }
     })
-   
+
+    const idValue = entity ? entity["@id"] : null;
 
     // Extracting origin information
     origin = {
@@ -155,7 +157,7 @@ function extractDataFromWorldItems(fetchedRecords) {
 
     // Creating a new object with the extracted properties and returning it
     return {
-      id: record.record["@id"],
+      id: idValue,
       itemName: itemNameText,
       image: thumbnailSource,
       description: descText,
@@ -171,7 +173,8 @@ function extractDataFromToyItems(fetchedRecords) {
     const itemName = graph.find(item => item["@type"] === "ns1:ItemName" || item["@type"] === "ItemName");
     const thumbnail = graph.find(item => item["@type"] === "ns1:Image" || item["@type"] === "Image");
     const itemDescription = graph.find(item => item["@type"] === "ns1:ItemDescription" || item["@type"] === "ItemDescription");
-    const context = graph.find(obj => obj["@type"] === "ns1:Context");
+    const context = graph.find(item => item["@type"] === "ns1:Context");
+    const entity = graph.find(item => item["@type"] === 'ns1:Entity' || item["@type"] === 'Entity');
 
     // Extracting specific properties from those elements.
     const itemNameText = itemName ? itemName["ns1:name"] || itemName["name"] : null;
@@ -187,9 +190,11 @@ function extractDataFromToyItems(fetchedRecords) {
       toTime = null;
     }
 
+    const idValue = entity ? entity["@id"] : null;
+
     // Creating a new object with the extracted properties and returning it
     return {
-      id: record.record["@id"],
+      id: idValue,
       itemName: itemNameText,
       image: thumbnailSource,
       description: descText,
@@ -209,7 +214,8 @@ function extractDataFromArtworkItems(fetchedRecords) {
     const itemName = graph.find(item => item["@type"] === "ns1:ItemName" || item["@type"] === "ItemName");
     const thumbnail = graph.find(item => item["@type"] === "ns1:Image" || item["@type"] === "Image");
     const itemDescription = graph.find(item => item["@type"] === "ns1:ItemDescription" || item["@type"] === "ItemDescription");
-    const context = graph.find(obj => obj["@type"] === "ns1:Context");
+    const context = graph.find(item => item["@type"] === "ns1:Context");
+    const entity = graph.find(item => item["@type"] === 'ns1:Entity' || item["@type"] === 'Entity');
 
     // Extracting specific properties from those elements.
     const itemNameText = itemName ? itemName["ns1:name"] || itemName["name"] : null;
@@ -220,6 +226,8 @@ function extractDataFromArtworkItems(fetchedRecords) {
     const fromTime = context ? context.fromTime : null;
     let toTime = context ? context.toTime : null;
 
+    const idValue = entity ? entity["@id"] : null;
+
     // If fromTime and toTime have the same value YYYY-mm-dd, return null in
     if (fromTime === toTime) {
       toTime = null;
@@ -227,7 +235,7 @@ function extractDataFromArtworkItems(fetchedRecords) {
 
     // Creating a new object with the extracted properties and returning it
     return {
-      id: record.record["@id"],
+      id: idValue,
       itemName: itemNameText,
       image: thumbnailSource,
       description: descText,
