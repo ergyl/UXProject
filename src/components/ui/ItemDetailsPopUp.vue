@@ -7,7 +7,7 @@
     @click.self="closePopup"
   >
     <div 
-      class="max-w-72 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 flex flex-col items-center relative"
+      class="min-w-64 max-w-72 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 flex flex-col items-center relative"
     >
       <img
         :src="item.image"

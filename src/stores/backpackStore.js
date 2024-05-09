@@ -22,13 +22,17 @@ export const useBackpackStore = defineStore('backpack', {
 
     isFull(state) {
         return state.items.size >= state.maxCapacity;
+    },
+
+    itemExists: (state) => {
+      return (itemId) => state.items.has(itemId);
     }
   },
 
   actions: {
     addItem(item) {
         // Check if backpack is not full and that the key (id value) doesnt already exist in the Map.
-      if (!this.ifFull && !this.items.has(item.id)) {
+      if (!this.isFull && !this.items.has(item.id)) {
         this.items.set(item.id, item);
       }
     },
