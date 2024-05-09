@@ -4,7 +4,7 @@ MemoryCard components in the grid -->
 <template>
   <NineCardsGrid :items="items">
     <template #item-slot="{ item, index }">
-      <MemoryCard
+      <ItemCard
         :key="index"
         :item="item"
         :front-image="item.image"
@@ -16,12 +16,12 @@ MemoryCard components in the grid -->
 
 <script>
 import NineCardsGrid from '@/components/ui/NineCardsGrid.vue';
-import MemoryCard from '@/components/game/MemoryCard.vue';
+import ItemCard from '@/components/backpack/ItemCard.vue';
 
 export default {
   components: {
     NineCardsGrid,
-    MemoryCard,
+    ItemCard,
   },
   props: {
     items: {

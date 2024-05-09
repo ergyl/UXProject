@@ -5,39 +5,49 @@
 
 <template>
   <div class="grid grid-cols-8 grid-rows-24 min-h-screen max-h-screen relative">
-    <!-- Top padding rows -->
+    <!-- Top padding row -->
     <div
-      class="col-span-2 row-span-3 bg-red-300"
-    />
-    <div
-      class="col-span-4 row-span-3 bg-transparent"
+      class="col-span-8 row-span-3 bg-vit"
     >
-      <RouterLink to="/home">
-        <figure class="h-full w-full">
-          <img
-            :src="LogoImage"
-            alt="Logo"
-            class="object-fit h-full w-full"
-          >
-        </figure>
-      </RouterLink>
+      <div class="grid grid-cols-3 grid-rows-1 gap-0 border border-black justify-center items-center">
+        <div class="border border-black">
+          <RouterLink to="/home">
+            <figure class="h-full w-full">
+              <img
+                :src="LogoImage"
+                alt="Logo"
+                class="object-fit h-full w-full"
+              >
+            </figure>
+          </RouterLink>
+        </div>
+        <div class="border border-black">
+          <RouterLink to="/home">
+            <figure class="h-full w-full">
+              <img
+                :src="LogoImage"
+                alt="Logo"
+                class="object-fit h-full w-full"
+              >
+            </figure>
+          </RouterLink>
+        </div>
+        <div class="border border-black">
+          <RouterLink to="/home">
+            <figure class="h-full w-full">
+              <img
+                :src="LogoImage"
+                alt="Logo"
+                class="object-fit h-full w-full"
+              >
+            </figure>
+          </RouterLink>
+        </div>
+      </div>
     </div>
-    <div
-      class="col-span-2 row-span-3 bg-red-300"
-    />
-    <!-- Header / Top content row -->
-    <div
-      class="col-span-8 row-span-2 bg-gray-400 flex justify-center items-center"
-    >
-      <h1
-        class="text-center"
-      >
-        {{ headerMessage }}
-      </h1>
-    </div>
-
+ 
     <!-- Main content grid -->
-    <div class="col-span-8 row-span-18 bg-beigebrun">
+    <main class="col-span-8 row-span-18 bg-beigebrun">
       <!-- Creating a subgrid inside the main content area -->
       <div class="grid grid-cols-8 grid-rows-18 h-full">
         <RouterView v-slot="{ Component }">
@@ -47,37 +57,46 @@
           />
         </RouterView>
       </div>
-    </div>
-
-    <div
-      v-if="route.name === 'home'"
-      class="col-span-8 row-span-1 bg-vit"
-    >
-      <footer class="flex justify-center items-center w-full h-full">
-        <nav>
-          <router-link
-            to="/about-game"
-            class="text-indigo-900 hover:text-green-900 font-bold"
-          >
-            Om spelet
-          </router-link>
-          <span class="mx-4" />
-          <router-link
-            to="/for-teachers"
-            class="text-indigo-900 hover:text-green-900 font-bold"
-          >
-            För lärare
-          </router-link>
-        </nav>
-      </footer>
-    </div>
+    </main>
 
     <!-- Footer row -->
-    <div class="col-span-8 row-span-1 bg-vit">
-      <footer class="flex justify-center items-center w-full h-full">
-        &copy;Dörrhandtagshopporna 2024
-      </footer>
-    </div>
+    <footer class="col-span-8 row-span-3 bg-vit flex justify-center items-center">
+      <div class="grid grid-cols-3 grid-rows-1 gap-0 border border-black justify-center items-center">
+        <div class="border border-black">
+          <RouterLink to="/home">
+            <figure class="h-full w-full">
+              <img
+                :src="LogoImage"
+                alt="Logo"
+                class="object-fit h-full w-full"
+              >
+            </figure>
+          </RouterLink>
+        </div>
+        <div class="border border-black">
+          <RouterLink to="/home">
+            <figure class="h-full w-full">
+              <img
+                :src="LogoImage"
+                alt="Logo"
+                class="object-fit h-full w-full"
+              >
+            </figure>
+          </RouterLink>
+        </div>
+        <div class="border border-black">
+          <RouterLink to="/home">
+            <figure class="h-full w-full">
+              <img
+                :src="LogoImage"
+                alt="Logo"
+                class="object-fit h-full w-full"
+              >
+            </figure>
+          </RouterLink>
+        </div>
+      </div>
+    </footer>
   </div>
 </template>
 

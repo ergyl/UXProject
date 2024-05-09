@@ -25,14 +25,14 @@
     <!-- Buttons change based on backpack status -->
     <button
       v-if="backpackIsFull"
-      class="w-full px-4 py-2 bg-yellow-500 text-white rounded-b-lg hover:bg-yellow-700"
+      class="w-full px-4 py-2 bg-gul text-white rounded-b-lg hover:bg-yellow-600"
       @click="goToBackpack"
     >
       Öppna ryggsäck
     </button>
     <button
       v-else
-      class="w-full px-4 py-2 bg-purple-500 text-white rounded-b-lg hover:bg-purple-700"
+      class="w-full px-4 py-2 bg-terracotta text-white rounded-b-lg hover:bg-morkbrun"
       @click="transferItemToBackpack"
     >
       Lägg i ryggsäck
