@@ -61,7 +61,7 @@ export default
         const fetchPromises = randomIndices.map(async index => {
           const fetchUrl = `${url}&startRecord=${index}&maximumRecords=1`;
           const fetchData = await this.fetchData(fetchUrl);
-          console.log('Fetched record JSON data:', fetchData.result.records[0]); // <-- Print JSON data directly
+          //console.log('Fetched record JSON data:', fetchData.result.records[0]); // <-- Print JSON data directly
           return fetchData.result.records[0];
         });
 
@@ -84,7 +84,7 @@ export default
             throw new Error('Invalid category');
         }
 
-        console.log(`${numberOfItemsToGet} items in ${category}:`, items);
+        //console.log(`${numberOfItemsToGet} items in ${category}:`, items);
         return items;
 
       }

@@ -12,6 +12,10 @@ export const useBackpackStore = defineStore('backpack', {
   }),
 
   getters: {
+    itemsObjects: (state) => {
+        return Array.from(state.items.values());
+    },
+
     spaceLeft(state) {
       return state.maxCapacity - state.items.size;
     },

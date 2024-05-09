@@ -213,11 +213,7 @@ export const useGameStore = defineStore('game', {
         console.log('This item is not part of the current game.');
         return 'not_in_game';
       }
-    
-      if (backpackStore.ifFull) {
-        console.log('Backpack is full. Cannot add more items.');
-        return 'full';
-      } else if (backpackStore.items.has(item.id)) {
+      else if (backpackStore.items.has(item.id)) {
         console.log('This item is already in your backpack.');
         return 'already_exists';
       } else {

@@ -24,7 +24,10 @@
   <div class="col-start-1 col-end-9 row-start-3 row-end-24 text-center bg-blue-500 overflow-scroll">
     <div class="grid grid-cols-8">
       <div class="col-start-2 col-end-8 pt-8 pb-4">
-        <NineCardsGrid :items="placeHolderArray" />
+        <BackpackCardsGrid
+          :items="backpackStore.itemsObjects"
+          @select-item="selectedItem = $event"
+        />
       </div>
     </div>
 
@@ -56,7 +59,7 @@
     <script setup>
     
     import { useBackpackStore } from '@/stores/backpackStore';
-    import NineCardsGrid from '../components/ui/NineCardsGrid.vue';
+    import BackpackCardsGrid from '@/components/backpack/BackpackCardsGrid.vue';
     import BackpackOpenImage from '../assets/images/placeholders/backpack-open.png'
     import { FwbButton } from 'flowbite-vue';
     import { useRouter } from 'vue-router';
@@ -65,7 +68,9 @@
 
     console.log(`Backpack contains ${backpackStore.items.size} items.`)
 
-    const placeHolderArray = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    backpackStore.items.forEach((value, key) => {
+      console.log(`Item ID: ${key}, value: `, value)
+    });
 
     const router = useRouter();
 

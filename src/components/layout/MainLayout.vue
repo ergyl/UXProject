@@ -7,10 +7,10 @@
   <div class="grid grid-cols-8 grid-rows-24 min-h-screen max-h-screen relative">
     <!-- Top padding rows -->
     <div
-      class="col-span-2 row-span-3 bg-transparent"
+      class="col-span-2 row-span-3 bg-red-300"
     />
     <div
-      class="col-span-4 row-span-3 bg-red-400"
+      class="col-span-4 row-span-3 bg-transparent"
     >
       <RouterLink to="/home">
         <figure class="h-full w-full">
@@ -23,7 +23,7 @@
       </RouterLink>
     </div>
     <div
-      class="col-span-2 row-span-3 bg-transparent"
+      class="col-span-2 row-span-3 bg-red-300"
     />
     <!-- Header / Top content row -->
     <div
@@ -37,7 +37,7 @@
     </div>
 
     <!-- Main content grid -->
-    <div class="col-span-8 row-span-18 bg-blue-200">
+    <div class="col-span-8 row-span-18 bg-beigebrun">
       <!-- Creating a subgrid inside the main content area -->
       <div class="grid grid-cols-8 grid-rows-18 h-full">
         <RouterView v-slot="{ Component }">
@@ -49,18 +49,31 @@
       </div>
     </div>
 
-      <div v-if="route.name === 'home'" class="col-span-8 row-span-1 bg-gray-400">
-        <footer class="flex justify-center items-center w-full h-full">
-          <nav>
-            <router-link to="/about-game" class="text-indigo-900 hover:text-green-900 font-bold">Om spelet</router-link>
-            <span class="mx-4"></span>
-            <router-link to="/for-teachers" class="text-indigo-900 hover:text-green-900 font-bold">För lärare</router-link>
-          </nav>
-        </footer>
-      </div>
+    <div
+      v-if="route.name === 'home'"
+      class="col-span-8 row-span-1 bg-vit"
+    >
+      <footer class="flex justify-center items-center w-full h-full">
+        <nav>
+          <router-link
+            to="/about-game"
+            class="text-indigo-900 hover:text-green-900 font-bold"
+          >
+            Om spelet
+          </router-link>
+          <span class="mx-4" />
+          <router-link
+            to="/for-teachers"
+            class="text-indigo-900 hover:text-green-900 font-bold"
+          >
+            För lärare
+          </router-link>
+        </nav>
+      </footer>
+    </div>
 
     <!-- Footer row -->
-    <div class="col-span-8 row-span-1 bg-gray-400">
+    <div class="col-span-8 row-span-1 bg-vit">
       <footer class="flex justify-center items-center w-full h-full">
         &copy;Dörrhandtagshopporna 2024
       </footer>
