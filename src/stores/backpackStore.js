@@ -16,7 +16,7 @@ export const useBackpackStore = defineStore('backpack', {
       return state.maxCapacity - state.items.size;
     },
 
-    ifFull(state) {
+    isFull(state) {
         return state.items.size >= state.maxCapacity;
     }
   },
