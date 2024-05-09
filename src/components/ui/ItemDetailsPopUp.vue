@@ -3,52 +3,68 @@
 
 <template>
   <div
-    class="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center"
+    class="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center"
     @click.self="closePopup"
   >
     <div 
-      class="max-w-72 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 flex flex-col items-center"
+      class="max-w-72 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 flex flex-col items-center relative"
     >
       <img
         :src="item.image"
         :alt="item.itemName"
-        class="rounded-t-lg w-full max-h-72 object-cover"
+        class="w-full max-h-64 object-cover relative mt-12"
       >
-      <div class="p-5">
+      <div class="p-5 max-h-52 overflow-scroll">
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
           {{ item.itemName }}
         </h5>
-        <p class="font-normal text-gray-700 dark:text-gray-400 max-h-20 overflow-scroll">
+        <p class="font-normal text-gray-700 dark:text-gray-400">
           {{ item.description }} 
         </p>
-        <div>
-          <button
-            class="mt-4 mr-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
-            @click="closePopup"
+
+        <FwbButton
+          class="absolute top-1 right-1 z-10"
+          color="dark"
+          pill
+          square
+          @click="closePopup"
+        >
+          <svg
+            class="w-5 h-5"
+            fill="currentColor"
+            viewBox="3 3 17 17"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            Stäng
-          </button>
-          <button
-            class="mt-4 px-4 py-2 bg-purple-500 text-white rounded hover:bg-purple-700"
-            @click="closePopup"
-          >
-            Lägg i ryggsäck
-          </button>
-        </div>
+            ><path
+              fill="currentColor"
+              d="m6.4 18.308l-.708-.708l5.6-5.6l-5.6-5.6l.708-.708l5.6 5.6l5.6-5.6l.708.708l-5.6 5.6l5.6 5.6l-.708.708l-5.6-5.6z"
+            />
+          </svg>
+        </FwbButton>
       </div>
+      <!-- Slot for custom content -->
+      <slot />
     </div>
   </div>
 </template>
 
 <script>
+import { FwbButton } from 'flowbite-vue'
+
 export default {
+  components: {
+      FwbButton
+    },
+
   props: {
     item: {
       type: Object,
       required: true
     }
   },
+
   emits: ['close'],
+
   methods: {
     closePopup() {
       this.$emit('close');
@@ -56,7 +72,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-/* Add any scoped styles if needed */
-</style>

@@ -54,11 +54,16 @@
 </template>
     
     <script setup>
-
+    
+    import { useBackpackStore } from '@/stores/backpackStore';
     import NineCardsGrid from '../components/ui/NineCardsGrid.vue';
     import BackpackOpenImage from '../assets/images/placeholders/backpack-open.png'
     import { FwbButton } from 'flowbite-vue';
     import { useRouter } from 'vue-router';
+
+    const backpackStore = useBackpackStore();
+
+    console.log(`Backpack contains ${backpackStore.items.size} items.`)
 
     const placeHolderArray = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 

@@ -151,7 +151,7 @@
     </div>
 
     <!-- Item Details Popup -->
-    <ItemDetailsPopup
+    <ItemWonPopUp
       v-if="selectedItem"
       :item="selectedItem"
       @close="selectedItem = null"
@@ -187,7 +187,7 @@ import { FwbTooltip, FwbSpinner, FwbProgress, FwbButton } from 'flowbite-vue';
 import Ksamsok from '@/services/Ksamsok.js'; // Import the service class
 import MullwardMemorizingImage from '@/assets/images/illustrations/game/mullward_memorize.png';
 import MemoryCardsGrid from '@/components/game/MemoryCardsGrid.vue';
-import ItemDetailsPopup from '@/components/ui/ItemDetailsPopUp.vue'
+import ItemWonPopUp from '@/components/game/ItemWonPopUp.vue'
 
 import image1 from '@/assets/images/illustrations/game/tile1.png';
 import image2 from '@/assets/images/illustrations/game/tile2.png';

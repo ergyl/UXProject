@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia';
+import { useBackpackStore } from '@/stores/backpackStore';
 import Ksamsok from '@/services/Ksamsok.js';
 
 export const useGameStore = defineStore('game', {
@@ -204,6 +205,27 @@ export const useGameStore = defineStore('game', {
       this.gameState = 'finished';
       clearInterval(this.playTimer);
     },
+
+    sendItemToBackpack(item) {
+      const backpackStore = useBackpackStore();
+    
+      if (!this.items.some(gameItem => gameItem.id === item.id)) {
+        console.log('This item is not part of the current game.');
+        return 'not_in_game';
+      }
+    
+      if (backpackStore.ifFull) {
+        console.log('Backpack is full. Cannot add more items.');
+        return 'full';
+      } else if (backpackStore.items.has(item.id)) {
+        console.log('This item is already in your backpack.');
+        return 'already_exists';
+      } else {
+        backpackStore.addItem(item);
+        console.log('Item transferred to backpack:', item);
+        return 'success';
+      }
+    },      
 
     clearItems() {
       this.items = [];
