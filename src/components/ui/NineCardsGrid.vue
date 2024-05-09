@@ -1,13 +1,13 @@
 <template>
-  <div class="flex flex-wrap border border-black bg-semi-transparent p-2">
+  <div class="flex flex-wrap border border-black bg-semi-transparent">
     <div
-      v-for="(item, index) in items"
+      v-for="(item, index) in nineItems"
       :key="index"
       class="square border border-black"
     >
       <div class="content">
-        <!-- Slot for custom content such as images or buttons -->
         <slot
+          v-if="item !== undefined"
           :name="'item-slot'"
           :item="item"
           :index="index"
@@ -18,19 +18,25 @@
   </div>
 </template>
 
+
 <script>
 export default {
-    name: 'NineCardsGrid',
-    props: {
-        items: {
-          type: Array,
-          default: function() {
-            return [];
-        }
+  name: 'NineCardsGrid',
+  props: {
+    items: {
+      type: Array,
+      default: () => []
     }
   },
+  computed: {
+    nineItems() {
+      // Create an array of 9 elements, filling with items or undefined
+      return Array.from({ length: 9 }, (_, i) => this.items[i]);
+    }
+  }
 };
 </script>
+
 <style scoped>
 .square {
   flex: 1 0 31%; /* slightly less than 1/3 to accommodate the gap */
