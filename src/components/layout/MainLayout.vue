@@ -11,37 +11,13 @@
     >
       <div class="grid grid-cols-3 grid-rows-1 gap-0 border border-black justify-center items-center">
         <div class="border border-black">
-          <RouterLink to="/home">
-            <figure class="h-full w-full">
-              <img
-                :src="LogoImage"
-                alt="Logo"
-                class="object-fit h-full w-full"
-              >
-            </figure>
-          </RouterLink>
+          <BackpackButton />
         </div>
         <div class="border border-black">
-          <RouterLink to="/home">
-            <figure class="h-full w-full">
-              <img
-                :src="LogoImage"
-                alt="Logo"
-                class="object-fit h-full w-full"
-              >
-            </figure>
-          </RouterLink>
+          <HomeButton />
         </div>
         <div class="border border-black">
-          <RouterLink to="/home">
-            <figure class="h-full w-full">
-              <img
-                :src="LogoImage"
-                alt="Logo"
-                class="object-fit h-full w-full"
-              >
-            </figure>
-          </RouterLink>
+          <DigButton />
         </div>
       </div>
     </div>
@@ -63,37 +39,13 @@
     <footer class="col-span-8 row-span-3 bg-vit flex justify-center items-center">
       <div class="grid grid-cols-3 grid-rows-1 gap-0 border border-black justify-center items-center">
         <div class="border border-black">
-          <RouterLink to="/home">
-            <figure class="h-full w-full">
-              <img
-                :src="LogoImage"
-                alt="Logo"
-                class="object-fit h-full w-full"
-              >
-            </figure>
-          </RouterLink>
+          <InfoButton />
         </div>
         <div class="border border-black">
-          <RouterLink to="/home">
-            <figure class="h-full w-full">
-              <img
-                :src="LogoImage"
-                alt="Logo"
-                class="object-fit h-full w-full"
-              >
-            </figure>
-          </RouterLink>
+          <StoryButton />
         </div>
         <div class="border border-black">
-          <RouterLink to="/home">
-            <figure class="h-full w-full">
-              <img
-                :src="LogoImage"
-                alt="Logo"
-                class="object-fit h-full w-full"
-              >
-            </figure>
-          </RouterLink>
+          <WriteButton />
         </div>
       </div>
     </footer>
@@ -101,48 +53,11 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
-import { useRoute } from 'vue-router';
-import { useGameStore } from '@/stores/gameStore';
-import LogoImage from '@/assets/images/placeholders/logo/svg/logo-no-background.svg'
-
-const route = useRoute();
-const gameStore = useGameStore();
-
-const headerMessage = computed(() => {
-  if (route.name === 'game-play') {
-    switch (gameStore.gameState) {
-      case 'memorize':
-        return 'Memorera';
-      case 'play':
-        return 'Hitta föremålet';
-      case 'finished':
-        return 'Utgrävningens fynd'
-      default:
-        return '';
-    }
-  }
-  // If not in game-play, determine the message based on the route
-  switch (route.name) {
-    case 'story':
-      return 'Story';
-    case 'home':
-      return 'Vad vill du göra?';
-    case 'backpack':
-      return 'Din ryggsäck';
-    case 'tips':
-      return 'Skrivtips';
-    case 'choose-category':
-      return 'Välj kategori';
-    case 'choose-difficulty':
-      return 'Välj svårighet';
-    case 'about-game':
-      return 'Om spelet';
-    case 'for-teachers':
-      return 'För lärare';
-    default:
-      return '';
-  }
-}); 
+import BackpackButton from '@/components/ui/BackpackButton.vue'
+import HomeButton from '@/components/ui/HomeButton.vue'
+import DigButton from '@/components/ui/DigButton.vue'
+import InfoButton from '@/components/ui/InfoButton.vue'
+import StoryButton from '@/components/ui/StoryButton.vue'
+import WriteButton from '@/components/ui/WriteButton.vue'
 </script>
 
