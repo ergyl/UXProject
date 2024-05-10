@@ -8,22 +8,25 @@
   @col-start & end should be between 1-9, @col-start & end should be between 1-25-->
 
 <template>
-  <div class="col-start-3 col-end-7 row-start-1 row-end-1 bg-red-200 flex flex-col items-center justify-center">
-    <img
-      class="w-28 h-auto object-contain my-0 mx-auto"
-      :src="BackpackOpenImage"
-      alt="Ryggsäck öppen"
-    >
-  </div>
-  <div class="col-start-1 col-end-9 row-start-2 row-end-2 flex justify-center items-center bg-green-200">
-    <h2 class="pt-1 pb-1">
-      Vilket föremål vill du läsa mer om?
-    </h2>
+  <div class="col-start-2 col-end-8 row-start-1 row-end-6 bg-red-200 flex justify-start items-end">
+    <div class="flex">
+      <img
+        class="w-10 h-10"
+        src="https://mullvad.net/press/MullvadVPN_logo_Round_RGB_Color_negative.png"
+        alt="hej"
+      >
+      <SpeechBubble
+        class="mb-4"
+        :left="true"
+      >
+        Vilket föremål vill du veta mer om?
+      </SpeechBubble>
+    </div>
   </div>
 
-  <div class="col-start-1 col-end-9 row-start-3 row-end-24 text-center bg-blue-500 overflow-scroll">
+  <div class="col-start-1 col-end-9 row-start-6 row-end-24 text-center overflow-scroll">
     <div class="grid grid-cols-8">
-      <div class="col-start-2 col-end-8 pt-8 pb-4">
+      <div class="col-start-2 col-end-8 pb-4">
         <BackpackCardsGrid
           :items="backpackStore.itemsObjects"
           @select-item="selectedItem = $event"
@@ -59,8 +62,8 @@
     <script setup>
     
     import { useBackpackStore } from '@/stores/backpackStore';
+    import SpeechBubble from '@/components/SpeechBubble.vue'
     import BackpackCardsGrid from '@/components/backpack/BackpackCardsGrid.vue';
-    import BackpackOpenImage from '../assets/images/placeholders/backpack-open.png'
     import { FwbButton } from 'flowbite-vue';
     import { useRouter } from 'vue-router';
 
