@@ -8,13 +8,15 @@
   @col-start & end should be between 1-9, @col-start & end should be between 1-25-->
 
 <template>
-  <div class="col-start-2 col-end-8 row-start-1 row-end-6 bg-red-200 flex justify-start items-end">
-    <div class="flex">
+  <div class="col-start-2 col-end-8 row-start-1 row-end-6 flex justify-start items-end pt-8">
+    <div class="flex justify-start items-end">
       <img
-        class="w-10 h-10"
-        src="https://mullvad.net/press/MullvadVPN_logo_Round_RGB_Color_negative.png"
-        alt="hej"
+        class="w-24 h-auto ml-3"
+        :src="MullwardCloseUpImage"
+        alt="closeup"
       >
+    </div>
+    <div class="flex items-center justify-center w-full">
       <SpeechBubble
         class="mb-4"
         :left="true"
@@ -23,7 +25,7 @@
       </SpeechBubble>
     </div>
   </div>
-
+  
   <div class="col-start-1 col-end-9 row-start-6 row-end-24 text-center overflow-scroll">
     <div class="grid grid-cols-8">
       <div class="col-start-2 col-end-8 pb-4">
@@ -64,6 +66,7 @@
     import { useBackpackStore } from '@/stores/backpackStore';
     import SpeechBubble from '@/components/SpeechBubble.vue'
     import BackpackCardsGrid from '@/components/backpack/BackpackCardsGrid.vue';
+    import MullwardCloseUpImage from '@/assets/images/illustrations/characters/mullward-backpack-closeup.png'
     import { FwbButton } from 'flowbite-vue';
     import { useRouter } from 'vue-router';
 
