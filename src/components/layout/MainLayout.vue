@@ -18,8 +18,10 @@
     </div>
  
     <!-- Main content grid -->
-    <main class="col-span-8 row-span-18 bg-beigebrun">
-      <!-- Creating a subgrid inside the main content area -->
+    <main
+      :class="{'row-span-21': !isHome, 'row-span-18': isHome}"
+      class="col-span-8 bg-beigebrun"
+    >
       <div class="grid grid-cols-8 grid-rows-18 h-full">
         <RouterView v-slot="{ Component }">
           <component
@@ -29,6 +31,7 @@
         </RouterView>
       </div>
     </main>
+
 
     <!-- Footer row -->
     <footer
@@ -50,16 +53,14 @@
 <script setup>
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
-import BackpackButton from '@/components/ui/BackpackButton.vue'
-import HomeButton from '@/components/ui/HomeButton.vue'
-import DigButton from '@/components/ui/DigButton.vue'
-import InfoButton from '@/components/ui/InfoButton.vue'
-import StoryButton from '@/components/ui/StoryButton.vue'
-import WriteButton from '@/components/ui/WriteButton.vue'
+import BackpackButton from '@/components/ui/BackpackButton.vue';
+import HomeButton from '@/components/ui/HomeButton.vue';
+import DigButton from '@/components/ui/DigButton.vue';
+import InfoButton from '@/components/ui/InfoButton.vue';
+import StoryButton from '@/components/ui/StoryButton.vue';
+import WriteButton from '@/components/ui/WriteButton.vue';
 
 const route = useRoute();
 const isHome = computed(() => route.path === '/home');
-
-
 </script>
 
