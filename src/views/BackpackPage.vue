@@ -25,7 +25,7 @@
       </SpeechBubble>
     </div>
   </div>
-  
+
   <div class="col-start-1 col-end-9 row-start-6 row-end-24 text-center overflow-scroll">
     <div class="grid grid-cols-8">
       <div class="col-start-2 col-end-8 pb-4">
@@ -38,50 +38,28 @@
 
     <!-- Flex container wrapper positioned in the grid -->
     <div class="flex justify-center gap-4 py-2 px-16">
-      <fwb-button
-        color="default"
-        size="lg"
-        @click="goBack"
-      >
-        <template #prefix>
-          <span class="icon-[material-symbols-light--close] w-5 h-5 inline-block align-middle" />
-        </template>
-        Stäng
-      </fwb-button>
-      <fwb-button
-        color="purple"
-        size="lg"
-      >
-        <template #prefix>
-          <span class="icon-[material-symbols-light--handshake-outline] w-5 h-5 inline-block align-middle" />
-        </template>
-        Donera
-      </fwb-button>
+      <BasicButton
+        text="Senaste utgrävning"
+        disabled="true"
+      />
+      <BasicButton text="Donera" />
     </div>
   </div>
 </template>
-    
-    <script setup>
-    
-    import { useBackpackStore } from '@/stores/backpackStore';
-    import SpeechBubble from '@/components/SpeechBubble.vue'
-    import BackpackCardsGrid from '@/components/backpack/BackpackCardsGrid.vue';
-    import MullwardCloseUpImage from '@/assets/images/illustrations/characters/mullward-backpack-closeup.png'
-    import { FwbButton } from 'flowbite-vue';
-    import { useRouter } from 'vue-router';
 
-    const backpackStore = useBackpackStore();
+<script setup>
 
-    console.log(`Backpack contains ${backpackStore.items.size} items.`)
+import { useBackpackStore } from '@/stores/backpackStore';
+import SpeechBubble from '@/components/SpeechBubble.vue'
+import BackpackCardsGrid from '@/components/backpack/BackpackCardsGrid.vue';
+import MullwardCloseUpImage from '@/assets/images/illustrations/characters/mullward-backpack-closeup.png'
+import BasicButton from '@/components/ui/BasicButton.vue';
 
-    backpackStore.items.forEach((value, key) => {
-      console.log(`Item ID: ${key}, value: `, value)
-    });
+const backpackStore = useBackpackStore();
 
-    const router = useRouter();
+console.log(`Backpack contains ${backpackStore.items.size} items.`)
 
-    const goBack = () => {
-      router.back();
-    }
-    </script>
-    
+backpackStore.items.forEach((value, key) => {
+  console.log(`Item ID: ${key}, value: `, value)
+});
+</script>
