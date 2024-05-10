@@ -32,7 +32,6 @@
       </div>
     </main>
 
-
     <!-- Footer row -->
     <footer
       v-if="isHome"
@@ -52,7 +51,7 @@
 
 <script setup>
 import { computed } from 'vue';
-import { useRoute } from 'vue-router';
+import { useNavigationStore } from '@/stores/navigationStore';
 import BackpackButton from '@/components/ui/BackpackButton.vue';
 import HomeButton from '@/components/ui/HomeButton.vue';
 import DigButton from '@/components/ui/DigButton.vue';
@@ -60,7 +59,7 @@ import InfoButton from '@/components/ui/InfoButton.vue';
 import StoryButton from '@/components/ui/StoryButton.vue';
 import WriteButton from '@/components/ui/WriteButton.vue';
 
-const route = useRoute();
-const isHome = computed(() => route.path === '/home');
+const navStore= useNavigationStore();
+const isHome = computed(() => navStore.isHome);
 </script>
 
