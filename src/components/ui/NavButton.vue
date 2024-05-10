@@ -2,7 +2,7 @@
 
 <template>
   <button
-    class="w-20 h-20"
+    class="w-full h-full"
     :class="buttonClasses"
     :style="buttonStyle"
     :disabled="!isEnabled"
@@ -54,7 +54,7 @@ const buttonStyle = computed(() => {
 
 // Computed classes for styling
 const buttonClasses = computed(() => ({
-    'bg-cover bg-center bg-no-repeat': true,
+    'bg-contain bg-center bg-no-repeat': true,
     'opacity-50 cursor-not-allowed': !props.isEnabled,
     'hover:opacity-75': props.isEnabled
 }));

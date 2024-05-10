@@ -5,43 +5,12 @@ Check out https://www.tailwindgen.com/ to generate grid code :)
 Use Tailwind CSS by applying classes to html elements in class="..."-->
 
 <template>
-  <div class="col-start-1 col-end-9 row-start-6 row-end-24 overflow-auto">
-    <div class="flex flex-wrap items-stretch justify-center gap-y-8 gap-x-3 m-4">
-      <CategoryCard
-        class="adjusted-width flex flex-col"
-        :image-source="images[0]"
-        :category="'Läs serien'"
-        :category-path="'/story'"
-        :button-color="'default'"
-        :button-size="'lg'"
-      />
-      <CategoryCard
-        class="adjusted-width flex flex-col"
-        :image-source="images[1]"
-        :category="'Skrivtips'"
-        :category-path="'/tips'"
-        :button-color="'default'"
-        :button-size="'lg'"
-      />
-      <CategoryCard
-        class="adjusted-width flex flex-col"
-        :image-source="images[2]"
-        :category="'Ryggsäck'"
-        :category-path="'/backpack'"
-        :button-color="'default'"
-        :button-size="'lg'"
-      />
-      <CategoryCard
-        class="adjusted-width flex flex-col"
-        :image-source="images[3]"
-        :category="'Gräv'"
-        :category-path="'/choose-category'"
-        :button-color="'default'"
-        :button-size="'lg'"
-      />
-    </div>
+  <div class="col-start-1 col-end-9 row-start-4 row-end-24 overflow-auto text-center">
+    <h2>Hemma hos Mullward</h2>
+    <p class="mt-8">
+      [bild]
+    </p>
   </div>
-
 </template>
 
 <script>

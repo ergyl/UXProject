@@ -5,21 +5,16 @@
 
 <template>
   <div class="grid grid-cols-8 grid-rows-24 min-h-screen max-h-screen relative">
-    <!-- Top padding row -->
-    <div
-      class="col-span-8 row-span-3 bg-vit"
-    >
-      <div class="grid grid-cols-3 grid-rows-1 gap-0 border border-black justify-center items-center">
-        <div class="border border-black">
-          <BackpackButton />
-        </div>
-        <div class="border border-black">
-          <HomeButton />
-        </div>
-        <div class="border border-black">
-          <DigButton />
-        </div>
-      </div>
+    <!-- Top Nav -->
+    <div class="col-span-8 row-span-3 bg-vit">
+      <nav
+        class="grid grid-cols-3 h-full"
+        aria-label="Huvudmeny"
+      >
+        <BackpackButton />
+        <HomeButton />
+        <DigButton />
+      </nav>
     </div>
  
     <!-- Main content grid -->
@@ -37,17 +32,14 @@
 
     <!-- Footer row -->
     <footer class="col-span-8 row-span-3 bg-vit flex justify-center items-center">
-      <div class="grid grid-cols-3 grid-rows-1 gap-0 border border-black justify-center items-center">
-        <div class="border border-black">
-          <InfoButton />
-        </div>
-        <div class="border border-black">
-          <StoryButton />
-        </div>
-        <div class="border border-black">
-          <WriteButton />
-        </div>
-      </div>
+      <nav
+        class="grid grid-cols-3 w-full h-full"
+        aria-label="Sidomeny"
+      >
+        <InfoButton />
+        <StoryButton />
+        <WriteButton />
+      </nav>
     </footer>
   </div>
 </template>
