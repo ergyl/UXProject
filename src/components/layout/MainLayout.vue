@@ -31,7 +31,10 @@
     </main>
 
     <!-- Footer row -->
-    <footer class="col-span-8 row-span-3 bg-vit flex justify-center items-center">
+    <footer
+      v-if="isHome"
+      class="col-span-8 row-span-3 bg-vit flex justify-center items-center"
+    >
       <nav
         class="grid grid-cols-3 w-full h-full"
         aria-label="Sidomeny"
@@ -45,11 +48,18 @@
 </template>
 
 <script setup>
+import { computed } from 'vue';
+import { useRoute } from 'vue-router';
 import BackpackButton from '@/components/ui/BackpackButton.vue'
 import HomeButton from '@/components/ui/HomeButton.vue'
 import DigButton from '@/components/ui/DigButton.vue'
 import InfoButton from '@/components/ui/InfoButton.vue'
 import StoryButton from '@/components/ui/StoryButton.vue'
 import WriteButton from '@/components/ui/WriteButton.vue'
+
+const route = useRoute();
+const isHome = computed(() => route.path === '/home');
+
+
 </script>
 
