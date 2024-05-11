@@ -22,14 +22,12 @@
       :class="{'row-span-21': !isHome, 'row-span-18': isHome}"
       class="col-span-8 bg-beigebrun"
     >
-      <div class="grid grid-cols-8 grid-rows-18 h-full">
-        <RouterView v-slot="{ Component }">
-          <component
-            :is="Component"
-            v-bind="$route.params"
-          />
-        </RouterView>
-      </div>
+      <RouterView v-slot="{ Component }">
+        <component
+          :is="Component"
+          v-bind="$route.params"
+        />
+      </RouterView>
     </main>
 
     <!-- Footer row -->

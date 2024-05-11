@@ -43,7 +43,7 @@ const isHovering = ref(false);
 
 const buttonStyle = computed(() => {
     console.log("Recalculating style");
-    let backgroundImage = props.enabledImg; // Default state
+    let backgroundImage = props.enabledImg;
     if (props.isActive) {
         backgroundImage = props.activeImg;
     } else if (isHovering.value) {
@@ -52,14 +52,12 @@ const buttonStyle = computed(() => {
     return { backgroundImage: `url(${backgroundImage})` };
 });
 
-// Computed classes for styling
 const buttonClasses = computed(() => ({
     'bg-contain bg-center bg-no-repeat': true,
     'opacity-50 cursor-not-allowed': !props.isEnabled,
     'hover:opacity-75': props.isEnabled
 }));
 
-// Handling hover states
 const handleMouseOver = () => {
     if (props.isEnabled) {
         isHovering.value = true;
@@ -69,7 +67,6 @@ const handleMouseOut = () => {
     isHovering.value = false;
 };
 
-// Emitting click events
 const navigateTo = () => {
     if (props.isEnabled && props.navPath) {
         router.push(props.navPath);

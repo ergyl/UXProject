@@ -1,82 +1,62 @@
 <template>
-  <div :class="['category-card', props.width, props.height]">
-    <div class="w-full p-2 flex flex-col justify-center items-center">
-      <img
-        :src="imageSource"
-        :alt="category"
-        class="w-3/5 h-auto border border-black"
-      >
-    </div>
-    
-    <fwb-button
-      :color="buttonColor"
-      :size="buttonSize"
-      class="mb-2 ml-4 mr-4 whitespace-nowrap"
-      @click="navigateToCategory"
+  <div
+    class="category-card"
+    @click="navigateToCategory"
+    @mousedown="isPressed = true"
+    @mouseup="isPressed = false"
+    @mouseleave="isPressed = false"
+    @touchstart="isPressed = true"
+    @touchend="isPressed = false"
+    @touchcancel="isPressed = false"
+  >
+    <img
+      :src="imageSource"
+      :alt="category"
+      class="object-contain"
     >
+    <h2 class="whitespace-nowrap">
       {{ category }}
-    </fwb-button>
+    </h2>
   </div>
 </template>
 
 <script setup>
-import { FwbButton } from 'flowbite-vue'
 import { useRouter } from 'vue-router';
 
 const props = defineProps({
-  width: {
+  imageSource: {
     type: String,
-    default: 'w-full',
+    default: '',
   },
-  height: {
+  category: {
     type: String,
-    default: 'h-full',
+    default: '',
   },
-    imageSource: {
-        type: String,
-        default: '',
-    },
-    category: {
-        type: String,
-        default: '',
-    },
-    categoryPath: { 
-        type: String, 
-        default: '',
-    },
-    buttonColor: { 
-        type: String,
-        default: 'default',
-        validator: (value) => {
-            const validColors = ['default', 'alternative', 'dark', 'light', 'green', 'red', 'yellow', 'purple', 'pink'];
-            return validColors.includes(value);
-    }
-  },
-  buttonSize: { 
-        type: String,
-        default: 'xl',
-        validator: (value) => {
-            const validSizes= ['xs', 'sm', 'md', 'lg', 'xl'];
-            return validSizes.includes(value);
-    }
+  categoryPath: {
+    type: String,
+    default: '',
   },
 });
 
 const router = useRouter();
 
-const navigateToCategory= () => {
-    router.push(props.categoryPath)
+const navigateToCategory = () => {
+  router.push(props.categoryPath)
 }
 </script>
 
 <style scoped>
-  .category-card {
-    @apply flex flex-col items-center justify-center;
-    background-color: #f1f1f1;
-    border-radius: 8px;
-    border: 0.7px solid #eee;
-    box-shadow:
-      0 4px 10px -1px rgba(0, 0, 0, 0.1),
-      0 2px 6px -2px rgba(0, 0, 0, 0.2);
-  }
+.category-card {
+  @apply flex flex-col items-center justify-center border border-black p-6 bg-vit w-40 h-32;
+  box-shadow:
+    5px 5px 4px rgba(0, 0, 0, 0.2);
+  /* X: 5, Y: 5, Blur: 4 */
+}
+
+.category-card:active,
+.category-card:focus {
+  @apply border-terracotta;
+  transform: translateY(5px);
+  box-shadow: none;
+}
 </style>
