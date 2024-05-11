@@ -4,43 +4,43 @@
   for the memory game -->
 
 <template>
-  <div class="col-start-1 col-end-9 row-start-2 row-end-28 overflow-auto">
-    <div class="flex flex-col content-between justify-center items-center gap-y-6 mt-1 mb-24">
-      <CategoryCard
-        :width="'w-48'"
-        :height="'h-54'"
-        :image-source="images[0]"
-        :category="'Leksaker och spel'"
-        :category-path="'/choose-difficulty'"
-        :button-color="'default'"
-        :button-size="'md'"
-        @click="chooseCategory('toys')"
-      />
+  <div 
+    class="flex flex-col content-between justify-center items-center gap-y-6 mt-1 mb-24"
+  >
+    <CategoryCard
+      :width="'w-48'"
+      :height="'h-54'"
+      :image-source="images[0]"
+      :category="'Leksaker och spel'"
+      :category-path="'/choose-difficulty'"
+      :button-color="'default'"
+      :button-size="'md'"
+      @click="chooseCategory('toys')"
+    />
 
-      <CategoryCard
-        :width="'w-48'"
-        :height="'h-54'"
-        :image-source="images[1]"
-        :category="'Världen runt'"
-        :category-path="'/choose-difficulty'"
-        :button-color="'default'"
-        :button-size="'md'"
-        @click="chooseCategory('world')"
-      />
+    <CategoryCard
+      :width="'w-48'"
+      :height="'h-54'"
+      :image-source="images[1]"
+      :category="'Världen runt'"
+      :category-path="'/choose-difficulty'"
+      :button-color="'default'"
+      :button-size="'md'"
+      @click="chooseCategory('world')"
+    />
 
-      <CategoryCard
-        :width="'w-48'"
-        :height="'h-54'"
-        :image-source="images[2]"
-        :category="'Inramat'"
-        :category-path="'/choose-difficulty'"
-        :button-color="'default'"
-        :button-size="'md'"
-        @click="chooseCategory('artwork')"
-      />
+    <CategoryCard
+      :width="'w-48'"
+      :height="'h-54'"
+      :image-source="images[2]"
+      :category="'Inramat'"
+      :category-path="'/choose-difficulty'"
+      :button-color="'default'"
+      :button-size="'md'"
+      @click="chooseCategory('artwork')"
+    />
 
-      <!-- Bo back -->
-    </div>
+    <!-- Bo back -->
   </div>
 </template>
 
