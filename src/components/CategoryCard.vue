@@ -2,19 +2,13 @@
   <div
     class="category-card"
     @click="navigateToCategory"
-    @mousedown="isPressed = true"
-    @mouseup="isPressed = false"
-    @mouseleave="isPressed = false"
-    @touchstart="isPressed = true"
-    @touchend="isPressed = false"
-    @touchcancel="isPressed = false"
   >
     <img
       :src="imageSource"
       :alt="category"
-      class="object-contain"
+      class="category-image"
     >
-    <h2 class="whitespace-nowrap">
+    <h2 class="category-title">
       {{ category }}
     </h2>
   </div>
@@ -47,10 +41,8 @@ const navigateToCategory = () => {
 
 <style scoped>
 .category-card {
-  @apply flex flex-col items-center justify-center border border-black p-6 bg-vit w-40 h-32;
-  box-shadow:
-    5px 5px 4px rgba(0, 0, 0, 0.2);
-  /* X: 5, Y: 5, Blur: 4 */
+  @apply flex flex-col items-center justify-start border border-black p-0 bg-white w-40 h-32;
+  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.2);
 }
 
 .category-card:active,
@@ -58,5 +50,15 @@ const navigateToCategory = () => {
   @apply border-terracotta;
   transform: translateY(5px);
   box-shadow: none;
+}
+
+.category-image {
+  width: 100%;
+  height: 75%;
+  object-fit: contain;
+}
+
+.category-title {
+  @apply text-center w-full;
 }
 </style>

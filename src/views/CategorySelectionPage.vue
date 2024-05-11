@@ -31,7 +31,6 @@
         @click="chooseCategory('artwork')"
       />
     </div>
-    <!-- Bo back -->
   </div>
 </template>
 
