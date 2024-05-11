@@ -22,7 +22,7 @@
   console.log("Enabled Image URL: ", enabledImage);
   
   const route = useRoute();
-  const isActive = computed(() => route.path === '/choose-category' || 'choose-difficulty' || 'game-play');
+  const isActive = computed(() => route.path === '/choose-category' || route.path === '/choose-difficulty' || route.path === '/game-play');
   const isEnabled = ref(true);
   </script>
   

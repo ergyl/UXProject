@@ -19,7 +19,7 @@
  
     <!-- Main content grid -->
     <main
-      :class="{'row-span-21': !isHome, 'row-span-18': isHome}"
+      :class="{'row-span-21': !displayFooter, 'row-span-18': displayFooter}"
       class="col-span-8 bg-beigebrun"
     >
       <RouterView v-slot="{ Component }">
@@ -32,7 +32,7 @@
 
     <!-- Footer row -->
     <footer
-      v-if="isHome"
+      v-if="displayFooter"
       class="col-span-8 row-span-3 bg-vit flex justify-center items-center"
     >
       <nav
@@ -49,7 +49,7 @@
 
 <script setup>
 import { computed } from 'vue';
-import { useNavigationStore } from '@/stores/navigationStore';
+import { useRoute } from 'vue-router';
 import BackpackButton from '@/components/ui/BackpackButton.vue';
 import HomeButton from '@/components/ui/HomeButton.vue';
 import DigButton from '@/components/ui/DigButton.vue';
@@ -57,7 +57,10 @@ import InfoButton from '@/components/ui/InfoButton.vue';
 import StoryButton from '@/components/ui/StoryButton.vue';
 import WriteButton from '@/components/ui/WriteButton.vue';
 
-const navStore= useNavigationStore();
-const isHome = computed(() => navStore.isHome);
+const route = useRoute();
+const displayFooter = computed(() => {
+  const paths = ['/home', '/info', '/story', '/tips'];
+  return paths.includes(route.path);
+});
 </script>
 

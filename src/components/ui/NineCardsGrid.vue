@@ -6,8 +6,9 @@
       class="square border border-black"
     >
       <div class="content">
-        <slot
-          v-if="item !== undefined"
+        <!-- Render slot depending on 'showDefaultImage' prop -->
+        <slot 
+          v-if="item !== undefined || showDefaultImage"
           :name="'item-slot'"
           :item="item"
           :index="index"
@@ -18,7 +19,6 @@
   </div>
 </template>
 
-
 <script>
 export default {
   name: 'NineCardsGrid',
@@ -26,6 +26,10 @@ export default {
     items: {
       type: Array,
       default: () => []
+    },
+    showDefaultImage: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {

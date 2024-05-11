@@ -15,7 +15,8 @@ export default {
   props: {
     item: {
       type: Object,
-      required: true
+      required: false,
+      default: null
     },
     frontImage: {
       type: String,
@@ -30,8 +31,11 @@ export default {
   },
   methods: {
     toggle() {
-      this.isActive = !this.isActive;
-      this.$emit('select-item', this.item);
+      if (this.item) {
+        this.isActive = !this.isActive;
+        this.$emit('select-item', this.item);
+      }
+
     }
   }
 };
@@ -41,6 +45,7 @@ export default {
 .overlay {
   position: relative;
 }
+
 .overlay::after {
   content: "";
   position: absolute;
@@ -48,12 +53,13 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(119, 158, 75, 0.7); /* Green color #779E4B with 50% opacity */
+  background: rgba(119, 158, 75, 0.7);
+  /* Green color #779E4B with 50% opacity */
   pointer-events: none;
   display: none;
 }
+
 .overlay.active::after {
   display: block;
 }
 </style>
-
