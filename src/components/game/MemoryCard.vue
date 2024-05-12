@@ -4,7 +4,7 @@ either front or back image-->
 <template>
   <div
     class="memory-card flex items-center justify-center h-full w-full object-cover bg-cover bg-center"
-    :class="{ 'cursor-pointer': gameState === 'loaded' || gameState === 'play' }"
+    :class="{ 'cursor-pointer': gameState === 'loaded' || gameState === 'play' && !isFound || gameState === 'finished' }"
     :style="{ backgroundImage: `url(${isFlipped ? backImage : frontImage})` }"
     @click="toggle"
   />
@@ -45,11 +45,14 @@ export default {
     }
   },
   watch: {
-    gameState(newVal) {
+    gameState(newVal, oldVal) {
+      console.log('switched from ', oldVal, 'to ', newVal)
       if (newVal === 'memorize' || newVal === 'finished') {
-        this.flip(false); // Show frontImage during memorize
+        console.log('set show fromtImage from', this.isFlipped);
+        this.flip(false); // Show frontImage
+        console.log('set show fromtImage to', this.isFlipped);
       } else if (newVal === 'play') {
-        this.flip(true); // Show backImage when entering play and allow toggling
+        this.flip(true); // Show backImage
       } else {
         this.flip(true); // Default to showing backImage
       }
@@ -59,11 +62,10 @@ export default {
     toggle() {
       const currentGameState = this.gameStore.gameState;
 
-      if (this.isFound || this.gameStore.onCooldown) {
+      if (currentGameState === 'play' && this.gameStore.playTimer !== null) {
+        if (this.isFound || this.gameStore.onCooldown) {
         return;
       }
-
-      if (currentGameState === 'play' && this.gameStore.playTimer !== null) {
         this.isFlipped = !this.isFlipped;
         this.gameStore.startCooldown(1500);
 
@@ -79,6 +81,7 @@ export default {
         }
       } else if (currentGameState === 'finished') {
         this.$emit('select-item', this.item);
+        console.log('selected memoryCard');
       }
     },
     flip(showBack) {

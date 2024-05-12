@@ -42,7 +42,6 @@ const router = useRouter();
 const isHovering = ref(false);
 
 const buttonStyle = computed(() => {
-    console.log("Recalculating style");
     let backgroundImage = props.enabledImg;
     if (props.isActive) {
         backgroundImage = props.activeImg;

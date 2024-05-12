@@ -1,9 +1,10 @@
 <template>
   <button
+    class="flex justify-center items-center"
     :class="[
       'text-vit focus:ring-4',
       rounded ? 'rounded-lg' : 'rounded-none',
-      rounded ? 'min-h-20' : '',
+      rounded ? 'min-h-20' : 'min-h-14',
       'text-2xl focus:outline-none',
       buttonClasses,
       'px-5 py-2.5 inline-flex items-center',
@@ -23,8 +24,6 @@
 </template>
 
 <script>
-import { useRouter } from 'vue-router';
-
 export default {
     props: {
         text: {
@@ -51,7 +50,7 @@ export default {
     },
     computed: {
         boxShadow() {
-            return !this.disabled && !this.isPressed ? '5px 5px 4px 0 rgba(0, 0, 0, 0.25)' : 'none';
+            return this.rounded && !this.disabled && !this.isPressed ? '5px 5px 4px 0 rgba(0, 0, 0, 0.25)' : 'none';
         },
         buttonClasses() {
             if (this.disabled) {

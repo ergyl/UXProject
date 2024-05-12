@@ -23,20 +23,22 @@
     </FwbToast>
 
     <!-- Buttons change based on backpack status -->
-    <button
+
+    
+    <BasicButton
       v-if="backpackIsFull"
-      class="w-full px-4 py-2 bg-gul text-white rounded-b-lg hover:bg-yellow-600"
-      @click="goToBackpack"
-    >
-      Öppna ryggsäck
-    </button>
-    <button
+      :text="'Öppna ryggsäcken'"
+      class="w-full rounded-b-lg"
+      :rounded="false"
+    />
+
+    <BasicButton
       v-else
-      class="w-full px-4 py-2 bg-terracotta text-white rounded-b-lg hover:bg-morkbrun"
+      :text="'Lägg i ryggsäcken'"
+      :rounded="false"
+      class="w-full rounded-b-lg"
       @click="transferItemToBackpack"
-    >
-      Lägg i ryggsäck
-    </button>
+    />
   </ItemDetailsPopup>
 </template>
 
@@ -46,10 +48,12 @@ import { useBackpackStore } from '@/stores/backpackStore';
 import { useRouter } from 'vue-router';
 import { FwbToast } from 'flowbite-vue';
 import ItemDetailsPopup from '@/components/ui/ItemDetailsPopUp.vue';
+import BasicButton from '@/components/ui/BasicButton.vue';
 
 export default {
   components: {
     ItemDetailsPopup,
+    BasicButton,
     FwbToast
   },
   props: {
@@ -87,7 +91,9 @@ export default {
     if (this.itemAlreadyExists && !this.backpackIsFull) {
       this.showWarning = true;
       this.warningMessage = 'Föremålet är redan sparat i din ryggsäck.';
-    } else if (this.itemAlreadyExists && this.backpackIsFull) {
+    }  else if (this.backpackIsFull && !this.itemAlreadyExists) {
+      this.warningMessage = 'Ryggsäcken är full.'
+    } else if (this.backpackIsFull && this.itemAlreadyExists) {
       this.showWarning = true;
       this.warningMessage = 'Ryggsäcken är full och föremålet är redan sparat.'
     }
@@ -107,7 +113,7 @@ export default {
       this.showWarning = false;
 
       if (this.backpackIsFull) {
-        this.showWarning = true; // This line ensures that the warning state is always up-to-date
+        this.showWarning = true;
         return;
       }
 
@@ -130,7 +136,6 @@ export default {
           if (this.backpackIsFull) {
             this.showWarning = true;
             this.warningMessage = 'Ryggsäcken är full';
-            console.log('And backpack is full.. set showWarning to true.')
           }
           break;
         case 'full':

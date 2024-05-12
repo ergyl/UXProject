@@ -16,11 +16,7 @@
     import hoverImage from '@/assets/images/navmenu/icon_story-hoverclick.png';
     import enabledImage from '@/assets/images/navmenu/icon_story-enabled.png';
     import { useRoute } from 'vue-router';
-    
-    console.log("Active Image URL: ", activeImage);
-    console.log("Hover Image URL: ", hoverImage);
-    console.log("Enabled Image URL: ", enabledImage);
-    
+
     const route = useRoute();
     const isActive = computed(() => route.path === '/story');
     const isEnabled = ref(true);

@@ -5,7 +5,7 @@
     and the game logic -->
 
 <template>
-  <div class="grid grid-cols-8 overflow-scroll">
+  <div class="grid grid-cols-8 overflow-scroll mb-8">
     <div
       v-if="!thumbnailsLoaded || !mullwardLoaded && gameStore.gameState === 'start'"
       class="col-span-8 my-32 flex flex-col justify-center items-center"
@@ -19,7 +19,7 @@
     </div>
     
     <div
-      class="flex flex-col justify-end col-span-8 sm:col-span-8 md:col-span-3 lg:col-span-3 xl:col-span-3 h-52"
+      class="flex flex-col justify-end col-span-8 sm:col-span-8 md:col-span-3 lg:col-span-3 xl:col-span-3 h-48"
     >
       <!-- Content for the first div -->
 
@@ -88,7 +88,7 @@
         />
       </div>
 
-      <div v-if="gameStore.gameState === 'play'">
+      <div v-if="gameStore.gameState === 'play' || gameStore.gameState === 'finished'">
         <div
           v-if="thumbnailsLoaded && mullwardLoaded"
           class="mx-5"
@@ -98,89 +98,72 @@
             :back-images="tileImages"
             @select-item="selectedItem = $event"
           />
+          <!-- Item Details Popup -->
+          <ItemWonPopUp
+            v-if="gameStore.allItemsGuessed === true && selectedItem"
+            :item="selectedItem"
+            @close="selectedItem = null"
+          />
         </div>
       </div>
 
-      <!-- Game finished -->
       <div
-        v-if="gameStore.gameState === 'finished'"
+        v-if="gameStore.gameState === 'finished' && gameStore.allItemsGuessed === false"
+        class="mx-5"
       >
-        <div
-          v-if="gameStore.allItemsGuessed === true"
-          class="mx-5"
-        >
-          <MemoryCardsGrid
-            :items="gameStore.items"
-            :back-images="tileImages"
-            @select-item="selectedItem = $event"
+        <PopUp :text="'Rutten daggmask också! Tiden tog slut.'">
+          <img
+            :src="DaggmaskImage"
+            alt="Daggmask"
+            class="w-44 h-auto absolute top-0 left-2/3 transform -translate-x-1/2 -translate-y-24"
+          >
+          <BasicButton
+            :text="'Försök igen'"
+            :route="'/choose-category'"
           />
-        </div>
+        </PopUp>
+      </div>
+    </div>
 
-        <!-- Item Details Popup -->
-        <ItemWonPopUp
-          v-if="selectedItem"
-          :item="selectedItem"
-          @close="selectedItem = null"
+
+    <div
+      class="col-span-8 sm:col-span-8 md:col-span-1 lg:col-span-1 xl:col-span-1"
+    >
+      <!-- Content for the third div -->
+
+      <!-- Game memorize & thumbnailsloaded -->
+      <div
+        v-if="gameStore.gameState === 'memorize' || gameStore.gameState === 'play'"
+        class="px-16 py-4"
+      >
+        <fwb-progress
+          v-if="gameStore.gameState === 'memorize'"
+          :progress="gameStore.memorizeTimeLeftPercentage"
+          :color="gameStore.progressColor"
+          size="lg"
+          label-position="inside"
+          label="Memorera"
         />
 
-        <div
-          v-if="gameStore.allItemsGuessed === false"
-          class="mx-5"
-        >
-          <PopUp :text="'Rutten daggmask också! Tiden tog slut.'">
-            <img
-              :src="DaggmaskImage"
-              alt="Daggmask"
-              class="w-44 h-auto absolute top-0 left-2/3 transform -translate-x-1/2 -translate-y-24"
-            >
-            <BasicButton
-              :text="'Försök igen'"
-              :route="'/choose-category'"
-            />
-          </PopUp>
-        </div>
+        <!-- Game play -->
+        <fwb-progress
+          v-if="gameStore.gameState === 'play'"
+          :progress="gameStore.gameTimeLeftPercentage"
+          :color="gameStore.progressColor"
+          size="lg"
+          label-position="inside"
+          label="Spela"
+        />
       </div>
 
-
       <div
-        class="col-span-8 sm:col-span-8 md:col-span-1 lg:col-span-1 xl:col-span-1"
+        v-if="gameStore.gameState === 'finished' && gameStore.allItemsGuessed === true"
+        class="text-center mx-5 my-4"
       >
-        <!-- Content for the third div -->
-
-        <!-- Game memorize & thumbnailsloaded -->
-        <div
-          v-if="gameStore.gameState === 'memorize' || gameStore.gameState === 'play'"
-          class="px-16 py-4"
-        >
-          <fwb-progress
-            v-if="gameStore.gameState === 'memorize'"
-            :progress="gameStore.memorizeTimeLeftPercentage"
-            :color="gameStore.progressColor"
-            size="lg"
-            label-position="inside"
-            label="Memorera"
-          />
-
-          <!-- Game play -->
-          <fwb-progress
-            v-if="gameStore.gameState === 'play'"
-            :progress="gameStore.gameTimeLeftPercentage"
-            :color="gameStore.progressColor"
-            size="lg"
-            label-position="inside"
-            label="Spela"
-          />
-        </div>
-
-        <div
-          v-if="gameStore.gameState === 'finished' && gameStore.allItemsGuessed === true"
-          class="text-center mx-5 my-4"
-        >
-          <p>
-            Spara föremål från utgrävningen 
-            innan du öppnar ryggsäcken - annars försvinner de.
-          </p>
-        </div>
+        <p>
+          Spara föremål från utgrävningen 
+          innan du öppnar ryggsäcken - annars försvinner de.
+        </p>
       </div>
     </div>
   </div>

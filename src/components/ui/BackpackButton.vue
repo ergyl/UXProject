@@ -17,10 +17,6 @@ import hoverImage from '@/assets/images/navmenu/icon_backpack-hoverclick.png';
 import enabledImage from '@/assets/images/navmenu/icon_backpack-enabled.png';
 import { useRoute } from 'vue-router';
 
-console.log("Active Image URL: ", activeImage);
-console.log("Hover Image URL: ", hoverImage);
-console.log("Enabled Image URL: ", enabledImage);
-
 const route = useRoute();
 const isActive = computed(() => route.path === '/backpack');
 const isEnabled = ref(true);
