@@ -4,10 +4,10 @@
 <template>
   <div
     :class="[bubbleClass, 'speech-bubble']"
-    class="relative flex items-center justify-center text-center"
+    class="relative flex items-center justify-center text-center leading-none"
   >
     <!-- Slot for custom text to be added, with constraints -->
-    <div class="content-container p-2">
+    <div class="content-container">
       <slot />
     </div>
   </div>
@@ -35,7 +35,7 @@ const bubbleClass = computed(() => {
     @apply inline-flex w-auto max-w-[300px] min-h-[100px];
   }
   .content-container {
-    @apply max-w-48 text-center p-8;
+    @apply max-w-56 text-center select-none p-8;
   }
   .bg-speech-left {
     @apply bg-no-repeat bg-center bg-contain;

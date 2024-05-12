@@ -11,7 +11,7 @@
         alt="closeup"
       >
       <SpeechBubble
-        class="my-8 self-center"
+        class="mt-6 mb-8 self-center"
         :left="true"
       >
         Vilket föremål vill du veta mer om?
