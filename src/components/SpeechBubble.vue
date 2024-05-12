@@ -32,17 +32,19 @@ const bubbleClass = computed(() => {
 <style scoped>
 
   .speech-bubble {
-    @apply inline-flex w-auto max-w-[300px] min-h-[100px];
+    @apply inline-flex w-auto max-w-[300px] min-h-[100px] p-8;
   }
   .content-container {
-    @apply max-w-56 text-center select-none p-8;
+    @apply max-w-56 select-none px-4 relative -top-2;
   }
   .bg-speech-left {
-    @apply bg-no-repeat bg-center bg-contain;
     background-image: url('@/assets/images/illustrations/speechbubble-left.png');
   }
   .bg-speech-down {
-    @apply bg-no-repeat bg-center bg-contain;
     background-image: url('@/assets/images/illustrations/speechbubble-down.png');
   }
+
+  .bg-speech-left, .bg-speech-down {
+    @apply bg-no-repeat bg-center bg-contain;
+}
 </style>

@@ -2,32 +2,45 @@
 
 <template>
   <div
-    class="grid grid-cols-8 overflow-scroll"
+    class="grid grid-cols-8 overflow-scroll mb-8"
   >
-    <div class="flex col-start-2 col-end-8">
-      <img
-        class="w-20 h-auto object-contain ml-3 self-end"
-        :src="MullwardCloseUpImage"
-        alt="closeup"
-      >
-      <SpeechBubble
-        class="mt-6 mb-8 self-center"
-        :left="true"
-      >
-        Vilket föremål vill du veta mer om?
-      </SpeechBubble>
+    <div
+      class="flex justify-end col-span-8 sm:col-span-8 md:col-span-3 lg:col-span-3 xl:col-span-3 h-48"
+    >
+      <div class="flex mx-5">
+        <img
+          class="w-20 h-auto object-contain self-end"
+          :src="MullwardCloseUpImage"
+          alt="closeup"
+        >
+        <SpeechBubble
+          class="mt-6 mb-8 self-center"
+          :left="true"
+        >
+          <span>Vilket föremål<br>
+            vill du veta mer om?</span>
+        </SpeechBubble>
+      </div>
     </div>
-    <div class="col-start-2 col-end-8">
+
+    <div
+      class="col-span-8 sm:col-span-8 md:col-span-4 lg:col-span-4 xl:col-span-4"
+    >
       <BackpackCardsGrid
+        class="mx-5"
         :items="backpackStore.itemsObjects"
         @select-item="selectedItem = $event"
       />
-      <div class="flex justify-center gap-4 px-16 py-8">
+    </div>
+
+    <div
+      class="col-span-8 sm:col-span-8 md:col-span-1 lg:col-span-1 xl:col-span-1"
+    >
+      <div class="flex justify-center px-16 py-8">
         <BasicButton
-          text="Senaste utgrävning"
-          :disabled="true"
+          class="px-10"
+          text="Donera"
         />
-        <BasicButton text="Donera" />
       </div>
     </div>
   </div>

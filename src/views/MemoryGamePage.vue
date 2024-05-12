@@ -1,8 +1,7 @@
 <!-- Page in the SPA -->
 
-<!-- This is the main game view, which will handle 
-    displaying the memory cards, flipping them, '
-    and the game logic -->
+<!-- This is the main game view, which will 
+    displaying the memory game with all its components -->
 
 <template>
   <div class="grid grid-cols-8 overflow-scroll mb-8">
