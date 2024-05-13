@@ -7,7 +7,7 @@
     <div 
       class="min-w-64 max-w-72 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 flex flex-col items-center text-center relative py-8"
     >
-      <h3 class="mb-8 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+      <h3 class="mb-8 mx-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
         {{ text }}
       </h3>
       <!-- Slot for custom content -->

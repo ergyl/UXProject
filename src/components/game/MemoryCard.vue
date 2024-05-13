@@ -45,12 +45,9 @@ export default {
     }
   },
   watch: {
-    gameState(newVal, oldVal) {
-      console.log('switched from ', oldVal, 'to ', newVal)
+    gameState(newVal) {
       if (newVal === 'memorize' || newVal === 'finished') {
-        console.log('set show fromtImage from', this.isFlipped);
         this.flip(false); // Show frontImage
-        console.log('set show fromtImage to', this.isFlipped);
       } else if (newVal === 'play') {
         this.flip(true); // Show backImage
       } else {
@@ -81,7 +78,6 @@ export default {
         }
       } else if (currentGameState === 'finished') {
         this.$emit('select-item', this.item);
-        console.log('selected memoryCard');
       }
     },
     flip(showBack) {
