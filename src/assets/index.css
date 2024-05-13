@@ -26,7 +26,7 @@ include utitilies for by deafult.
 
 @layer base {
   body {
-    @apply text-base leading-tight
+    @apply text-base leading-tight font-inter
   }
 
   body strong {
