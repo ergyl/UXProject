@@ -59,7 +59,7 @@ import WriteButton from '@/components/ui/WriteButton.vue';
 
 const route = useRoute();
 const displayFooter = computed(() => {
-  const paths = ['/home', '/info', '/story', '/tips'];
+  const paths = ['/home', '/info', '/tips'];
   return paths.includes(route.path);
 });
 </script>

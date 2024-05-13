@@ -59,16 +59,25 @@
 <script setup>
 import { ref } from "vue";
 import { RouterLink } from "vue-router";
-import firstImage from "@/assets/images/illustrations/story/musem-sq-b.png";
-import secondImage from "@/assets/images/illustrations/story/visitors-sq.png";
-import thirdImage from "@/assets/images/illustrations/story/mullward-newspaper.png";
+import firstImage from "@/assets/images/illustrations/story/new/1_1.png";
+import secondImage from "@/assets/images/illustrations/story/new/1_2.png";
+import thirdImage from "@/assets/images/illustrations/story/new/1_3.png";
+import fourthImage from "@/assets/images/illustrations/story/new/1_4.png";
+import fifthImage from "@/assets/images/illustrations/story/new/1_5.png";
+import sixthImage from "@/assets/images/illustrations/story/new/2_1.png";
+import seventhImage from "@/assets/images/illustrations/story/new/2_2.png";
+import eighthImage from "@/assets/images/illustrations/story/new/2_3.png";
+import ninthImage from "@/assets/images/illustrations/story/new/2_4.png";
+import tenthImage from "@/assets/images/illustrations/story/new/2_5.png";
+
+
 import { FwbButton } from 'flowbite-vue';
 
-const images = [firstImage, secondImage, thirdImage];
+const images = [firstImage, secondImage, thirdImage, fourthImage, fifthImage, sixthImage, seventhImage, eighthImage, ninthImage, tenthImage];
 const storyText = [
-  "En dag, när Mullward bläddrade igenom morgontidingen, upptäckte han den chockerande nyheten.",
+  "",
   
-  "hejsan bacon"
+ 
 ];
 const currentIndex = ref(0);
 
