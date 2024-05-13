@@ -25,7 +25,7 @@
       />
 
       <CategoryCard
-        :image-source="images[0]"
+        :image-source="images[2]"
         :category="'Snabbast'"
         :category-path="'/game-play'"
         @click="chooseDifficulty(3)"
@@ -37,8 +37,9 @@
 <script>
 import { useGameStore } from '@/stores/gameStore';
 import CategoryCard from "@/components/CategoryCard.vue";
-import MullwardPictureLeft from "@/assets/images/illustrations/mullward_left.png"
-import MullwardPictureRight from "@/assets/images/illustrations/mullward_right.png";
+import EasyImage from "@/assets/images/illustrations/difficulties/easy-difficulty.png";
+import MediumImage from "@/assets/images/illustrations/difficulties/medium-difficulty.png";
+import HardImage from "@/assets/images/illustrations/difficulties/hard-difficulty.png";
 
 
 export default {
@@ -49,7 +50,7 @@ export default {
 
   data() {
     return {
-      images: [MullwardPictureLeft, MullwardPictureRight]
+      images: [EasyImage, MediumImage, HardImage]
     };
   },
 

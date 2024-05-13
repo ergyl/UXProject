@@ -36,7 +36,18 @@
       class="col-span-8 row-span-3 bg-vit flex justify-center items-center"
     >
       <nav
-        class="grid grid-cols-3 w-full h-full"
+        v-if="currentPath === '/story'"
+        class="grid grid-cols-3 h-full w-full"
+        aria-label="Meny för story"
+      >
+        <ArrowButton :left="true" />
+        <StoryButton />
+        <ArrowButton :left="false" />
+      </nav>
+      
+      <nav
+        v-else
+        class="grid grid-cols-3 h-full w-full"
         aria-label="Sidomeny"
       >
         <InfoButton />
@@ -56,10 +67,14 @@ import DigButton from '@/components/ui/DigButton.vue';
 import InfoButton from '@/components/ui/InfoButton.vue';
 import StoryButton from '@/components/ui/StoryButton.vue';
 import WriteButton from '@/components/ui/WriteButton.vue';
+import ArrowButton from '@/components/ui/ArrowButton.vue';
 
 const route = useRoute();
+
+const currentPath = computed(() => route.path);
+
 const displayFooter = computed(() => {
-  const paths = ['/home', '/info', '/tips'];
+  const paths = ['/home', '/info', '/story', '/tips'];
   return paths.includes(route.path);
 });
 </script>

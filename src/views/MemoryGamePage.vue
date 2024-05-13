@@ -6,7 +6,19 @@
 <template>
   <div class="grid grid-cols-8 overflow-scroll mb-8">
     <div
-      v-if="!thumbnailsLoaded || !mullwardLoaded && gameStore.gameState === 'start'"
+      v-if="gameStore.category === null"
+      class="mx-5"
+    >
+      <PopUp :text="'Du behöver välja kategori för att spela.'">
+        <BasicButton
+          :text="'Gå tillbaka'"
+          :route="'/choose-category'"
+        />
+      </PopUp>
+    </div>
+
+    <div
+      v-else-if="!thumbnailsLoaded || !mullwardLoaded && gameStore.gameState === 'start'"
       class="col-span-8 my-32 flex flex-col justify-center items-center"
     >
       <fwb-spinner

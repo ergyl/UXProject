@@ -47,7 +47,7 @@ const navigateToCategory = () => {
 
 .category-card:active,
 .category-card:focus {
-  @apply border-terracotta;
+  @apply border-none;
   transform: translateY(5px);
   box-shadow: none;
 }

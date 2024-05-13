@@ -17,6 +17,10 @@ import { computed, ref } from 'vue';
 import { useRouter } from 'vue-router';
 
 const props = defineProps({
+    left: {
+        type: Boolean,
+        default: false
+    },
     navPath: {
         type: String,
         default: ''

@@ -7,22 +7,21 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      component: MainLayout, // Use MainLayout as the consistent layout
+      name: 'landing',
+      component: () => import('../views/LandingPage.vue')
+    },
+    {
+      component: MainLayout,
       children: [
         {
-          path: '', // Default child path
-          name: 'landing',
-          component: () => import('../views/LandingPage.vue') // Route level code-splitting
+          path: '/story',
+          name: 'story',
+          component: () => import('../views/StoryPage.vue')
         },
         {
           path: '/home',
           name: 'home',
           component: () => import('../views/HomePage.vue')
-        },
-        {
-          path: '/story',
-          name: 'story',
-          component: () => import('../views/StoryPage.vue')
         },
         {
           path: '/tips',
