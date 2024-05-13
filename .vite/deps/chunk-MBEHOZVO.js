@@ -3867,13 +3867,11 @@ function getKeepAliveChild(vnode) {
     return vnode.component.subTree;
   }
   const { shapeFlag, children } = vnode;
-  if (children) {
-    if (shapeFlag & 16) {
-      return children[0];
-    }
-    if (shapeFlag & 32 && isFunction(children.default)) {
-      return children.default();
-    }
+  if (shapeFlag & 16) {
+    return children[0];
+  }
+  if (shapeFlag & 32 && isFunction(children.default)) {
+    return children.default();
   }
 }
 function setTransitionHooks(vnode, hooks) {
@@ -5465,7 +5463,7 @@ function inject(key, defaultValue, treatDefaultAsFactory = false) {
 function hasInjectionContext() {
   return !!(currentInstance || currentRenderingInstance || currentApp);
 }
-var internalObjectProto = {};
+var internalObjectProto = /* @__PURE__ */ Object.create(null);
 var createInternalObject = () => Object.create(internalObjectProto);
 var isInternalObject = (obj) => Object.getPrototypeOf(obj) === internalObjectProto;
 function initProps(instance, rawProps, isStateful, isSSR = false) {
@@ -9599,7 +9597,7 @@ function isMemoSame(cached, memo) {
   }
   return true;
 }
-var version = "3.4.25";
+var version = "3.4.24";
 var warn2 = true ? warn$1 : NOOP;
 var ErrorTypeStrings = ErrorTypeStrings$1;
 var devtools = true ? devtools$1 : void 0;
@@ -11397,7 +11395,7 @@ export {
 
 @vue/shared/dist/shared.esm-bundler.js:
   (**
-  * @vue/shared v3.4.25
+  * @vue/shared v3.4.24
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)
@@ -11405,14 +11403,14 @@ export {
 
 @vue/reactivity/dist/reactivity.esm-bundler.js:
   (**
-  * @vue/reactivity v3.4.25
+  * @vue/reactivity v3.4.24
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)
 
 @vue/runtime-core/dist/runtime-core.esm-bundler.js:
   (**
-  * @vue/runtime-core v3.4.25
+  * @vue/runtime-core v3.4.24
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)
@@ -11420,7 +11418,7 @@ export {
 
 @vue/runtime-dom/dist/runtime-dom.esm-bundler.js:
   (**
-  * @vue/runtime-dom v3.4.25
+  * @vue/runtime-dom v3.4.24
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)
@@ -11428,9 +11426,9 @@ export {
 
 vue/dist/vue.runtime.esm-bundler.js:
   (**
-  * vue v3.4.25
+  * vue v3.4.24
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)
 */
-//# sourceMappingURL=chunk-ZQES4COJ.js.map
+//# sourceMappingURL=chunk-MBEHOZVO.js.map
