@@ -37,16 +37,17 @@
     >
       <nav
         v-if="currentPath === '/story'"
+        class="grid grid-cols-3 h-full w-full"
         aria-label="Meny för story"
       >
-        <ArrowButton />
+        <ArrowButton :left="true" />
         <StoryButton />
         <ArrowButton :left="false" />
       </nav>
       
       <nav
         v-else
-        class="grid grid-cols-3 w-full h-full"
+        class="grid grid-cols-3 h-full w-full"
         aria-label="Sidomeny"
       >
         <InfoButton />
