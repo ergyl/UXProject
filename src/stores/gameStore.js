@@ -128,6 +128,7 @@ export const useGameStore = defineStore('game', {
     },
 
     startMemorizeTimer() {
+      if (this.memorizeTimeLeft < this.totalMemorizeTime) return; // Dont restart timer if already running
       console.log('started timer for memorize');
       this.memorizeStartTime = Date.now();
       this.memorizeTimeLeft = this.totalMemorizeTime;
