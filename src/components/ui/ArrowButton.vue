@@ -1,16 +1,18 @@
 <!-- Button component for MainLayout-->
 
 <template>
-    <button
-      class="w-full h-full"
-      :class="buttonClasses"
-      :style="buttonStyle"
-      :disabled="!isEnabled"
-      @click="navigateTo"
-      @mouseover="handleMouseOver"
-      @mouseout="handleMouseOut"
-    />
-  </template>
+  <button
+    class="w-full h-full"
+    :class="buttonClasses"
+    :style="buttonStyle"
+    :disabled="!isEnabled"
+    @click="navigateTo"
+    @mouseover="handleMouseOver"
+    @mouseout="handleMouseOut"
+    @mousedown="handleMouseDown"
+    @mouseup="handleMouseUp"
+  />
+</template>
   
   <script setup>
   import ImageLeftActive from '@/assets/images/navmenu/Icon_arrow-left-active.png';
@@ -28,39 +30,38 @@
     left: {
         type: Boolean,
         default: false,
-    }
+    },
       navPath: {
           type: String,
           default: ''
       },
-      activeImg: {
-          type: String,
-          required: true,
+      isActive:  {
+        type: Boolean,
+        default: false
       },
-      hoverImg: {
-          type: String,
-          required: true
-      },
-      enabledImg: {
-          type: String,
-          required: true
-      },
-      isActive: Boolean,
-      isEnabled: Boolean
+      isEnabled: {
+        type: Boolean,
+        default: true
+      }
   });
   
   const router = useRouter();
   
   const isHovering = ref(false);
+  const isMouseDown = ref(false);
   
   const buttonStyle = computed(() => {
-      let backgroundImage = props.enabledImg;
+      let bgImage;
       if (props.isActive) {
-          backgroundImage = props.activeImg;
+          bgImage = props.left ? ImageLeftActive : ImageRightActive;
+      } else if (isMouseDown.value) {
+          bgImage = props.left ? ImageLeftClicked : ImageRightClicked;
       } else if (isHovering.value) {
-          backgroundImage = props.hoverImg;
+        bgImage = props.left ? ImageLeftHover : ImageRightHover; 
+      } else {
+        bgImage = props.left ? ImageLeftActive : ImageRightActive;
       }
-      return { backgroundImage: `url(${backgroundImage})` };
+      return { backgroundImage: `url(${bgImage})` };
   });
   
   const buttonClasses = computed(() => ({
@@ -69,18 +70,25 @@
       'hover:opacity-75': props.isEnabled
   }));
   
-  const handleMouseOver = () => {
-      if (props.isEnabled) {
-          isHovering.value = true;
-      }
-  };
-  const handleMouseOut = () => {
-      isHovering.value = false;
-  };
-  
-  const navigateTo = () => {
-      if (props.isEnabled && props.navPath) {
-          router.push(props.navPath);
-      }
-  };
+// Event handlers
+const handleMouseOver = () => isHovering.value = true;
+const handleMouseOut = () => {
+    isHovering.value = false;
+    isMouseDown.value = false;
+};
+const handleMouseDown = () => {
+    if (props.isEnabled) {
+        isMouseDown.value = true;
+    }
+};
+const handleMouseUp = () => {
+    isMouseDown.value = false;
+};
+
+// Navigate to a specific path
+const navigateTo = () => {
+    if (props.isEnabled && props.navPath) {
+        router.push(props.navPath);
+    }
+};
   </script>
