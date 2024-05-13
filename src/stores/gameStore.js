@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia';
 import { useBackpackStore } from '@/stores/backpackStore';
 import Ksamsok from '@/services/Ksamsok.js';
+import JSConfetti from 'js-confetti';
 
 export const useGameStore = defineStore('game', {
   state: () => ({
@@ -116,6 +117,8 @@ export const useGameStore = defineStore('game', {
       this.setGameState('memorize');
       console.log('and now current state:', this.gameState);
       this.startMemorizeTimerWithDelay();
+
+      
     },
 
     startMemorizeTimerWithDelay() {
@@ -140,6 +143,8 @@ export const useGameStore = defineStore('game', {
     playGame() {
       this.setGameState('play');
       this.startPlayTimerWithDelay();
+      console.log('playGame called, current state:', this.gameState);
+      
     },
 
     startPlayTimerWithDelay() {
@@ -206,6 +211,21 @@ export const useGameStore = defineStore('game', {
       console.log('game finished')
       this.gameState = 'finished';
       clearInterval(this.playTimer);
+      const jsConfetti = new JSConfetti();
+
+      // If all the cards have been guessed, emit confetti. Otherwise, morally destroy the player.
+      if (this.items.length === this.guessedItems.length) {
+        jsConfetti.addConfetti({
+          emojis: ['🎉', '🎊', '🎈', '💫', '✨', '🧨'],
+        }).then(() => {jsConfetti.addConfetti()});
+      }
+      else{
+        jsConfetti.addConfetti({
+          
+          emojis: ['you suck', '💩', '🤮', '👺', '💀', '👎'],
+        })
+      }
+      
     },
 
     sendItemToBackpack(item) {
