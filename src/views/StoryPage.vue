@@ -4,11 +4,17 @@
   <div class="flex flex-col w-full h-fit justify-start items-center my-8">
     <div class="flex mx-8">
       <!-- Image -->
-      <img
-        :src="currentImageDisplayed"
-        alt="Museum Building"
-        class="max-h-[480px] w-auto"
+      <Transition
+        name="fade"
+        mode="out-in"
       >
+        <img 
+          :key="currentImageDisplayed"
+          :src="currentImageDisplayed"
+          alt="Museum Building"
+          class="max-h-[480px] w-auto"
+        >
+      </Transition>
     </div>
   </div>
 </template>
@@ -35,11 +41,12 @@ const currentImageDisplayed = computed(() => images[storyStore.currentIndex]);
 <style scoped>
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.5s ease;
+  transition: opacity 0.9s ease;
 }
 
 .fade-enter-from,
 .fade-leave-to {
+  transform: rotate3d(1, 1, 1, 20deg);
   opacity: 0;
 }
 </style>

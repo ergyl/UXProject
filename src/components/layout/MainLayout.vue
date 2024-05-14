@@ -90,7 +90,7 @@ const displayFooter = computed(() => {
 
 watch(() => route.path, (newPath, oldPath) => {
   if (oldPath === '/story' && newPath !== '/story') {
-    storyStore.resetIndex();
+    storyStore.reset();
   }
 });
 </script>
