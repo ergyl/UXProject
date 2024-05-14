@@ -11,11 +11,11 @@ const router = createRouter({
       component: () => import('../views/LandingPage.vue')
     },
     {
-      path: '/home',
+      path: '/app',
       component: MainLayout,
       children: [
         {
-          path: '',
+          path: '/home',
           name: 'home',
           component: () => import('../views/HomePage.vue')
         },
