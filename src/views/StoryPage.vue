@@ -68,8 +68,8 @@ const currentImageDisplayed = computed(() => images[storyStore.currentIndex]);
 function timerOnLastImage() {
   if (storyStore.lastPage) {
     setTimeout(() => {
-      router.push('/home'); // Navigate after the transition has been displayed
-    }, 8000); // Adjust time according to your bounce animation duration
+      router.push('/home');
+    }, 5000);
   }
 }
 </script>

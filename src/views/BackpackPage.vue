@@ -17,8 +17,10 @@
           class="mt-6 mb-8 self-center"
           :left="true"
         >
-          <span><br>Vilket föremål<br>
+          <span v-if="!backpackStore.isEmpty"><br>Vilket föremål<br>
             vill du veta mer om?</span>
+          <span v-else><strong>Inga fyllda fack!</strong><br>
+            Tryck på hackan för att gräva fram nya föremål.</span>
         </SpeechBubble>
       </div>
     </div>

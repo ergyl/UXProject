@@ -30,6 +30,7 @@
       :text="'Öppna ryggsäcken'"
       class="w-full rounded-b-lg"
       :rounded="false"
+      @click="goToBackpack"
     />
 
     <BasicButton
