@@ -37,9 +37,9 @@
 <script>
 import { useGameStore } from '@/stores/gameStore';
 import CategoryCard from "@/components/CategoryCard.vue";
-import EasyImage from "@/assets/images/illustrations/easy-difficulty.png";
-import MediumImage from "@/assets/images/illustrations/medium-difficulty.png";
-import HardImage from "@/assets/images/illustrations/hard-difficulty.png";
+import EasyImage from "@/assets/images/illustrations/difficulties/easy-difficulty.png";
+import MediumImage from "@/assets/images/illustrations/difficulties/medium-difficulty.png";
+import HardImage from "@/assets/images/illustrations/difficulties/hard-difficulty.png";
 
 
 export default {
