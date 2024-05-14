@@ -5,11 +5,11 @@
     class="grid grid-cols-8 overflow-scroll mb-8"
   >
     <div
-      class="flex justify-end col-span-8 sm:col-span-8 md:col-span-3 lg:col-span-3 xl:col-span-3 h-48"
+      class="flex col-span-8 sm:col-span-8 md:col-span-3 lg:col-span-3 xl:col-span-3 h-48"
     >
-      <div class="flex mx-5">
+      <div class="flex ml-10 mr-5 w-full gap-5">
         <img
-          class="w-20 h-auto object-contain self-end"
+          class="w-20 h-auto self-end"
           :src="MullwardCloseUpImage"
           alt="closeup"
         >
@@ -17,7 +17,7 @@
           class="mt-6 mb-8 self-center"
           :left="true"
         >
-          <span>Vilket föremål<br>
+          <span><br>Vilket föremål<br>
             vill du veta mer om?</span>
         </SpeechBubble>
       </div>

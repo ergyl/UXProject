@@ -49,8 +49,8 @@
           class="mt-6 mb-8 self-center"
           :left="true"
         >
-          <strong>Memorera de historiska skatterna!</strong><br>
-          Tryck på jorden för att starta.
+          <span><strong>Memorera de historiska skatterna!</strong><br>
+            Tryck på jorden för att starta.</span>
         </SpeechBubble>
       </div>
 
@@ -76,8 +76,8 @@
           class="relative left-10 bottom-5"
           :left="true"
         >
-          <strong>WOW, vilka föremål!</strong><br>
-          Tryck på ett för att läsa mer och lägga i ryggsäcken.
+          <span><strong>WOW, vilka föremål!</strong><br>
+            Tryck på ett för att läsa mer och lägga i ryggsäcken.</span>
         </SpeechBubble>
       </div>
     </div>

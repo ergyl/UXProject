@@ -32,10 +32,10 @@ const bubbleClass = computed(() => {
 <style scoped>
 
   .speech-bubble {
-    @apply inline-flex w-auto max-w-[300px] min-h-[100px] p-8;
+    @apply inline-flex w-auto max-w-[80%] min-h-[50%] py-6 px-3;
   }
   .content-container {
-    @apply max-w-56 select-none px-4 relative -top-2;
+    @apply max-w-[80%] select-none relative -top-2 p-1 flex flex-row justify-center items-center;
   }
   .bg-speech-left {
     background-image: url('@/assets/images/illustrations/speechbubble-left.png');
