@@ -1,3 +1,5 @@
+<!-- A 3x3 basic grid with squares to hold content -->
+
 <template>
   <div class="flex flex-wrap border border-black bg-semi-transparent">
     <div
