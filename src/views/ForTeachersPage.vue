@@ -15,13 +15,11 @@
         </fwb-accordion-header>
         <fwb-accordion-content>
           <div>
-            <p class="mb-2 text-gray-500">
-              <ul class="list-disc">
-                <li>Introducera spelet och karaktären Mullvard till eleverna.</li><br>
-                <li>Berätta att de ska använda föremålen de samlat in under spelet som inspiration för att skriva berättelser.</li><br>
-                <li>Låt eleverna spela och samla historiska föremål.</li>
-              </ul>
-            </p>
+            <ul class="list-disc mb-2 text-gray-500">
+              <li>Introducera spelet och karaktären Mullvard till eleverna.</li><br>
+              <li>Berätta att de ska använda föremålen de samlat in under spelet som inspiration för att skriva berättelser.</li><br>
+              <li>Låt eleverna spela och samla historiska föremål.</li>
+            </ul>
           </div>
         </fwb-accordion-content>
       </fwb-accordion-panel>
@@ -31,12 +29,10 @@
         </fwb-accordion-header>
         <fwb-accordion-content>
           <div>
-            <p class="mb-2 text-gray-500">
-              <ul class="list-disc">
-                <li>Be eleverna välja ett eller flera föremål från sina ryggsäckar som de vill skriva en berättelse om.</li><br>
-                <li>Ge dem tid att planera sina berättelser. För inspiration - se "Skriv historia"</li>
-              </ul>
-            </p>
+            <ul class="list-disc mb-2 text-gray-500">
+              <li>Be eleverna välja ett eller flera föremål från sina ryggsäckar som de vill skriva en berättelse om.</li><br>
+              <li>Ge dem tid att planera sina berättelser. För inspiration - se "Skriv historia"</li>
+            </ul>
           </div>
         </fwb-accordion-content>
       </fwb-accordion-panel>
@@ -46,10 +42,10 @@
         </fwb-accordion-header>
         <fwb-accordion-content>
           <div>
-            <p class="mb-2 text-gray-500" /><p class="pb-2 font-bold">
+            <p class="pb-2 font-bold text-gray-500">
               Eleverna ska:<br>
             </p>
-            <ul class="list-disc">
+            <ul class="list-disc mb-2 text-gray-500">
               <li class="pb-1">
                 Använda de historiska föremålen i sin skattkista som inspiration för att skriva berättelser
               </li>
@@ -64,11 +60,11 @@
         </fwb-accordion-header>
         <fwb-accordion-content>
           <div>
-            <p class="mb-2 text-gray-500" /><p>
+            <p class="mb-2 text-gray-500">
               Svenska, centralt innehåll<br>
               Årskurs 1-3 samt 4-6
             </p>
-            <ul class="list-disc">
+            <ul class="list-disc mb-2 text-gray-500">
               <li>Skapande av texter där ord och bild samspelar (Skolverket, 2022, s.226-227)</li>
             </ul>
           </div>
