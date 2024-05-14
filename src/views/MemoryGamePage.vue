@@ -186,14 +186,14 @@ import { useRoute, useRouter } from 'vue-router';
 import { useGameStore } from '@/stores/gameStore';
 import { FwbSpinner, FwbProgress } from 'flowbite-vue';
 import Ksamsok from '@/services/Ksamsok.js';
-import MullwardMemorizingImage from '@/assets/images/illustrations/game/mullward_memorize.png';
 import MemoryCardsGrid from '@/components/game/MemoryCardsGrid.vue';
 import ItemWonPopUp from '@/components/game/ItemWonPopUp.vue'
 import PopUp from '@/components/ui/PopUp.vue'
 import SpeechBubble from '@/components/SpeechBubble.vue';
+import BasicButton from '@/components/ui/BasicButton.vue';
+import MullwardMemorizingImage from '@/assets/images/illustrations/game/mullward_memorize.png';
 import MullwardDigSuccessImage from '@/assets/images/illustrations/game/mullward_dig_success.png';
 import DaggmaskImage from '@/assets/images/illustrations/game/worm.png';
-
 import image1 from '@/assets/images/illustrations/game/tile1.png';
 import image2 from '@/assets/images/illustrations/game/tile2.png';
 import image3 from '@/assets/images/illustrations/game/tile3.png';
@@ -203,7 +203,6 @@ import image6 from '@/assets/images/illustrations/game/tile6.png';
 import image7 from '@/assets/images/illustrations/game/tile7.png';
 import image8 from '@/assets/images/illustrations/game/tile8.png';
 import image9 from '@/assets/images/illustrations/game/tile9.png';
-import BasicButton from '@/components/ui/BasicButton.vue';
 
 const tileImages = [image1, image2, image3, image4, image5, image6, image7, image8, image9];
 

@@ -22,7 +22,6 @@
   import ImageRightHover from '@/assets/images/navmenu/Icon_arrow-right-hover.png';
   import ImageRightActive from '@/assets/images/navmenu/Icon_arrow-right-active.png';
 
-
   import { computed, ref } from 'vue';
   import { useRouter } from 'vue-router';
   

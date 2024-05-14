@@ -4,7 +4,7 @@
 -->
 
 <template>
-  <div class="grid grid-cols-8 grid-rows-24 min-h-screen max-h-screen relative">
+  <div class="grid grid-cols-8 grid-rows-24 min-h-screen max-h-screen relative overflow-hidden">
     <!-- Top Nav -->
     <div class="col-span-8 row-span-4 bg-vit">
       <nav
@@ -20,7 +20,7 @@
     <!-- Main content grid -->
     <main
       :class="{'row-span-20': !displayFooter, 'row-span-16': displayFooter}"
-      class="col-span-8 bg-beigebrun"
+      class="col-span-8 bg-beigebrun overflow-scroll"
     >
       <RouterView v-slot="{ Component }">
         <component
@@ -40,9 +40,17 @@
         class="flex w-full h-full justify-between items-center"
         aria-label="Meny för story"
       >
-        <ArrowButton :left="true" />
+        <ArrowButton
+          :left="true"
+          :is-enabled="!storyStore.firstPage"
+          @click="storyStore.showPrevious"
+        />
         <StoryButton />
-        <ArrowButton :left="false" />
+        <ArrowButton
+          :left="false"
+          :is-enabled="!storyStore.lastPage"
+          @click="storyStore.showNext"
+        />
       </nav>
       
       <nav
@@ -59,7 +67,8 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
+import { useStoryStore } from '@/stores/storyStore';
+import { computed, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import BackpackButton from '@/components/ui/BackpackButton.vue';
 import HomeButton from '@/components/ui/HomeButton.vue';
@@ -70,12 +79,19 @@ import WriteButton from '@/components/ui/WriteButton.vue';
 import ArrowButton from '@/components/ui/ArrowButton.vue';
 
 const route = useRoute();
+const storyStore = useStoryStore();
 
 const currentPath = computed(() => route.path);
 
 const displayFooter = computed(() => {
   const paths = ['/home', '/info', '/about-game', '/for-teachers', '/story', '/tips'];
   return paths.includes(route.path);
+});
+
+watch(() => route.path, (newPath, oldPath) => {
+  if (oldPath === '/story' && newPath !== '/story') {
+    storyStore.resetIndex();
+  }
 });
 </script>
 
