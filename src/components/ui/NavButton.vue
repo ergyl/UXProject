@@ -2,7 +2,7 @@
 
 <template>
   <button
-    class="w-full h-full"
+    class="h-full w-auto aspect-square"
     :class="buttonClasses"
     :style="buttonStyle"
     :disabled="!isEnabled"

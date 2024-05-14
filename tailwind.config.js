@@ -15,7 +15,8 @@ export default {
         '24': 'repeat(24, minmax(0, 1fr))',
       },
       gridRow: {
-        'span-18': 'span 18 / span 18',
+        'span-16': 'span 16 / span 16',
+        'span-20': 'span 20 / span 20',
       },
       gridRowEnd: {
         '8': '8',
@@ -37,8 +38,8 @@ export default {
         '24': '24',
         '25': '25'
       },
-      fontFamily: { 
-        "inter": ['Inter', 'sans-serif'] 
+      fontFamily: {
+        "inter": ['Inter', 'sans-serif']
       },
       colors: {
         "ljusTerracotta": "#D26C48",

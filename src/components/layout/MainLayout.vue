@@ -6,9 +6,9 @@
 <template>
   <div class="grid grid-cols-8 grid-rows-24 min-h-screen max-h-screen relative">
     <!-- Top Nav -->
-    <div class="col-span-8 row-span-3 bg-vit">
+    <div class="col-span-8 row-span-4 bg-vit">
       <nav
-        class="grid grid-cols-3 h-full"
+        class="flex w-full h-full justify-between items-center"
         aria-label="Huvudmeny"
       >
         <BackpackButton />
@@ -19,7 +19,7 @@
  
     <!-- Main content grid -->
     <main
-      :class="{'row-span-21': !displayFooter, 'row-span-18': displayFooter}"
+      :class="{'row-span-20': !displayFooter, 'row-span-16': displayFooter}"
       class="col-span-8 bg-beigebrun"
     >
       <RouterView v-slot="{ Component }">
@@ -33,11 +33,11 @@
     <!-- Footer row -->
     <footer
       v-if="displayFooter"
-      class="col-span-8 row-span-3 bg-vit flex justify-center items-center"
+      class="col-span-8 row-span-4 bg-vit"
     >
       <nav
         v-if="currentPath === '/story'"
-        class="grid grid-cols-3 h-full w-full"
+        class="flex w-full h-full justify-between items-center"
         aria-label="Meny för story"
       >
         <ArrowButton :left="true" />
@@ -47,7 +47,7 @@
       
       <nav
         v-else
-        class="grid grid-cols-3 h-full w-full"
+        class="flex w-full h-full justify-between items-center"
         aria-label="Sidomeny"
       >
         <InfoButton />
