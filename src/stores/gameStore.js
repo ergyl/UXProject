@@ -35,8 +35,7 @@ export const useGameStore = defineStore('game', {
 
   actions: {
 
-    guessItem(item)
-    {
+    guessItem(item) {
       this.guessedItems.push(item);
     },
 
@@ -48,10 +47,8 @@ export const useGameStore = defineStore('game', {
       }, time);
     },
 
-    setTargetItem()
-    {
-      if (this.items.length === this.guessedItems.length) 
-      {
+    setTargetItem() {
+      if (this.items.length === this.guessedItems.length) {
         console.log('all items guessed')
         this.allItemsGuessed = true;
         this.endGame();
@@ -59,14 +56,13 @@ export const useGameStore = defineStore('game', {
       }
 
       let selectedItem = this.items[Math.floor(Math.random() * 9)];
-      if (this.guessedItems.includes(selectedItem)) 
-      {
+      if (this.guessedItems.includes(selectedItem)) {
         this.setTargetItem(); // try again
         return;
       }
       this.targetItem = selectedItem;
     },
-    
+
     setCategory(category) {
       console.log("gameStore setting category to:", category);
       const validCategories = Ksamsok.getValidCategories();
@@ -97,7 +93,7 @@ export const useGameStore = defineStore('game', {
           console.log('difficulty 3. ', this.totalGameTime)
           break;
       }
-      this.gameTimeLeft = this.totalGameTime; 
+      this.gameTimeLeft = this.totalGameTime;
     },
 
     setGameState(state) {
@@ -118,7 +114,7 @@ export const useGameStore = defineStore('game', {
       console.log('and now current state:', this.gameState);
       this.startMemorizeTimerWithDelay();
 
-      
+
     },
 
     startMemorizeTimerWithDelay() {
@@ -126,7 +122,7 @@ export const useGameStore = defineStore('game', {
         clearTimeout(this.memorizeTimerDelay);
       }
       this.memorizeTimerDelay = setTimeout(() => {
-       this.startMemorizeTimer();
+        this.startMemorizeTimer();
       }, 2000); // 2s delay
     },
 
@@ -144,7 +140,7 @@ export const useGameStore = defineStore('game', {
       this.setGameState('play');
       this.startPlayTimerWithDelay();
       console.log('playGame called, current state:', this.gameState);
-      
+
     },
 
     startPlayTimerWithDelay() {
@@ -182,17 +178,17 @@ export const useGameStore = defineStore('game', {
           this.gameTimeLeft = Math.max(0, this.totalGameTime - elapsed);
           if (this.gameTimeLeft <= 0) {
             clearInterval(this.playTimer);
-          this.playTimer = null;
-          this.endGame();
+            this.playTimer = null;
+            this.endGame();
+          }
         }
+        this.updateProgressBarColor();
+      } catch (error) {
+        console.error('Error in updateCountDown:', error);
       }
-      this.updateProgressBarColor();
-    } catch (error) {
-      console.error('Error in updateCountDown:', error);
-    }
-  },
+    },
 
-  updateProgressBarColor() {
+    updateProgressBarColor() {
       const progress = this.gameState === 'memorize' ? this.memorizeTimeLeftPercentage : this.gameTimeLeftPercentage;
       switch (true) {
         case parseInt(progress) > 50:
@@ -213,24 +209,24 @@ export const useGameStore = defineStore('game', {
       clearInterval(this.playTimer);
       const jsConfetti = new JSConfetti();
 
-      // If all the cards have been guessed, emit confetti. Otherwise, morally destroy the player.
+      // If all the cards have been guessed, emit confetti. Otherwise, throw worms.
       if (this.items.length === this.guessedItems.length) {
         jsConfetti.addConfetti({
           emojis: ['🎉', '🎊', '🎈', '💫', '✨', '🧨'],
-        }).then(() => {jsConfetti.addConfetti()});
+        }).then(() => { jsConfetti.addConfetti() });
       }
-      else{
+      else {
         jsConfetti.addConfetti({
-          
-          emojis: ['you suck', '💩', '🤮', '👺', '💀', '👎'],
+
+          emojis: ['🪱', '🪱', '🪱', '🪱', '🪱', '🪱'],
         })
       }
-      
+
     },
 
     sendItemToBackpack(item) {
       const backpackStore = useBackpackStore();
-    
+
       if (!this.items.some(gameItem => gameItem.id === item.id)) {
         console.log('This item is not part of the current game.');
         return 'not_in_game';
@@ -243,7 +239,7 @@ export const useGameStore = defineStore('game', {
         console.log('Item transferred to backpack:', item);
         return 'success';
       }
-    },      
+    },
 
     clearItems() {
       this.items = [];
