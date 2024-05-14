@@ -1,12 +1,15 @@
 <template>
-  <NavButton
-    :nav-path="'/choose-category'"
-    :active-img="activeImage"
-    :hover-img="hoverImage"
-    :enabled-img="enabledImage"
-    :is-active="isActive"
-    :is-enabled="isEnabled"
-  />
+  <div class="flex w-full h-full">
+    <NavButton
+      :nav-path="'/choose-category'"
+      :active-img="activeImage"
+      :hover-img="hoverImage"
+      :enabled-img="enabledImage"
+      :is-active="isActive"
+      :is-enabled="isEnabled"
+      :class="{ 'bg-beigebrun': isActive, 'bg-transparent': !isActive }"
+    />
+  </div>
 </template>
   
   <script setup>

@@ -8,7 +8,7 @@
     <!-- Top Nav -->
     <div class="col-span-8 row-span-4 bg-vit">
       <nav
-        class="flex w-full h-full justify-between items-center"
+        class="flex h-full items-center"
         aria-label="Huvudmeny"
       >
         <BackpackButton />
