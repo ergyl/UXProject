@@ -74,7 +74,7 @@ const route = useRoute();
 const currentPath = computed(() => route.path);
 
 const displayFooter = computed(() => {
-  const paths = ['/home', '/info', '/story', '/tips'];
+  const paths = ['/home', '/info', '/about-game', '/for-teachers', '/story', '/tips'];
   return paths.includes(route.path);
 });
 </script>
