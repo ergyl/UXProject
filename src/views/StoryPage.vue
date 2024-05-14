@@ -2,6 +2,7 @@
 
 <template>
   <div class="flex flex-col w-full h-fit justify-start items-center my-8">
+    <span class="self-end relative -top-4 -left-8"> {{ storyStore.currentIndex }}/10</span>
     <div class="flex mx-8">
       <!-- Image -->
       <Transition
