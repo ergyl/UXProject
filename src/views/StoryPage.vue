@@ -69,7 +69,7 @@ function timerOnLastImage() {
   if (storyStore.lastPage) {
     setTimeout(() => {
       router.push('/home');
-    }, 5000);
+    }, 3000);
   }
 }
 </script>
