@@ -1,13 +1,14 @@
-<!-- Handles the state of the memory card and displays
-either front or back image-->
-
 <template>
   <div
-    class="memory-card flex items-center justify-center h-full w-full object-cover bg-cover bg-center"
-    :class="{ 'cursor-pointer': gameState === 'loaded' || gameState === 'play' && !isFound || gameState === 'finished' }"
-    :style="{ backgroundImage: `url(${isFlipped ? backImage : frontImage})` }"
+    class="memory-card"
+    :class="{ 'flipped': !isFlipped }"
     @click="toggle"
-  />
+  >
+    <div class="card-inner">
+      <div class="card-front" :style="{ backgroundImage: `url(${frontImage})` }"></div>
+      <div class="card-back" :style="{ backgroundImage: `url(${backImage})` }"></div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -61,8 +62,8 @@ export default {
 
       if (currentGameState === 'play' && this.gameStore.playTimer !== null) {
         if (this.isFound || this.gameStore.onCooldown) {
-        return;
-      }
+          return;
+        }
         this.isFlipped = !this.isFlipped;
         this.gameStore.startCooldown(1500);
 
@@ -89,11 +90,39 @@ export default {
 
 <style scoped>
 .memory-card {
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
+  width: 115px; /* Adjust size as needed */
+  height: 106px; /* Adjust size as needed */
+  perspective: 1000px;
 }
 
-.item-thumbnail {
+.card-inner {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+  transform: rotateY(180deg); /* Default to showing back */
+}
+
+.memory-card.flipped .card-inner {
+  transform: rotateY(0deg); /* Flip to show front */
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
   backface-visibility: hidden;
+  background-size: cover;
+  background-position: center;
+}
+
+.card-front {
+  
+  transform: rotateY(0deg);
+}
+
+.card-back {
+  transform: rotateY(180deg);
 }
 </style>
