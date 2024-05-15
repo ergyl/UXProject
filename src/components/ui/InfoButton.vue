@@ -21,6 +21,6 @@
     import { useRoute } from 'vue-router';
  
     const route = useRoute();
-    const isActive = computed(() => route.path === '/info');
+    const isActive = computed(() => route.path === '/info' || route.path === '/for-teachers' || route.path === '/about-game');
     const isEnabled = ref(true);
     </script>
