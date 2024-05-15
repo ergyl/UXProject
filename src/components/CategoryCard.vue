@@ -1,3 +1,5 @@
+<!-- To display a category or difficulty to choose from -->
+
 <template>
   <div
     class="category-card"

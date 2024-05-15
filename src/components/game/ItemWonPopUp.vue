@@ -1,4 +1,6 @@
-<!--Uses item properties 'image' for image URL, 'itemName' and
+<!-- This is used to display a popup in endgame of the
+  memory game if the player succeeds to flip all cards.
+  Uses item properties 'image' for image URL, 'itemName' and
 'description' from the object passed to this component -->
 
 <template>

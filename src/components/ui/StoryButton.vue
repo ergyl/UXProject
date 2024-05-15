@@ -1,3 +1,5 @@
+<!-- Nav button for story -->
+
 <template>
   <div class="flex w-full h-full">
     <NavButton

@@ -14,7 +14,7 @@
         :open-first-item="false"
       >
         <fwb-accordion-panel>
-          <fwb-accordion-header class="bg-gray-300">
+          <fwb-accordion-header class="bg-bla rounded-t-xl">
             Utforska föremålet
           </fwb-accordion-header>
           <fwb-accordion-content>
@@ -27,7 +27,7 @@
           </fwb-accordion-content>
         </fwb-accordion-panel>
         <fwb-accordion-panel>
-          <fwb-accordion-header class="bg-gray-300">
+          <fwb-accordion-header class="bg-bla">
             Utforska sinnena
           </fwb-accordion-header>
           <fwb-accordion-content>
@@ -44,7 +44,7 @@
           </fwb-accordion-content>
         </fwb-accordion-panel>
         <fwb-accordion-panel>
-          <fwb-accordion-header class="bg-gray-300">
+          <fwb-accordion-header class="bg-bla">
             Skapa känslor
           </fwb-accordion-header>
           <fwb-accordion-content>
@@ -59,7 +59,7 @@
           </fwb-accordion-content>
         </fwb-accordion-panel>
         <fwb-accordion-panel>
-          <fwb-accordion-header class="bg-gray-300">
+          <fwb-accordion-header class="bg-bla">
             Magiskt föremål
           </fwb-accordion-header>
           <fwb-accordion-content>
@@ -71,7 +71,7 @@
           </fwb-accordion-content>
         </fwb-accordion-panel>
         <fwb-accordion-panel>
-          <fwb-accordion-header class="bg-gray-300">
+          <fwb-accordion-header class="bg-bla">
             Använda föremålet på ett annorlunda sätt
           </fwb-accordion-header>
           <fwb-accordion-content>

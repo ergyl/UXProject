@@ -10,7 +10,7 @@
       :open-first-item="false"
     >
       <fwb-accordion-panel>
-        <fwb-accordion-header class="bg-gray-300">
+        <fwb-accordion-header class="bg-bla rounded-t-xl">
           Om spelet
         </fwb-accordion-header>
         <fwb-accordion-content>
@@ -38,7 +38,7 @@
         </fwb-accordion-content>
       </fwb-accordion-panel>
       <fwb-accordion-panel>
-        <fwb-accordion-header class="bg-gray-300">
+        <fwb-accordion-header class="bg-bla">
           K-samsök
         </fwb-accordion-header>
         <fwb-accordion-content>
@@ -58,7 +58,7 @@
         </fwb-accordion-content>
       </fwb-accordion-panel>
       <fwb-accordion-panel>
-        <fwb-accordion-header class="bg-gray-300">
+        <fwb-accordion-header class="bg-bla">
           Vi som gjort spelet
         </fwb-accordion-header>
         <fwb-accordion-content>
@@ -71,7 +71,7 @@
         </fwb-accordion-content>
       </fwb-accordion-panel>
       <fwb-accordion-panel>
-        <fwb-accordion-header class="bg-gray-300">
+        <fwb-accordion-header class="bg-bla">
           Version
         </fwb-accordion-header>
         <fwb-accordion-content>

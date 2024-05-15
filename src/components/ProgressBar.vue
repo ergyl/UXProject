@@ -1,3 +1,7 @@
+<!-- A progress bar componented used in memory game
+to display time left in gameStore to memorize cards
+and play game. Can also be used on landingPage -->
+
 <template>
   <div
     class="w-full rounded-full"

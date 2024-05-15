@@ -1,3 +1,5 @@
+<!-- Nav button for home -->
+
 <template>
   <div class="flex w-full h-full">
     <NavButton

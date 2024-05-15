@@ -1,3 +1,6 @@
+<!-- Represents a single memory card in the memory game used
+in MemoryGamePage. Insert this component into MemoryCardsGrid -->
+
 <template>
   <div
     class="memory-card"

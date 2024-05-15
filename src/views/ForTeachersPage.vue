@@ -10,7 +10,7 @@
       :open-first-item="false"
     >
       <fwb-accordion-panel>
-        <fwb-accordion-header class="bg-gray-300">
+        <fwb-accordion-header class="bg-bla rounded-t-xl">
           Introduktion och spel
         </fwb-accordion-header>
         <fwb-accordion-content>
@@ -24,7 +24,7 @@
         </fwb-accordion-content>
       </fwb-accordion-panel>
       <fwb-accordion-panel>
-        <fwb-accordion-header class="bg-gray-300">
+        <fwb-accordion-header class="bg-bla">
           Skapande av berättelser
         </fwb-accordion-header>
         <fwb-accordion-content>
@@ -37,7 +37,7 @@
         </fwb-accordion-content>
       </fwb-accordion-panel>
       <fwb-accordion-panel>
-        <fwb-accordion-header class="bg-gray-300">
+        <fwb-accordion-header class="bg-bla">
           Mål med uppgiften
         </fwb-accordion-header>
         <fwb-accordion-content>
@@ -55,7 +55,7 @@
         </fwb-accordion-content>
       </fwb-accordion-panel>
       <fwb-accordion-panel>
-        <fwb-accordion-header class="bg-gray-300">
+        <fwb-accordion-header class="bg-bla">
           Kopplingar till LGR22
         </fwb-accordion-header>
         <fwb-accordion-content>
@@ -81,7 +81,6 @@
     FwbAccordionContent,
     FwbAccordionHeader,
     FwbAccordionPanel,
-    FwbButton
   } from 'flowbite-vue'
   
       const router = useRouter();

@@ -1,3 +1,5 @@
+<!-- Custom button component. Can be rounded or rectangular -->
+
 <template>
   <button
     class="flex justify-center items-center select-none"

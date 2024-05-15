@@ -1,4 +1,5 @@
-<!-- Button component for MainLayout-->
+<!-- Button component for MainLayout to navigate 
+between images displayed in StoryPage -->
 
 <template>
   <button

@@ -1,4 +1,6 @@
-<!-- Button component for MainLayout-->
+<!-- Base component for navbutton for MainLayout 
+This component is inserted into other buttons and not
+used directly -->
 
 <template>
   <button
