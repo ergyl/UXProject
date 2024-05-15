@@ -9,6 +9,10 @@
     @click="navigateTo"
     @mouseover="handleMouseOver"
     @mouseout="handleMouseOut"
+    @mousedown="handleMouseDown"
+    @mouseup="handleMouseUp"
+    @touchstart="handleMouseOver"
+    @touchdown="handleMouseDown"
   />
 </template>
 
@@ -44,12 +48,13 @@ const props = defineProps({
 const router = useRouter();
 
 const isHovering = ref(false);
+const isMouseDown = ref(false);
 
 const buttonStyle = computed(() => {
     let backgroundImage = props.enabledImg;
     if (props.isActive) {
         backgroundImage = props.activeImg;
-    } else if (isHovering.value) {
+    } else if (isHovering.value || isMouseDown.value) {
         backgroundImage = props.hoverImg;
     }
     return { backgroundImage: `url(${backgroundImage})` };
@@ -58,7 +63,7 @@ const buttonStyle = computed(() => {
 const buttonClasses = computed(() => ({
     'bg-contain bg-center bg-no-repeat': true,
     'opacity-50 cursor-not-allowed': !props.isEnabled,
-    'hover:opacity-75': props.isEnabled
+    'hover:opacity-100': props.isEnabled
 }));
 
 const handleMouseOver = () => {
@@ -66,8 +71,19 @@ const handleMouseOver = () => {
         isHovering.value = true;
     }
 };
+
 const handleMouseOut = () => {
     isHovering.value = false;
+};
+
+const handleMouseDown = () => {
+    if (props.isEnabled) {
+        isMouseDown.value = true;
+    }
+};
+
+const handleMouseUp = () => {
+    isMouseDown.value = false;
 };
 
 const navigateTo = () => {
