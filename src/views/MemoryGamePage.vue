@@ -18,7 +18,7 @@
     </div>
 
     <div
-      v-if="!thumbnailsLoaded || !mullwardLoaded && gameStore.gameState === 'start'"
+      v-else-if="!thumbnailsLoaded || !mullwardLoaded && gameStore.gameState === 'start'"
       class="col-span-8 my-32 flex flex-col justify-center items-center"
     >
       <fwb-spinner
@@ -146,25 +146,20 @@
       <!-- Game memorize & thumbnailsloaded -->
       <div
         v-if="gameStore.gameState === 'memorize' || gameStore.gameState === 'play'"
-        class="px-16 py-4"
+        class="px-16 pt-6 pb-4"
       >
-        <fwb-progress
+        <ProgressBar
           v-if="gameStore.gameState === 'memorize'"
           :progress="gameStore.memorizeTimeLeftPercentage"
-          :color="gameStore.progressColor"
-          size="lg"
-          label-position="inside"
-          label="Memorera"
+          :color-change="true"
+          :height="'8'"
         />
 
-        <!-- Game play -->
-        <fwb-progress
-          v-if="gameStore.gameState === 'play'"
+        <ProgressBar
+          v-else-if="gameStore.gameState === 'play'"
           :progress="gameStore.gameTimeLeftPercentage"
-          :color="gameStore.progressColor"
-          size="lg"
-          label-position="inside"
-          label="Spela"
+          :color-change="true"
+          :height="'8'"
         />
       </div>
 
@@ -190,6 +185,7 @@ import Ksamsok from '@/services/Ksamsok.js';
 import MemoryCardsGrid from '@/components/game/MemoryCardsGrid.vue';
 import ItemWonPopUp from '@/components/game/ItemWonPopUp.vue'
 import PopUp from '@/components/ui/PopUp.vue'
+import ProgressBar from '@/components/ProgressBar.vue'
 import SpeechBubble from '@/components/SpeechBubble.vue';
 import BasicButton from '@/components/ui/BasicButton.vue';
 import MullwardMemorizingImage from '@/assets/images/illustrations/game/mullward_memorize.png';

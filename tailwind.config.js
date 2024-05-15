@@ -11,6 +11,9 @@ export default {
   ],
   theme: {
     extend: {
+      backgroundOpacity: {
+        '45': '0.45'
+      },
       gridTemplateRows: {
         '24': 'repeat(24, minmax(0, 1fr))',
       },

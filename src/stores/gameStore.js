@@ -113,8 +113,6 @@ export const useGameStore = defineStore('game', {
       this.setGameState('memorize');
       console.log('and now current state:', this.gameState);
       this.startMemorizeTimerWithDelay();
-
-
     },
 
     startMemorizeTimerWithDelay() {
