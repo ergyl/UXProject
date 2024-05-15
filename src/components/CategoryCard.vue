@@ -47,6 +47,10 @@ const navigateToCategory = () => {
   box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.2);
 }
 
+.category-card:hover {
+  @apply hover:text-ljusTerracotta;
+}
+
 .category-card:active,
 .category-card:focus {
   @apply border-none;
