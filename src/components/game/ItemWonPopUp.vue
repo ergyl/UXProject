@@ -10,53 +10,29 @@
   >
     <!-- Conditionally display the warning or success toast -->
     <FwbToast
-      v-if="backpackIsFull || showWarning"
+      v-if="backpackIsFull"
       divide
       type="warning"
     >
-      {{ warningMessage }}
-    </FwbToast>
-    <FwbToast
-      v-if="showSuccess"
-      divide
-      type="success"
-    >
-      Föremålet har sparats.
+      <span>Din ryggsäck är full.</span>
     </FwbToast>
 
-    <!-- Buttons change based on backpack status -->
-
-    
-    <BasicButton
-      v-if="backpackIsFull"
-      :text="'Öppna ryggsäcken'"
-      class="w-full rounded-b-lg"
-      :rounded="false"
-      @click="goToBackpack"
-    />
-
-    <BasicButton
-      v-else
-      :text="'Lägg i ryggsäcken'"
-      :rounded="false"
-      class="w-full rounded-b-lg"
-      @click="transferItemToBackpack"
-    />
+    <!-- Button changes based on backpack status -->
+    <AddToBackpackButton :item="item" />
   </ItemDetailsPopup>
 </template>
 
 <script>
-import { useGameStore } from '@/stores/gameStore';
 import { useBackpackStore } from '@/stores/backpackStore';
 import { useRouter } from 'vue-router';
 import { FwbToast } from 'flowbite-vue';
 import ItemDetailsPopup from '@/components/ui/ItemDetailsPopUp.vue';
-import BasicButton from '@/components/ui/BasicButton.vue';
+import AddToBackpackButton from '@/components/ui/AddToBackpackButton.vue'
 
 export default {
   components: {
     ItemDetailsPopup,
-    BasicButton,
+    AddToBackpackButton,
     FwbToast
   },
   props: {
@@ -74,8 +50,6 @@ export default {
   
   data() {
     return {
-      showSuccess: false,
-      showWarning: false,
       warningMessage: '',
       itemAlreadyExists: false
     }
@@ -88,20 +62,6 @@ export default {
     }
   },
 
-  mounted() {
-    const backpackStore = useBackpackStore();
-    this.itemAlreadyExists = backpackStore.itemExists(this.item.id);
-    if (this.itemAlreadyExists && !this.backpackIsFull) {
-      this.showWarning = true;
-      this.warningMessage = 'Föremålet är redan sparat i din ryggsäck.';
-    }  else if (this.backpackIsFull && !this.itemAlreadyExists) {
-      this.warningMessage = 'Ryggsäcken är full.'
-    } else if (this.backpackIsFull && this.itemAlreadyExists) {
-      this.showWarning = true;
-      this.warningMessage = 'Ryggsäcken är full och föremålet är redan sparat.'
-    }
-  },
-
   methods: {
     closePopup() {
       this.$emit('close');
@@ -110,57 +70,7 @@ export default {
     goToBackpack() {
       this.router.push('/backpack');
     },
-
-    transferItemToBackpack() {
-      this.showSuccess = false;
-      this.showWarning = false;
-
-      if (this.backpackIsFull) {
-        this.showWarning = true;
-        return;
-      }
-
-      const gameStore = useGameStore();
-      const result = gameStore.sendItemToBackpack(this.item);
-      this.handleResult(result);
-    },
-
-    handleResult(result) {
-      this.showSuccess = false;
-      this.showWarning = false;
-      
-      console.log("Handling result:", result);
-
-      switch (result) {
-        case 'success':
-          this.showSuccess = true;
-          console.log("Set showSuccess to true");
-
-          if (this.backpackIsFull) {
-            this.showWarning = true;
-            this.warningMessage = 'Ryggsäcken är full';
-          }
-          break;
-        case 'full':
-          this.showWarning = true;
-          this.warningMessage = 'Ryggsäcken är full';
-          break;
-        case 'already_exists':
-          this.showWarning = true;
-          this.warningMessage = 'Föremålet är redan sparat i din ryggsäck.';
-          break;
-        case 'not_in_game':
-          this.showWarning = true;
-          this.warningMessage = 'Föremålet finns inte i spelet.';
-          break;
-        case 'error':
-          this.showWarning = true;
-          this.warningMessage = 'Ett fel har uppstått.';
-          break;
-        }
-        console.log("Warning State after switch:", this.showWarning, "Message:", this.warningMessage);
-      }
-    }
+  }
   };
 </script>
 
