@@ -85,6 +85,7 @@ const handleMouseDown = () => {
 
 const handleMouseUp = () => {
     isMouseDown.value = false;
+    isHovering.value = false;
 };
 
 const navigateTo = () => {
