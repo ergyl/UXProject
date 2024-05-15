@@ -5,8 +5,14 @@
     @click="toggle"
   >
     <div class="card-inner">
-      <div class="card-front" :style="{ backgroundImage: `url(${frontImage})` }"></div>
-      <div class="card-back" :style="{ backgroundImage: `url(${backImage})` }"></div>
+      <div
+        class="card-front"
+        :style="{ backgroundImage: `url(${frontImage})` }"
+      />
+      <div
+        class="card-back"
+        :style="{ backgroundImage: `url(${backImage})` }"
+      />
     </div>
   </div>
 </template>
@@ -90,8 +96,7 @@ export default {
 
 <style scoped>
 .memory-card {
-  width: 115px; /* Adjust size as needed */
-  height: 106px; /* Adjust size as needed */
+  @apply w-full h-full;
   perspective: 1000px;
 }
 

@@ -18,7 +18,7 @@
     </div>
 
     <div
-      v-else-if="!thumbnailsLoaded || !mullwardLoaded && gameStore.gameState === 'start'"
+      v-if="!thumbnailsLoaded || !mullwardLoaded && gameStore.gameState === 'start'"
       class="col-span-8 my-32 flex flex-col justify-center items-center"
     >
       <fwb-spinner
@@ -30,6 +30,7 @@
     </div>
     
     <div
+      v-else
       class="flex flex-col justify-end col-span-8 sm:col-span-8 md:col-span-3 lg:col-span-3 xl:col-span-3 h-48"
     >
       <!-- Content for the first div -->

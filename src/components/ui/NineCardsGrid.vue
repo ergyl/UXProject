@@ -1,11 +1,11 @@
 <!-- A 3x3 basic grid with squares to hold content -->
 
 <template>
-  <div class="flex flex-wrap border border-black bg-semi-transparent">
+  <div class="flex flex-wrap gap-0 border border-black bg-semi-transparent">
     <div
       v-for="(item, index) in nineItems"
       :key="index"
-      class="square border border-black"
+      class="square w-1/3 border border-black"
     >
       <div class="content">
         <!-- Render slot depending on 'showDefaultImage' prop -->
@@ -45,12 +45,11 @@ export default {
 
 <style scoped>
 .square {
-  flex: 1 0 31%; /* slightly less than 1/3 to accommodate the gap */
-  height: 0;
-  padding-bottom: 31%; /* the same as width for maintaining aspect ratio */
+  @apply aspect-square;
   position: relative;
 }
 .content {
+  @apply aspect-square;
   position: absolute;
   top: 0;
   right: 0;
