@@ -12,6 +12,7 @@
     @mousedown="handleMouseDown"
     @mouseup="handleMouseUp"
     @touchstart="handleMouseOver"
+    @touchend="handleMouseUp"
     @touchdown="handleMouseDown"
   />
 </template>
