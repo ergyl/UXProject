@@ -12,7 +12,6 @@ export const useGameStore = defineStore('game', {
     totalMemorizeTime: 15000,
     gameTimeLeft: 120000,
     totalGameTime: 120000, // 2 min, default for difficulty 1 (easy)
-    progressColor: 'indigo',
     memorizeTimer: null,
     playTimer: null,
     items: [], // array to store memory game items
@@ -180,24 +179,8 @@ export const useGameStore = defineStore('game', {
             this.endGame();
           }
         }
-        this.updateProgressBarColor();
       } catch (error) {
         console.error('Error in updateCountDown:', error);
-      }
-    },
-
-    updateProgressBarColor() {
-      const progress = this.gameState === 'memorize' ? this.memorizeTimeLeftPercentage : this.gameTimeLeftPercentage;
-      switch (true) {
-        case parseInt(progress) > 50:
-          this.progressColor = 'indigo';
-          break;
-        case parseInt(progress) > 20:
-          this.progressColor = 'yellow';
-          break;
-        default:
-          this.progressColor = 'red';
-          break;
       }
     },
 
@@ -253,7 +236,6 @@ export const useGameStore = defineStore('game', {
       this.gameState = 'start';
       this.memorizeTimeLeft = this.totalMemorizeTime;
       this.gameTimeLeft = this.totalGameTime;
-      this.progressColor = 'indigo';
       clearInterval(this.memorizeTimerDelay);
       clearInterval(this.memorizeTimer);
       clearInterval(this.playTimerDelay);
