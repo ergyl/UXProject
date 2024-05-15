@@ -9,7 +9,7 @@ import { defineStore } from 'pinia';
 export const useStoryStore = defineStore('story', {
   state: () => ({
     currentIndex: 0,
-    maximumIndex: 10,
+    maximumIndex: 9,
     showLastTransition: false
   }),
 

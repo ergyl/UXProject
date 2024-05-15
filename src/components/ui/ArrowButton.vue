@@ -65,8 +65,7 @@
   
   const buttonClasses = computed(() => ({
       'bg-contain bg-center bg-no-repeat': true,
-      'opacity-50 cursor-not-allowed': !props.isEnabled,
-      'hover:opacity-75': props.isEnabled
+      'opacity-30 cursor-not-allowed': !props.isEnabled,
   }));
   
 // Event handlers

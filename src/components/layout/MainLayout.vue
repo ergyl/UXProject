@@ -48,7 +48,6 @@
         <StoryButton />
         <ArrowButton
           :left="false"
-          :is-enabled="!storyStore.lastPage"
           @click="storyStore.showNext"
         />
       </nav>
