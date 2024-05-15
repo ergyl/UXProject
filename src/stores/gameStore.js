@@ -215,13 +215,12 @@ export const useGameStore = defineStore('game', {
           emojis: ['🎉', '🎊', '🎈', '💫', '✨', '🧨'],
         }).then(() => { jsConfetti.addConfetti() });
       }
-      else {
+      /* else {
         jsConfetti.addConfetti({
 
           emojis: ['🪱', '🪱', '🪱', '🪱', '🪱', '🪱'],
         })
-      }
-
+      } */
     },
 
     sendItemToBackpack(item) {
