@@ -64,7 +64,7 @@ const buttonStyle = computed(() => {
 const buttonClasses = computed(() => ({
     'bg-contain bg-center bg-no-repeat': true,
     'opacity-50 cursor-not-allowed': !props.isEnabled,
-    'hover:opacity-100': props.isEnabled
+    'hover:opacity-100': props.isEnabled && (isHovering.value || isMouseDown.value)
 }));
 
 const handleMouseOver = () => {
