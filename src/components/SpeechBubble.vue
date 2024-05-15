@@ -4,7 +4,7 @@
 <template>
   <div
     :class="[bubbleClass, 'speech-bubble']"
-    class="relative flex items-center justify-center text-center leading-none"
+    class="relative flex items-center justify-center text-center leading-none select-none"
   >
     <!-- Slot for custom text to be added, with constraints -->
     <div class="content-container">

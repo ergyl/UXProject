@@ -1,6 +1,6 @@
 <template>
   <button
-    class="flex justify-center items-center"
+    class="flex justify-center items-center select-none"
     :class="[
       'text-vit focus:ring-4',
       rounded ? 'rounded-lg' : 'rounded-none',
