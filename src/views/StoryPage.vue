@@ -2,7 +2,7 @@
 
 <template>
   <div class="flex flex-col w-full h-fit justify-start items-center my-8">
-    <span class="self-end relative -top-4 -left-8">{{ storyStore.currentIndex + 1 }}/10</span>
+    <span class="self-end relative -top-4 -left-8">{{ storyStore.currentIndex + 1 }}/9</span>
     <div
       v-if="storyStore.currentIndex < storyStore.maximumIndex - 1"
       class="flex mx-8"
