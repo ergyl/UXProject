@@ -8,11 +8,10 @@
   @col-start & end should be between 1-9, @col-start & end should be between 1-25-->
 
 <template>
-  <!-- Use the defined grid lines from MainLayout to position the content -->
-  <!-- Ensure that the column numbers here match the lines in the MainLayout grid -->
-  <div class="col-start-2 col-end-8 row-start-2 row-end-5">
-    <!-- Content here will be placed within the MainLayout grid -->
-    <RouterLink to="/story">
+  <div class="flex flex-row min-h-screen max-h-screen justify-center items-center">
+    <RouterLink
+      to="/story"
+    >
       <AppLogo />
     </RouterLink>
   </div>
