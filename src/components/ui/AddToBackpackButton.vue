@@ -2,7 +2,6 @@
 
 <template>
   <button
-    v-if="!backpackStore.isFull"
     class="flex justify-center items-center select-none"
     :class="[
       'text-vit focus:ring-4',
