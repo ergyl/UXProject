@@ -82,7 +82,7 @@ export default {
           return;
         }
         this.isFlipped = !this.isFlipped;
-        this.gameStore.startCooldown(1500);
+        this.gameStore.startCooldown(1300);
 
         if (this.gameStore.targetItem === this.item) {
           this.isFound = true;

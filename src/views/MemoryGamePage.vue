@@ -180,7 +180,7 @@
     import { ref, onBeforeUnmount, onMounted, watch } from 'vue';
     import { useRoute, useRouter } from 'vue-router';
     import { useGameStore } from '@/stores/gameStore';
-    import { FwbSpinner, FwbProgress } from 'flowbite-vue';
+    import { FwbSpinner } from 'flowbite-vue';
     import Ksamsok from '@/services/Ksamsok.js';
     import MemoryCardsGrid from '@/components/game/MemoryCardsGrid.vue';
     import ItemWonPopUp from '@/components/game/ItemWonPopUp.vue'
