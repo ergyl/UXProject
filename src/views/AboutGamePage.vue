@@ -65,7 +65,7 @@
           <div>
             <p class="mb-2 text-gray-500">
               Java utvecklare: Proffessor Ilja, Erik och Fredrik.<br>
-              UX-designers: Albin, Åsa, Emelie, Pascal och Erki.
+              UX-designers: Albin, Åsa, Emelie, Pascal och Erik.
             </p>
           </div>
         </fwb-accordion-content>

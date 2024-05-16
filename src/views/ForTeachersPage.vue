@@ -30,8 +30,9 @@
         <fwb-accordion-content>
           <div>
             <ul class="list-disc mb-2 text-gray-500">
-              <li>Be eleverna välja ett eller flera föremål från sina ryggsäckar som de vill skriva en berättelse om.</li><br>
-              <li>Ge dem tid att planera sina berättelser. För inspiration - se "Skriv historia"</li>
+              <li>Be eleverna välja ett eller flera föremål från sina ryggsäckar som de vill skriva en berättelse om.</li>
+              <li>Ge dem tid att planera sina berättelser. För inspiration - tryck på penn-ikonen"</li>
+              <li>Uppmuntra dem att använda sin fantasi och kreativitet för att utveckla en spännande och sammanhängande berättelse</li>
             </ul>
           </div>
         </fwb-accordion-content>
@@ -47,7 +48,7 @@
             </p>
             <ul class="list-disc mb-2 text-gray-500">
               <li class="pb-1">
-                Använda de historiska föremålen i sin skattkista som inspiration för att skriva berättelser
+                Använda de historiska föremålen i sin ryggsäck som inspiration för att skriva berättelser
               </li>
               <li>Utveckla sina skrivfärdigheter genom att skapa tydliga och sammanhängande texter</li>
             </ul>
@@ -66,6 +67,7 @@
             </p>
             <ul class="list-disc mb-2 text-gray-500">
               <li>Skapande av texter där ord och bild samspelar (Skolverket, 2022, s.226-227)</li>
+              <li>Var gärna kreativ och arbeta ämnesövergripande! Kanske med Historia eller Bild? </li>
             </ul>
           </div>
         </fwb-accordion-content>
