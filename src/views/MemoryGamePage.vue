@@ -16,7 +16,7 @@
         />
       </PopUp>
     </div>
-    
+
     <div
       v-else-if="!thumbnailsLoaded || !mullwardLoaded && gameStore.gameState === 'start'"
       class="col-span-8 my-32 flex flex-col justify-center items-center"
@@ -28,13 +28,13 @@
       />
       <span class="pt-2">Slumpar fram föremål...</span>
     </div>
-        
+
     <div
       v-else
       class="flex flex-col justify-end col-span-8 h-48"
     >
       <!-- Content for the first div -->
-    
+
       <div
         v-if="gameStore.gameState === 'loaded' || gameStore.gameState === 'memorize'"
         :style="{ visibility: gameStore.gameState === 'memorize' ? 'hidden' : 'visible' }"
@@ -54,20 +54,26 @@
             Tryck på jorden för att starta.</span>
         </SpeechBubble>
       </div>
-    
+
       <div
         v-if="gameStore.gameState === 'play'"
         class="flex items-end justify-end"
       >
         <!--- Target item -->
-        <img
-          v-if="gameStore.gameState === 'play'"
-          class="mt-20 w-28 h-28 object-cover my-0 mx-auto border border-black mb-4"
-          :src="gameStore.targetItem?.image"
-          alt="Föremål att hitta"
+        <Transition
+          name="slide-fade"
+          mode="out-in"
         >
+          <img
+            v-if="gameStore.gameState === 'play'"
+            :key="gameStore.targetItem.id"
+            class="mt-20 w-28 h-28 object-cover my-0 mx-auto border border-black mb-4"
+            :src="gameStore.targetItem?.image"
+            alt="Föremål att hitta"
+          >
+        </Transition>
       </div>
-    
+
       <div
         v-if="gameStore.gameState === 'finished' && gameStore.allItemsGuessed === true"
         class="mx-5 flex justify-center items-center p-4 bg-no-repeat bg-bottom bg-contain"
@@ -82,12 +88,10 @@
         </SpeechBubble>
       </div>
     </div>
-        
-    <div
-      class="col-span-8"
-    >
+
+    <div class="col-span-8">
       <!-- Content for the second div -->
-    
+
       <!-- Game loaded / memorize -->
       <div
         v-if="gameStore.gameState === 'loaded' || gameStore.gameState === 'memorize'"
@@ -99,7 +103,7 @@
           @click="checkStartConditions"
         />
       </div>
-    
+
       <div v-if="gameStore.gameState === 'play' || gameStore.gameState === 'finished'">
         <div
           v-if="thumbnailsLoaded && mullwardLoaded"
@@ -118,7 +122,7 @@
           />
         </div>
       </div>
-    
+
       <div
         v-if="gameStore.gameState === 'finished' && gameStore.allItemsGuessed === false"
         class="mx-5"
@@ -136,13 +140,11 @@
         </PopUp>
       </div>
     </div>
-    
-    
-    <div
-      class="col-span-8"
-    >
+
+
+    <div class="col-span-8">
       <!-- Content for the third div -->
-    
+
       <!-- Game memorize & thumbnailsloaded -->
       <div
         v-if="gameStore.gameState === 'memorize' || gameStore.gameState === 'play'"
@@ -154,7 +156,7 @@
           :color-change="true"
           :height="'8'"
         />
-    
+
         <ProgressBar
           v-else-if="gameStore.gameState === 'play'"
           :progress="gameStore.gameTimeLeftPercentage"
@@ -162,116 +164,131 @@
           :height="'8'"
         />
       </div>
-    
+
       <div
         v-if="gameStore.gameState === 'finished' && gameStore.allItemsGuessed === true"
         class="text-center mx-5 my-4"
       >
         <p>
-          Spara föremål från utgrävningen 
+          Spara föremål från utgrävningen
           innan du öppnar ryggsäcken - annars försvinner de.
         </p>
       </div>
     </div>
   </div>
 </template>
-              
-    <script setup>
-    import { ref, onBeforeUnmount, onMounted, watch } from 'vue';
-    import { useRoute, useRouter } from 'vue-router';
-    import { useGameStore } from '@/stores/gameStore';
-    import { FwbSpinner } from 'flowbite-vue';
-    import Ksamsok from '@/services/Ksamsok.js';
-    import MemoryCardsGrid from '@/components/game/MemoryCardsGrid.vue';
-    import ItemWonPopUp from '@/components/game/ItemWonPopUp.vue'
-    import PopUp from '@/components/ui/PopUp.vue'
-    import ProgressBar from '@/components/ProgressBar.vue'
-    import SpeechBubble from '@/components/SpeechBubble.vue';
-    import BasicButton from '@/components/ui/BasicButton.vue';
-    import MullwardMemorizingImage from '@/assets/images/illustrations/game/mullward_memorize.png';
-    import MullwardDigSuccessImage from '@/assets/images/illustrations/game/mullward_dig_success.png';
-    import DaggmaskImage from '@/assets/images/illustrations/game/worm.png';
-    import image1 from '@/assets/images/illustrations/game/tile1.png';
-    import image2 from '@/assets/images/illustrations/game/tile2.png';
-    import image3 from '@/assets/images/illustrations/game/tile3.png';
-    import image4 from '@/assets/images/illustrations/game/tile4.png';
-    import image5 from '@/assets/images/illustrations/game/tile5.png';
-    import image6 from '@/assets/images/illustrations/game/tile6.png';
-    import image7 from '@/assets/images/illustrations/game/tile7.png';
-    import image8 from '@/assets/images/illustrations/game/tile8.png';
-    import image9 from '@/assets/images/illustrations/game/tile9.png';
-    
-    const tileImages = [image1, image2, image3, image4, image5, image6, image7, image8, image9];
-    
-    const gameStore = useGameStore();
-    const router = useRouter();
-    const route = useRoute();
-    
-    const mullwardLoaded = ref(false);
-    const thumbnailsLoaded = ref(false);
-    const selectedItem = ref(null);
-    
-    async function getItems() {
-      if (!gameStore.category) return;
-      let items;
-      try {
-        switch (gameStore.category) {
-          case 'toys':
-            items = await Ksamsok.getToys();
-            break;
-          case 'world':
-            items = await Ksamsok.getWorldItems();
-            break;
-          case 'artwork':
-            items = await Ksamsok.getArtwork();
-            break;
-          default:
-            console.error('Unrecognized category:', gameStore.category);
-            return;
-        }
-        console.log('API Returned Items:', items); // Check what the API returned
-        if (items) {
-          gameStore.addItems(items);
-            gameStore.setTargetItem();
-          console.log('Target item selected: ' + gameStore.targetItem);
-          thumbnailsLoaded.value = true;
-          gameStore.setGameState('loaded');
-        } else {
-          console.error('No items fetched for category:', gameStore.category);
-        }
-      } catch (error) {
-        console.error('Error fetching items for category:', gameStore.category, error.message);
-      }
+
+<script setup>
+import { ref, onBeforeUnmount, onMounted, watch } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+import { useGameStore } from '@/stores/gameStore';
+import { FwbSpinner } from 'flowbite-vue';
+import Ksamsok from '@/services/Ksamsok.js';
+import MemoryCardsGrid from '@/components/game/MemoryCardsGrid.vue';
+import ItemWonPopUp from '@/components/game/ItemWonPopUp.vue'
+import PopUp from '@/components/ui/PopUp.vue'
+import ProgressBar from '@/components/ProgressBar.vue'
+import SpeechBubble from '@/components/SpeechBubble.vue';
+import BasicButton from '@/components/ui/BasicButton.vue';
+import MullwardMemorizingImage from '@/assets/images/illustrations/game/mullward_memorize.png';
+import MullwardDigSuccessImage from '@/assets/images/illustrations/game/mullward_dig_success.png';
+import DaggmaskImage from '@/assets/images/illustrations/game/worm.png';
+import image1 from '@/assets/images/illustrations/game/tile1.png';
+import image2 from '@/assets/images/illustrations/game/tile2.png';
+import image3 from '@/assets/images/illustrations/game/tile3.png';
+import image4 from '@/assets/images/illustrations/game/tile4.png';
+import image5 from '@/assets/images/illustrations/game/tile5.png';
+import image6 from '@/assets/images/illustrations/game/tile6.png';
+import image7 from '@/assets/images/illustrations/game/tile7.png';
+import image8 from '@/assets/images/illustrations/game/tile8.png';
+import image9 from '@/assets/images/illustrations/game/tile9.png';
+
+const tileImages = [image1, image2, image3, image4, image5, image6, image7, image8, image9];
+
+const gameStore = useGameStore();
+const router = useRouter();
+const route = useRoute();
+
+const mullwardLoaded = ref(false);
+const thumbnailsLoaded = ref(false);
+const selectedItem = ref(null);
+
+async function getItems() {
+  if (!gameStore.category) return;
+  let items;
+  try {
+    switch (gameStore.category) {
+      case 'toys':
+        items = await Ksamsok.getToys();
+        break;
+      case 'world':
+        items = await Ksamsok.getWorldItems();
+        break;
+      case 'artwork':
+        items = await Ksamsok.getArtwork();
+        break;
+      default:
+        console.error('Unrecognized category:', gameStore.category);
+        return;
     }
-    
-    onMounted(() => {
-      console.log("Chosen category:", gameStore.category);
-        getItems();
-    });
-    
-    function mullwardMemorizingImageLoaded() {
-    console.log("MullwardMemorizingImage loaded");
-    mullwardLoaded.value = true;
+    console.log('API Returned Items:', items); // Check what the API returned
+    if (items) {
+      gameStore.addItems(items);
+      gameStore.setTargetItem();
+      console.log('Target item selected: ' + gameStore.targetItem);
+      thumbnailsLoaded.value = true;
+      gameStore.setGameState('loaded');
+    } else {
+      console.error('No items fetched for category:', gameStore.category);
     }
-    
-    if (router && route) {
-        watch(() => route.path, () => {
-            if (route.name === 'game-play') {
-                getItems();
-            }
-        });
+  } catch (error) {
+    console.error('Error fetching items for category:', gameStore.category, error.message);
+  }
+}
+
+onMounted(() => {
+  console.log("Chosen category:", gameStore.category);
+  getItems();
+});
+
+function mullwardMemorizingImageLoaded() {
+  console.log("MullwardMemorizingImage loaded");
+  mullwardLoaded.value = true;
+}
+
+if (router && route) {
+  watch(() => route.path, () => {
+    if (route.name === 'game-play') {
+      getItems();
     }
-    
-    function checkStartConditions() {
-      if (thumbnailsLoaded.value && mullwardLoaded.value) {
-          gameStore.startGame();
-        }
-      }
-    
-    onBeforeUnmount(() => {
-      console.log(`gameStore object: ${gameStore}`);
-      console.log('resetGame method:', gameStore.resetGame);
-      gameStore.resetGame();
-    });
-    </script>
-    
+  });
+}
+
+function checkStartConditions() {
+  if (thumbnailsLoaded.value && mullwardLoaded.value) {
+    gameStore.startGame();
+  }
+}
+
+onBeforeUnmount(() => {
+  console.log(`gameStore object: ${gameStore}`);
+  console.log('resetGame method:', gameStore.resetGame);
+  gameStore.resetGame();
+});
+</script>
+
+<style scoped>
+.slide-fade-enter-active {
+  transition: all 0.3s ease-out;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateY(20px);
+  opacity: 0;
+}
+</style>
