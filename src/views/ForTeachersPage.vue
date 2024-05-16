@@ -1,7 +1,7 @@
 <!-- Page in the SPA -->
 
 <template>
-  <div class="flex flex-col justify-start mt-10 ml-8 mr-8 border border-black bg-white overflow-scroll">
+  <div class="flex flex-col justify-start mt-10 ml-8 mr-8 border border-black bg-white overflow-scroll lg:ml-44 lg:mr-44">
     <h2 class="self-center mt-4">
       För lärare
     </h2>
