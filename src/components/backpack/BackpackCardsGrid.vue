@@ -11,13 +11,14 @@ MemoryCard components in the grid -->
         :key="index"
         :item="item"
         :front-image="item ? item.image : slotImage"
-        @select-item="$emit('select-item', $event)"
+        @select-item="handleSelectItem(item)"
       />
     </template>
   </NineCardsGrid>
 </template>
 
 <script>
+import { useBackpackStore } from '@/stores/backpackStore';
 import NineCardsGrid from '@/components/ui/NineCardsGrid.vue';
 import ItemCard from '@/components/backpack/ItemCard.vue';
 import SlotImage from '@/assets/images/illustrations/backpack/backpack-slot.png';
@@ -38,6 +39,15 @@ export default {
     return {
       slotImage: SlotImage,
     }
-  }
+  },
+  methods: {
+    handleSelectItem(item) {
+      const backpackStore = useBackpackStore();
+      backpackStore.setSelectedItemID(item.id);
+      this.$emit('select-item', item.id);
+
+      console.log('Selected item:', backpackStore.selectedItemID);
+    },
+  },
 };
 </script>
