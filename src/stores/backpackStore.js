@@ -9,6 +9,7 @@ export const useBackpackStore = defineStore('backpack', {
   state: () => ({
     maxCapacity: 9,
     items: new Map(), // Using Map to ensure all stored items have unique IDs
+    selectedItemID: null,
   }),
 
   getters: {
@@ -41,9 +42,23 @@ export const useBackpackStore = defineStore('backpack', {
       }
     },
 
-    removeItem(item) {
-      if (this.items.has(item.id)) {
-        this.items.delete(item.id);
+    setSelectedItemID(item) {
+      this.selectedItemID = item;
+    },
+
+    removeItem() {
+      for (let [key, value] of this.items) 
+      {
+        console.log("key: " + key + " value: " + value);
+      }
+
+      console.log("current selected item: " + this.selectedItemID);
+
+      if (this.items.has(this.selectedItemID)) {
+        this.items.delete(this.selectedItemID);
+      }
+      else {
+        console.log("Item not found in backpack");
       }
     }
   },
