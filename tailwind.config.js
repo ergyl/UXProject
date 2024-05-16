@@ -19,7 +19,10 @@ export default {
       },
       gridRow: {
         'span-16': 'span 16 / span 16',
+        'span-18': 'span 18 / span 16',
         'span-20': 'span 20 / span 20',
+        'span-22': 'span 22/ span 22',
+        'span-24': 'span 24 / span 24'
       },
       gridRowEnd: {
         '8': '8',

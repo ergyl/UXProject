@@ -6,20 +6,20 @@
 <template>
   <div class="grid grid-cols-8 grid-rows-24 min-h-screen max-h-screen relative overflow-hidden">
     <!-- Top Nav -->
-    <div class="col-span-8 row-span-4 bg-vit">
+    <div class="col-span-8 row-span-4 bg-vit lg:row-span-2">
       <nav
-        class="flex h-full items-center"
+        class="flex h-full items-center lg:justify-center"
         aria-label="Huvudmeny"
       >
-        <BackpackButton />
-        <HomeButton />
-        <DigButton />
+        <BackpackButton class="lg:w-24" />
+        <HomeButton class="lg:w-24" />
+        <DigButton class="lg:w-24" />
       </nav>
     </div>
  
     <!-- Main content grid -->
     <main
-      :class="{'row-span-20': !displayFooter, 'row-span-16': displayFooter}"
+      :class="{'row-span-20 lg:row-span-24': !displayFooter, 'row-span-16 lg:row-span-20': displayFooter}"
       class="col-span-8 bg-beigebrun overflow-scroll"
     >
       <RouterView v-slot="{ Component }">
@@ -33,20 +33,22 @@
     <!-- Footer row -->
     <footer
       v-if="displayFooter"
-      class="col-span-8 row-span-4 bg-vit"
+      class="col-span-8 row-span-4 bg-vit lg:row-span-2"
     >
       <nav
         v-if="currentPath === '/story'"
-        class="flex w-full h-full justify-between items-center"
+        class="flex w-full h-full justify-between items-center lg:justify-center"
         aria-label="Meny för story"
       >
         <ArrowButton
+          class="lg:w-24"
           :left="true"
           :is-enabled="!storyStore.firstPage"
           @click="storyStore.showPrevious"
         />
-        <StoryButton />
+        <StoryButton class="lg:w-24" />
         <ArrowButton
+          class="lg:w-24"
           :left="false"
           @click="storyStore.showNext"
         />
@@ -54,12 +56,12 @@
       
       <nav
         v-else
-        class="flex w-full h-full justify-between items-center"
+        class="flex w-full h-full justify-between items-center lg:justify-center"
         aria-label="Sidomeny"
       >
-        <InfoButton />
-        <StoryButton />
-        <WriteButton />
+        <InfoButton class="lg:w-24" />
+        <StoryButton class="lg:w-24" />
+        <WriteButton class="lg:w-24" />
       </nav>
     </footer>
   </div>
