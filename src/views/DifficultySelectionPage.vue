@@ -8,7 +8,7 @@
     class="grid grid-cols-8 overflow-scroll"
   >
     <div 
-      class="flex col-start-2 col-end-8 flex-col content-between justify-center items-center gap-y-6 mt-16 mb-24"
+      class="flex col-start-2 col-end-8 flex-col content-between justify-center items-center lg:flex-row gap-y-6 mt-16 mb-24 lg:gap-6 lg:mt-40"
     >
       <CategoryCard
         :image-source="images[0]"

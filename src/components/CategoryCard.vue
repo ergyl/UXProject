@@ -43,7 +43,7 @@ const navigateToCategory = () => {
 
 <style scoped>
 .category-card {
-  @apply flex flex-col items-center justify-start border border-black p-0 bg-white w-44 h-32;
+  @apply flex flex-col items-center justify-start border border-black p-0 bg-white w-44 h-32 lg:w-[300px] lg:h-[250px];
   box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.2);
 }
 

@@ -4,173 +4,176 @@
     displaying the memory game with all its components -->
 
 <template>
-  <div class="grid grid-cols-8 overflow-scroll mb-8">
-    <div
-      v-if="gameStore.category === null"
-      class="mx-5"
-    >
-      <PopUp :text="'Du behöver välja kategori för att spela.'">
-        <BasicButton
-          :text="'Gå tillbaka'"
-          :route="'/choose-category'"
-        />
-      </PopUp>
-    </div>
-
-    <div
-      v-else-if="!thumbnailsLoaded || !mullwardLoaded && gameStore.gameState === 'start'"
-      class="col-span-8 my-32 flex flex-col justify-center items-center"
-    >
-      <fwb-spinner
-        size="12"
-        color="green"
-        class="self-center"
-      />
-      <span class="pt-2">Slumpar fram föremål...</span>
-    </div>
-    
-    <div
-      v-else
-      class="flex flex-col justify-end col-span-8 sm:col-span-8 md:col-span-3 lg:col-span-3 xl:col-span-3 h-48"
-    >
-      <!-- Content for the first div -->
-
+  <div class="grid grid-cols-8 overflow-scroll mb-8 lg:block">
+    <div class="hidden lg:grid lg:grid-cols-2 lg:grid-rows-2">
       <div
-        v-if="gameStore.gameState === 'loaded' || gameStore.gameState === 'memorize'"
-        :style="{ visibility: gameStore.gameState === 'memorize' ? 'hidden' : 'visible' }"
-        class="flex mx-5"
-      >
-        <img
-          class="w-32 h-auto object-contain self-end pb-4 ml-2"
-          :src="MullwardMemorizingImage"
-          alt="Mullward memorerar bilder"
-          @load="mullwardMemorizingImageLoaded"
-        >
-        <SpeechBubble
-          class="mt-6 mb-8 self-center"
-          :left="true"
-        >
-          <span><strong>Memorera de historiska skatterna!</strong><br>
-            Tryck på jorden för att starta.</span>
-        </SpeechBubble>
-      </div>
-
-      <div
-        v-if="gameStore.gameState === 'play'"
-        class="flex items-end justify-end"
-      >
-        <!--- Target item -->
-        <img
-          v-if="gameStore.gameState === 'play'"
-          class="mt-20 w-28 h-28 object-cover my-0 mx-auto border border-black mb-4"
-          :src="gameStore.targetItem?.image"
-          alt="Föremål att hitta"
-        >
-      </div>
-
-      <div
-        v-if="gameStore.gameState === 'finished' && gameStore.allItemsGuessed === true"
-        class="mx-5 flex justify-center items-center p-4 bg-no-repeat bg-bottom bg-contain"
-        :style="{ backgroundImage: `url('${MullwardDigSuccessImage}')` }"
-      >
-        <SpeechBubble
-          class="relative left-10 bottom-5"
-          :left="true"
-        >
-          <span><strong>WOW, vilka föremål!</strong><br>
-            Tryck på ett för att läsa mer och lägga i ryggsäcken.</span>
-        </SpeechBubble>
-      </div>
-    </div>
-    
-    <div
-      class="col-span-8 sm:col-span-8 md:col-span-4 lg:col-span-4 xl:col-span-4"
-    >
-      <!-- Content for the second div -->
-
-      <!-- Game loaded / memorize -->
-      <div
-        v-if="gameStore.gameState === 'loaded' || gameStore.gameState === 'memorize'"
+        v-if="gameStore.category === null"
         class="mx-5"
       >
-        <MemoryCardsGrid
-          :items="gameStore.items"
-          :back-images="tileImages"
-          @click="checkStartConditions"
-        />
+        <PopUp :text="'Du behöver välja kategori för att spela.'">
+          <BasicButton
+            :text="'Gå tillbaka'"
+            :route="'/choose-category'"
+          />
+        </PopUp>
       </div>
 
-      <div v-if="gameStore.gameState === 'play' || gameStore.gameState === 'finished'">
+      <div
+        v-else-if="!thumbnailsLoaded || !mullwardLoaded && gameStore.gameState === 'start'"
+        class="col-span-8 my-32 flex flex-col justify-center items-center lg:col-span-1"
+      >
+        <fwb-spinner
+          size="12"
+          color="green"
+          class="self-center"
+        />
+        <span class="pt-2">Slumpar fram föremål...</span>
+      </div>
+    
+      <div
+        v-else
+        class="flex flex-col justify-end col-span-8 h-48 lg:col-span-1 lg:col-start-1 lg:row-span-1 lg:row-start-1 lg:bg-blue-400"
+      >
+        <!-- Content for the first div -->
+
         <div
-          v-if="thumbnailsLoaded && mullwardLoaded"
+          v-if="gameStore.gameState === 'loaded' || gameStore.gameState === 'memorize'"
+          :style="{ visibility: gameStore.gameState === 'memorize' ? 'hidden' : 'visible' }"
+          class="flex mx-5"
+        >
+          <img
+            class="w-32 h-auto object-contain self-end pb-4 ml-2"
+            :src="MullwardMemorizingImage"
+            alt="Mullward memorerar bilder"
+            @load="mullwardMemorizingImageLoaded"
+          >
+          <SpeechBubble
+            class="mt-6 mb-8 self-center"
+            :left="true"
+          >
+            <span><strong>Memorera de historiska skatterna!</strong><br>
+              Tryck på jorden för att starta.</span>
+          </SpeechBubble>
+        </div>
+
+        <div
+          v-if="gameStore.gameState === 'play'"
+          class="flex items-end justify-end lg:bg-red-500"
+        >
+          <!--- Target item -->
+          <img
+            v-if="gameStore.gameState === 'play'"
+            class="mt-20 w-28 h-28 object-cover my-0 mx-auto border border-black mb-4"
+            :src="gameStore.targetItem?.image"
+            alt="Föremål att hitta"
+          >
+        </div>
+
+        <div
+          v-if="gameStore.gameState === 'finished' && gameStore.allItemsGuessed === true"
+          class="mx-5 flex justify-center items-center p-4 bg-no-repeat bg-bottom bg-contain"
+          :style="{ backgroundImage: `url('${MullwardDigSuccessImage}')` }"
+        >
+          <SpeechBubble
+            class="relative left-10 bottom-5"
+            :left="true"
+          >
+            <span><strong>WOW, vilka föremål!</strong><br>
+              Tryck på ett för att läsa mer och lägga i ryggsäcken.</span>
+          </SpeechBubble>
+        </div>
+      </div>
+    
+      <div
+        class="col-span-8 lg:bg-green-400 lg:col-span-1 lg:col-start-2 lg:row-span-2 lg:row-start-1"
+      >
+        <!-- Content for the second div -->
+
+        <!-- Game loaded / memorize -->
+        <div
+          v-if="gameStore.gameState === 'loaded' || gameStore.gameState === 'memorize'"
           class="mx-5"
         >
           <MemoryCardsGrid
             :items="gameStore.items"
             :back-images="tileImages"
-            @select-item="selectedItem = $event"
+            class="lg:w-20 lg:h-20"
+            @click="checkStartConditions"
           />
-          <!-- Item Details Popup -->
-          <ItemWonPopUp
-            v-if="gameStore.allItemsGuessed === true && selectedItem"
-            :item="selectedItem"
-            @close="selectedItem = null"
-          />
+        </div>
+
+        <div v-if="gameStore.gameState === 'play' || gameStore.gameState === 'finished'">
+          <div
+            v-if="thumbnailsLoaded && mullwardLoaded"
+            class="mx-5"
+          >
+            <MemoryCardsGrid
+              :items="gameStore.items"
+              :back-images="tileImages"
+              @select-item="selectedItem = $event"
+            />
+            <!-- Item Details Popup -->
+            <ItemWonPopUp
+              v-if="gameStore.allItemsGuessed === true && selectedItem"
+              :item="selectedItem"
+              @close="selectedItem = null"
+            />
+          </div>
+        </div>
+
+        <div
+          v-if="gameStore.gameState === 'finished' && gameStore.allItemsGuessed === false"
+          class="mx-5"
+        >
+          <PopUp :text="'Rutten daggmask också! Tiden tog slut.'">
+            <img
+              :src="DaggmaskImage"
+              alt="Daggmask"
+              class="w-44 h-auto absolute top-0 left-2/3 transform -translate-x-1/2 -translate-y-24"
+            >
+            <BasicButton
+              :text="'Försök igen'"
+              :route="'/choose-category'"
+            />
+          </PopUp>
         </div>
       </div>
 
+
       <div
-        v-if="gameStore.gameState === 'finished' && gameStore.allItemsGuessed === false"
-        class="mx-5"
+        class="col-span-8 lg:bg-yellow-200 lg:col-span-1 lg:col-start-1 lg:row-span-1 lg:row-start-2"
       >
-        <PopUp :text="'Rutten daggmask också! Tiden tog slut.'">
-          <img
-            :src="DaggmaskImage"
-            alt="Daggmask"
-            class="w-44 h-auto absolute top-0 left-2/3 transform -translate-x-1/2 -translate-y-24"
-          >
-          <BasicButton
-            :text="'Försök igen'"
-            :route="'/choose-category'"
+        <!-- Content for the third div -->
+
+        <!-- Game memorize & thumbnailsloaded -->
+        <div
+          v-if="gameStore.gameState === 'memorize' || gameStore.gameState === 'play'"
+          class="px-16 pt-6 pb-4"
+        >
+          <ProgressBar
+            v-if="gameStore.gameState === 'memorize'"
+            :progress="gameStore.memorizeTimeLeftPercentage"
+            :color-change="true"
+            :height="'8'"
           />
-        </PopUp>
-      </div>
-    </div>
 
+          <ProgressBar
+            v-else-if="gameStore.gameState === 'play'"
+            :progress="gameStore.gameTimeLeftPercentage"
+            :color-change="true"
+            :height="'8'"
+          />
+        </div>
 
-    <div
-      class="col-span-8 sm:col-span-8 md:col-span-1 lg:col-span-1 xl:col-span-1"
-    >
-      <!-- Content for the third div -->
-
-      <!-- Game memorize & thumbnailsloaded -->
-      <div
-        v-if="gameStore.gameState === 'memorize' || gameStore.gameState === 'play'"
-        class="px-16 pt-6 pb-4"
-      >
-        <ProgressBar
-          v-if="gameStore.gameState === 'memorize'"
-          :progress="gameStore.memorizeTimeLeftPercentage"
-          :color-change="true"
-          :height="'8'"
-        />
-
-        <ProgressBar
-          v-else-if="gameStore.gameState === 'play'"
-          :progress="gameStore.gameTimeLeftPercentage"
-          :color-change="true"
-          :height="'8'"
-        />
-      </div>
-
-      <div
-        v-if="gameStore.gameState === 'finished' && gameStore.allItemsGuessed === true"
-        class="text-center mx-5 my-4"
-      >
-        <p>
-          Spara föremål från utgrävningen 
-          innan du öppnar ryggsäcken - annars försvinner de.
-        </p>
+        <div
+          v-if="gameStore.gameState === 'finished' && gameStore.allItemsGuessed === true"
+          class="text-center mx-5 my-4"
+        >
+          <p>
+            Spara föremål från utgrävningen 
+            innan du öppnar ryggsäcken - annars försvinner de.
+          </p>
+        </div>
       </div>
     </div>
   </div>
@@ -180,7 +183,7 @@
 import { ref, onBeforeUnmount, onMounted, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useGameStore } from '@/stores/gameStore';
-import { FwbSpinner, FwbProgress } from 'flowbite-vue';
+import { FwbSpinner } from 'flowbite-vue';
 import Ksamsok from '@/services/Ksamsok.js';
 import MemoryCardsGrid from '@/components/game/MemoryCardsGrid.vue';
 import ItemWonPopUp from '@/components/game/ItemWonPopUp.vue'

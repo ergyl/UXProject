@@ -11,7 +11,7 @@ Use Tailwind CSS by applying classes to html elements in class="..."-->
         Hemma hos Mullward
       </h2>
     </div>
-    <div class="flex justify-center items col-span-8 bg-red-400">
+    <div class="flex justify-center items col-span-8">
       <figure>
         <img
           :src="mullwardSmallImage" 

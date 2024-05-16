@@ -73,7 +73,8 @@ include utitilies for by deafult.
     }
   }
   
-  @media (min-width: 768px) { /* md breakpoint */
+/**
+  @media (min-width: 768px) {
     h1 {
       @apply text-4xl;
     }
@@ -81,22 +82,14 @@ include utitilies for by deafult.
       @apply text-3xl;
     }
   }
+**/
   
   @media (min-width: 1024px) { /* lg breakpoint */
     h1 {
       @apply text-5xl;
     }
     h2 {
-      @apply text-4xl;
-    }
-  }
-
-  @media (min-width: 1280px) { /* xl breakpoint */
-    h1 {
-      @apply text-6xl;
-    }
-    h2 {
-      @apply text-5xl;
+      @apply text-sm;
     }
   }
 }
