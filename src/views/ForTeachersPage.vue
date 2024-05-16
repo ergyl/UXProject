@@ -16,8 +16,8 @@
         <fwb-accordion-content>
           <div>
             <ul class="list-disc mb-2 text-gray-500">
-              <li>Introducera spelet och karaktären Mullvard till eleverna.</li><br>
-              <li>Berätta att de ska använda föremålen de samlat in under spelet som inspiration för att skriva berättelser.</li><br>
+              <li>Introducera spelet och karaktären Mullvard till eleverna.</li>
+              <li>Berätta att de ska använda föremålen de samlat in under spelet som inspiration för att skriva berättelser.</li>
               <li>Låt eleverna spela och samla historiska föremål.</li>
             </ul>
           </div>
