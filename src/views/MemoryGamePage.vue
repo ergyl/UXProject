@@ -265,7 +265,7 @@ if (router && route) {
 }
 
 function checkStartConditions() {
-  if (thumbnailsLoaded.value && mullwardLoaded.value) {
+  if (thumbnailsLoaded.value && mullwardLoaded.value && gameStore.gameState !== 'memorize') {
     gameStore.startGame();
   }
 }
@@ -288,7 +288,7 @@ onBeforeUnmount(() => {
 
 .slide-fade-enter-from,
 .slide-fade-leave-to {
-  transform: translateY(20px);
+  transform: translateY(15px);
   opacity: 0;
 }
 </style>
