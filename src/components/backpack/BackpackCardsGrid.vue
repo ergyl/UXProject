@@ -11,6 +11,7 @@ MemoryCard components in the grid -->
         :key="index"
         :item="item"
         :front-image="item ? item.image : slotImage"
+        :slot-image="slotImage"
         @select-item="handleSelectItem(item)"
       />
     </template>

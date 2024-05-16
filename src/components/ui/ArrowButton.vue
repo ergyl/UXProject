@@ -69,7 +69,7 @@ between images displayed in StoryPage -->
   
   const buttonClasses = computed(() => ({
       'bg-contain bg-center bg-no-repeat': true,
-      'opacity-30 cursor-not-allowed': !props.isEnabled,
+      'opacity-30': !props.isEnabled,
   }));
   
 // Event handlers

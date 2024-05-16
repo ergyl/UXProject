@@ -56,7 +56,7 @@ export default {
         },
         buttonClasses() {
             if (this.disabled) {
-                return 'bg-beigebrun cursor-not-allowed border';
+                return 'bg-beigebrun border';
             } else if (this.isPressed) {
                 return 'bg-morkTerracotta';
             } else {

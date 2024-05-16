@@ -2,8 +2,8 @@
 
 <template>
   <div
-    class="overlay flex items-center justify-center h-full w-full object-cover bg-cover bg-center cursor-pointer"
-    :class="{ active: isActive }"
+    class="overlay flex items-center justify-center h-full w-full object-cover bg-cover bg-center"
+    :class="{ active: isActive, 'cursor-pointer': isClickable }"
     :style="{ backgroundImage: `url(${frontImage})` }"
     @click="toggle"
   />
@@ -21,6 +21,10 @@ export default {
     frontImage: {
       type: String,
       required: true
+    },
+    slotImage: {
+      type: String,
+      required: true
     }
   },
   emits: ['select-item'],
@@ -29,13 +33,17 @@ export default {
       isActive: false
     };
   },
+  computed: {
+    isClickable() {
+      return this.frontImage !== this.slotImage && this.item;
+    }
+  },
   methods: {
     toggle() {
-      if (this.item) {
+      if (this.isClickable) {
         this.isActive = !this.isActive;
         this.$emit('select-item', this.item);
       }
-
     }
   }
 };
@@ -54,7 +62,6 @@ export default {
   right: 0;
   bottom: 0;
   background: rgba(119, 158, 75, 0.7);
-  /* Green color #779E4B with 50% opacity */
   pointer-events: none;
   display: none;
 }

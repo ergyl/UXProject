@@ -43,7 +43,8 @@ export default {
   data() {
     return {
       isFlipped: true,
-      isFound: false
+      isFound: false,
+      canSelectAfterWinning: false,
     };
   },
   computed: {
@@ -55,13 +56,20 @@ export default {
     }
   },
   watch: {
-    gameState(newVal) {
+    gameState(newVal, oldVal) {
       if (newVal === 'memorize' || newVal === 'finished') {
         this.flip(false); // Show frontImage
       } else if (newVal === 'play') {
         this.flip(true); // Show backImage
       } else {
         this.flip(true); // Default to showing backImage
+      }
+
+      if (newVal === 'finished' && oldVal !== 'finished') {
+        this.canSelectAfterWinning = false;
+        setTimeout(() => {
+          this.canSelectAfterWinning = true;
+        }, 3000); // 3s delay
       }
     }
   },
@@ -86,7 +94,7 @@ export default {
             this.isFlipped = true;
           }, 1500);
         }
-      } else if (currentGameState === 'finished') {
+      } else if (currentGameState === 'finished' && this.canSelectAfterWinning) {
         this.$emit('select-item', this.item);
       }
     },
@@ -109,14 +117,17 @@ export default {
   transition: transform 0.6s;
   transform-style: preserve-3d;
   position: relative;
-  transform: rotateY(180deg); /* Default to showing back */
+  transform: rotateY(180deg);
+  /* Default to showing back */
 }
 
 .memory-card.flipped .card-inner {
-  transform: rotateY(0deg); /* Flip to show front */
+  transform: rotateY(0deg);
+  /* Flip to show front */
 }
 
-.card-front, .card-back {
+.card-front,
+.card-back {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -126,7 +137,7 @@ export default {
 }
 
 .card-front {
-  
+
   transform: rotateY(0deg);
 }
 
