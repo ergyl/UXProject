@@ -37,6 +37,8 @@
   'bg-beigebrun': isActive.value,
   'bg-transparent': !isActive.value,
   'motion-safe:animate-bounce': isInEmptyBackpack.value,
+  'relative': isInEmptyBackpack.value,
+  'top-4': isInEmptyBackpack.value,
   'animate-none': !isInEmptyBackpack.value,
 }));
   </script>
