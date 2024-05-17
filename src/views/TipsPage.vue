@@ -55,6 +55,9 @@
               <p class="mb-2 text-gray-500">
                 Beskriv karaktärernas känslor och hur det påverkar vad de säger och gör.
               </p>
+              <p class="mb-2 text-gray-500">
+                Exempel på känslor: glädje, intresse, mod, stolthet, förvåning, ilska, ledsenhet, rädsla
+              </p>
             </div>
           </fwb-accordion-content>
         </fwb-accordion-panel>

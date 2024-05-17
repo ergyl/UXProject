@@ -35,17 +35,7 @@
       />
     </div>
 
-    <div
-      class="col-span-8 sm:col-span-8 md:col-span-1 lg:col-span-1 xl:col-span-1"
-    >
-      <div class="flex justify-center px-16 py-8">
-        <BasicButton
-          class="px-10"
-          text="Donera"
-          @click="backpackStore.removeItem()"
-        />
-      </div>
-    </div>
+
   </div>
 </template>
 
@@ -54,7 +44,6 @@ import { useBackpackStore } from '@/stores/backpackStore';
 import SpeechBubble from '@/components/SpeechBubble.vue';
 import BackpackCardsGrid from '@/components/backpack/BackpackCardsGrid.vue';
 import MullwardCloseUpImage from '@/assets/images/illustrations/characters/mullward-backpack-closeup.png';
-import BasicButton from '@/components/ui/BasicButton.vue';
 
 const backpackStore = useBackpackStore();
 </script>
