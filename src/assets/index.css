@@ -85,6 +85,10 @@ include utitilies for by deafult.
 **/
   
   @media (min-width: 1024px) { /* lg breakpoint */
+    .magic-margin {
+      margin-left: calc(8px + 1.5625vw);
+      margin-right: calc(8px + 1.5625vw);
+    }
     h1 {
       @apply text-5xl;
     }

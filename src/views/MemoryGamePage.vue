@@ -4,7 +4,7 @@
     displaying the memory game with all its components -->
 
 <template>
-  <div class="grid grid-cols-8 overflow-scroll mb-8">
+  <div class="grid grid-cols-8 overflow-scroll mb-8 lg:grid-cols-6 lg:mt-8 lg:gap-5 lg:magic-margin">
     <div
       v-if="gameStore.category === null"
       class="mx-5"
@@ -31,23 +31,23 @@
 
     <div
       v-else
-      class="flex flex-col justify-end col-span-8 h-48"
+      class="flex flex-col justify-end col-span-8 h-48 lg:flew-row lg:flex-wrap lg:bg-blue-400 lg:col-start-1 lg:col-span-2 lg:h-fit"
     >
       <!-- Content for the first div -->
 
       <div
         v-if="gameStore.gameState === 'loaded' || gameStore.gameState === 'memorize'"
         :style="{ visibility: gameStore.gameState === 'memorize' ? 'hidden' : 'visible' }"
-        class="flex mx-5"
+        class="flex mx-5 lg:flex-col lg:h-full"
       >
         <img
-          class="w-32 h-auto object-contain self-end pb-4 ml-2"
+          class="w-32 h-auto object-contain self-end pb-4 ml-2 lg:w-[60%] lg:h-auto lg:self-center lg:p-0 lg:m-0"
           :src="MullwardMemorizingImage"
           alt="Mullward memorerar bilder"
           @load="mullwardMemorizingImageLoaded"
         >
         <SpeechBubble
-          class="mt-6 mb-8 self-center"
+          class="mt-6 mb-8 self-center lg:self-center"
           :left="true"
         >
           <span><strong>Memorera de historiska skatterna!</strong><br>
@@ -67,7 +67,7 @@
           <img
             v-if="gameStore.gameState === 'play'"
             :key="gameStore.targetItem.id"
-            class="mt-20 w-28 h-28 object-cover my-0 mx-auto border border-black mb-4"
+            class="mt-20 w-28 h-28 object-cover my-0 mx-auto border border-black mb-4 lg:aspect-square lg:w-[50%] lg:h-auto"
             :src="gameStore.targetItem?.image"
             alt="Föremål att hitta"
           >
@@ -89,15 +89,15 @@
       </div>
     </div>
 
-    <div class="col-span-8">
+    <div class="col-span-8 lg:bg-red-400 lg:col-start-3 lg:col-span-4 lg:h-fit">
       <!-- Content for the second div -->
 
       <!-- Game loaded / memorize -->
       <div
         v-if="gameStore.gameState === 'loaded' || gameStore.gameState === 'memorize'"
-        class="mx-5"
       >
         <MemoryCardsGrid
+          class="lg:max-w-[50%]"
           :items="gameStore.items"
           :back-images="tileImages"
           @click="checkStartConditions"
@@ -107,9 +107,9 @@
       <div v-if="gameStore.gameState === 'play' || gameStore.gameState === 'finished'">
         <div
           v-if="thumbnailsLoaded && mullwardLoaded"
-          class="mx-5"
         >
           <MemoryCardsGrid
+            class="lg:max-w-[50%]"
             :items="gameStore.items"
             :back-images="tileImages"
             @select-item="selectedItem = $event"
@@ -142,7 +142,7 @@
     </div>
 
 
-    <div class="col-span-8">
+    <div class="col-span-8 lg:bg-yellow-400 lg:col-start-1 lg:col-span-6 lg:h-fit">
       <!-- Content for the third div -->
 
       <!-- Game memorize & thumbnailsloaded -->

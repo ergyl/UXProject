@@ -5,7 +5,7 @@
     class="grid grid-cols-8 overflow-scroll mb-8"
   >
     <div
-      class="flex col-span-8 sm:col-span-8 md:col-span-3 lg:col-span-3 xl:col-span-3 h-48"
+      class="flex col-span-8 h-48"
     >
       <div class="flex ml-10 mr-5 w-full gap-5">
         <img
@@ -26,16 +26,13 @@
     </div>
 
     <div
-      class="col-span-8 sm:col-span-8 md:col-span-4 lg:col-span-4 xl:col-span-4"
+      class="col-span-8 mx-5"
     >
       <BackpackCardsGrid
-        class="mx-5"
         :items="backpackStore.itemsObjects"
         @select-item="selectedItem = $event"
       />
     </div>
-
-
   </div>
 </template>
 
