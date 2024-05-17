@@ -1,5 +1,5 @@
 <!-- A popup to display information and image for item.
-  Uses item properties 'image' for image URL, 'itemName' and
+  aaaaaaUses item properties 'image' for image URL, 'itemName' and
 'description' from the object passed to this component -->
 
 <template>

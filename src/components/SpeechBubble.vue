@@ -1,13 +1,16 @@
 <!-- A speech bubble that lets you add text on top of it -->
 
-
 <template>
   <div
     :class="[bubbleClass, 'speech-bubble']"
-    class="relative flex items-center justify-center text-center leading-none select-none"
+    class="relative"
   >
-    <!-- Slot for custom text to be added, with constraints -->
-    <div class="content-container">
+    <img
+      :src="bubbleImage"
+      alt=""
+      class="w-full h-auto"
+    >
+    <div class="content-container absolute inset-0 flex items-center justify-center my-1 mx-3">
       <slot />
     </div>
   </div>
@@ -16,6 +19,8 @@
 <script setup>
 import { computed } from 'vue';
 import { defineProps } from 'vue';
+import speechBubbleLeft from '@/assets/images/illustrations/speechbubble-left.png';
+import speechBubbleDown from '@/assets/images/illustrations/speechbubble-down.png';
 
 const props = defineProps({
   left: {
@@ -28,38 +33,32 @@ const props = defineProps({
   }
 });
 
+const bubbleImage = computed(() => {
+  return props.left ? speechBubbleLeft : speechBubbleDown;
+});
+
 const bubbleClass = computed(() => {
-  let baseClass = props.left ? 'bg-speech-left' : 'bg-speech-down';
-  if (props.reverse) {
-    baseClass += ' rotate-180';
-  }
-  return baseClass;
+  return props.reverse ? 'rotate-180' : '';
 });
 </script>
 
 <style scoped>
 .speech-bubble {
-  @apply inline-flex w-auto max-w-[60%] min-h-[70%] py-6 px-3 lg:max-w-[80%] lg:min-h-[80%] lg:py-14 lg:px-0;
+  @apply w-auto max-w-[60%] h-auto;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
 }
 
 .content-container {
-  @apply max-w-[80%] select-none relative -top-2 p-1 flex flex-row justify-center items-center lg:max-w-[60%];
+  @apply flex flex-wrap select-none text-center;
+  max-width: 100%;
+  max-height: 80%; 
+  z-index: 5;
 }
 
-.bg-speech-left {
-  background-image: url('@/assets/images/illustrations/speechbubble-left.png');
-}
-
-.bg-speech-down {
-  background-image: url('@/assets/images/illustrations/speechbubble-down.png');
-}
-
-.bg-speech-left,
-.bg-speech-down {
-  @apply bg-no-repeat bg-center bg-contain;
-}
-
-.rotate-180 {
+.rotate-180 img {
   transform: rotate(180deg);
 }
 </style>
+

@@ -3,7 +3,10 @@
     <AppLogo class="h-16 w-auto" />
   </div>
   <div class="px-16 pt-6 pb-4">
-    <ProgressBar :progress="progress" :height="'5'" />
+    <ProgressBar
+      :progress="progress"
+      :height="'5'"
+    />
   </div>
 </template>
 
@@ -14,7 +17,6 @@
   import AppLogo from '@/components/AppLogo.vue';
 
   const progress = ref('0');
-  const height = '8';
   const router = useRouter();
 
   const simulateProgress = () => {
