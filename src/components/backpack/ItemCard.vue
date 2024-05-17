@@ -61,7 +61,6 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(119, 158, 75, 0.7);
   pointer-events: none;
   display: none;
 }

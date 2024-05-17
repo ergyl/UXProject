@@ -40,10 +40,10 @@
     >
       <div class="flex justify-center px-16 py-8">
         <BasicButton
+          @click="backpackStore.removeItem()"
           class="px-10"
           text="Donera"
-          @click="backpackStore.removeItem()"
-        />
+        /> 
       </div>
     </div>
   </div>
