@@ -9,12 +9,12 @@
     >
       <div class="flex ml-10 mr-5 w-full gap-5">
         <img
-          class="w-20 h-auto self-end"
+          class="w-24 h-auto self-end"
           :src="MullwardCloseUpImage"
           alt="closeup"
         >
         <SpeechBubble
-          class="mt-6 mb-8 self-center"
+          class="mt-6 mb-8 self-center relative right-2"
           :left="true"
         >
           <span v-if="!backpackStore.isEmpty"><br>Vilket föremål<br>

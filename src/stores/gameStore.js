@@ -135,7 +135,7 @@ export const useGameStore = defineStore('game', {
 
     playGame() {
       this.setGameState('play');
-      //this.startPlayTimerWithDelay();
+      this.startPlayTimerWithDelay();
       console.log('playGame called, current state:', this.gameState);
 
     },

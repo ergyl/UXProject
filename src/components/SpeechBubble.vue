@@ -39,7 +39,7 @@ const bubbleClass = computed(() => {
 
 <style scoped>
 .speech-bubble {
-  @apply inline-flex w-auto max-w-[80%] min-h-[50%] py-6 px-3 lg:max-w-[80%] lg:min-h-[80%] lg:py-14 lg:px-0;
+  @apply inline-flex w-auto max-w-[60%] min-h-[70%] py-6 px-3 lg:max-w-[80%] lg:min-h-[80%] lg:py-14 lg:px-0;
 }
 
 .content-container {

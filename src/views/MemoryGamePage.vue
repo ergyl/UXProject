@@ -4,7 +4,7 @@
     displaying the memory game with all its components -->
 
 <template>
-  <div class="grid grid-cols-8 overflow-scroll mb-8 lg:grid-cols-6 lg:mt-8 lg:gap-5 lg:magic-margin">
+  <div class="grid grid-cols-8 overflow-scroll mb-8 lg:grid-cols-6 lg:mt-10 lg:gap-5 lg:magic-margin">
     <div
       v-if="gameStore.category === null"
       class="mx-5"
@@ -31,23 +31,23 @@
 
     <div
       v-else
-      class="flex flex-col justify-end col-span-8 h-48 lg:flew-row lg:flex-wrap lg:bg-blue-400 lg:col-start-1 lg:col-span-2 lg:h-fit"
+      class="flex flex-col justify-end col-span-8 h-48 lg:flew-row lg:flex-wrap lg:col-start-1 lg:col-span-2 lg:h-fit"
     >
       <!-- Content for the first div -->
 
       <div
         v-if="gameStore.gameState === 'loaded' || gameStore.gameState === 'memorize'"
         :style="{ visibility: gameStore.gameState === 'memorize' ? 'hidden' : 'visible' }"
-        class="flex mx-5 lg:flex-col lg:h-full"
+        class="flex mx-5 lg:flex-col lg:h-full lg:mx-0"
       >
         <img
-          class="w-32 h-auto object-contain self-end pb-4 ml-2 lg:w-[60%] lg:h-auto lg:self-center lg:p-0 lg:m-0"
+          class="w-32 h-auto object-contain self-end pb-4 ml-2 lg:w-[60%] lg:h-auto lg:self-center lg:p-0 lg:m-0 lg:relative lg:top-48 lg:right-10"
           :src="MullwardMemorizingImage"
           alt="Mullward memorerar bilder"
           @load="mullwardMemorizingImageLoaded"
         >
         <SpeechBubble
-          class="mt-6 mb-8 self-center lg:self-center"
+          class="mt-6 mb-8 self-center lg:self-center lg:relative lg:bottom-80 lg:left-28"
           :left="true"
         >
           <span><strong>Memorera de historiska skatterna!</strong><br>
@@ -57,7 +57,7 @@
 
       <div
         v-if="gameStore.gameState === 'play'"
-        class="flex items-end justify-end"
+        class="flex items-end justify-end lg:items-end"
       >
         <!--- Target item -->
         <Transition
@@ -67,7 +67,7 @@
           <img
             v-if="gameStore.gameState === 'play'"
             :key="gameStore.targetItem.id"
-            class="mt-20 w-28 h-28 object-cover my-0 mx-auto border border-black mb-4 lg:aspect-square lg:w-[50%] lg:h-auto"
+            class="mt-20 w-28 h-28 object-cover my-0 mx-auto border border-black mb-4 lg:aspect-square lg:w-[40%] lg:h-auto"
             :src="gameStore.targetItem?.image"
             alt="Föremål att hitta"
           >
@@ -80,7 +80,7 @@
         :style="{ backgroundImage: `url('${MullwardDigSuccessImage}')` }"
       >
         <SpeechBubble
-          class="relative left-10 bottom-5"
+          class="relative left-8 rotate-3 bottom-5 lg:left-10  lg:bottom-5"
           :left="true"
         >
           <span><strong>WOW, vilka föremål!</strong><br>
@@ -89,7 +89,7 @@
       </div>
     </div>
 
-    <div class="col-span-8 lg:bg-red-400 lg:col-start-3 lg:col-span-4 lg:h-fit">
+    <div class="col-span-8 lg:col-start-3 lg:col-span-4 lg:h-fit">
       <!-- Content for the second div -->
 
       <!-- Game loaded / memorize -->
@@ -97,7 +97,7 @@
         v-if="gameStore.gameState === 'loaded' || gameStore.gameState === 'memorize'"
       >
         <MemoryCardsGrid
-          class="lg:max-w-[50%]"
+          class="mx-5 lg:mx-0 lg:max-w-[50%]"
           :items="gameStore.items"
           :back-images="tileImages"
           @click="checkStartConditions"
@@ -109,7 +109,7 @@
           v-if="thumbnailsLoaded && mullwardLoaded"
         >
           <MemoryCardsGrid
-            class="lg:max-w-[50%]"
+            class="mx-5 lg:mx-0 lg:max-w-[50%]"
             :items="gameStore.items"
             :back-images="tileImages"
             @select-item="selectedItem = $event"
@@ -142,19 +142,20 @@
     </div>
 
 
-    <div class="col-span-8 lg:bg-yellow-400 lg:col-start-1 lg:col-span-6 lg:h-fit">
+    <div class="col-span-8 lg:col-start-1 lg:col-span-6 lg:h-fit">
       <!-- Content for the third div -->
 
       <!-- Game memorize & thumbnailsloaded -->
       <div
         v-if="gameStore.gameState === 'memorize' || gameStore.gameState === 'play'"
-        class="px-16 pt-6 pb-4"
+        class="px-16 pt-6 pb-4 lg:flex lg:justify-center"
       >
         <ProgressBar
           v-if="gameStore.gameState === 'memorize'"
           :progress="gameStore.memorizeTimeLeftPercentage"
           :color-change="true"
           :height="'8'"
+          class="lg:w-[60%]"
         />
 
         <ProgressBar
@@ -162,6 +163,7 @@
           :progress="gameStore.gameTimeLeftPercentage"
           :color-change="true"
           :height="'8'"
+          class="lg:w-[60%]"
         />
       </div>
 
