@@ -6,7 +6,7 @@
 <template>
   <div class="grid grid-cols-8 grid-rows-24 min-h-screen max-h-screen relative overflow-hidden">
     <!-- Top Nav -->
-    <div class="col-span-8 row-span-4 bg-vit lg:row-span-2">
+    <div class="col-span-8 row-span-4 bg-vit lg:row-span-3">
       <nav
         class="flex h-full items-center lg:justify-center"
         aria-label="Huvudmeny"
@@ -19,7 +19,7 @@
  
     <!-- Main content grid -->
     <main
-      :class="{'row-span-20 lg:row-span-24': !displayFooter, 'row-span-16 lg:row-span-20': displayFooter}"
+      :class="{'row-span-19 lg:row-span-21': !displayFooter, 'row-span-14 lg:row-span-18': displayFooter}"
       class="col-span-8 bg-beigebrun overflow-scroll"
     >
       <RouterView v-slot="{ Component }">
@@ -33,11 +33,11 @@
     <!-- Footer row -->
     <footer
       v-if="displayFooter"
-      class="col-span-8 row-span-4 bg-vit lg:row-span-2"
+      class="col-span-8 row-span-4 bg-vit lg:row-span-3"
     >
       <nav
         v-if="currentPath === '/story'"
-        class="flex w-full h-full justify-between items-center lg:justify-center"
+        class="flex w-full h-full justify-between items-center lg:justify-center lg:gap-10"
         aria-label="Meny för story"
       >
         <ArrowButton
