@@ -8,7 +8,7 @@
     <!-- Top Nav -->
     <div class="col-span-8 row-span-4 bg-vit lg:row-span-3">
       <nav
-        class="flex h-full items-center lg:justify-center"
+        class="flex h-full items-center lg:justify-center lg:gap-10"
         aria-label="Huvudmeny"
       >
         <BackpackButton class="lg:w-24" />
@@ -19,7 +19,7 @@
  
     <!-- Main content grid -->
     <main
-      :class="{'row-span-19 lg:row-span-21': !displayFooter, 'row-span-14 lg:row-span-18': displayFooter}"
+      :class="{'row-span-18': !displayFooter, 'row-span-15': displayFooter}"
       class="col-span-8 bg-beigebrun overflow-scroll"
     >
       <RouterView v-slot="{ Component }">
@@ -56,7 +56,7 @@
       
       <nav
         v-else
-        class="flex w-full h-full justify-between items-center lg:justify-center"
+        class="flex w-full h-full justify-between items-center lg:justify-center lg:gap-10"
         aria-label="Sidomeny"
       >
         <InfoButton class="lg:w-24" />

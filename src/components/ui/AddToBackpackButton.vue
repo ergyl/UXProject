@@ -64,8 +64,9 @@
               } else if (this.isPressed) {
                   return 'bg-morkTerracotta';
               } else if (this.isDisabled) {
-                  return 'bg-terracotta';
-              } else {
+                  return 'bg-beigebrun';
+              }
+              else {
                   return 'bg-terracotta hover:bg-ljusTerracotta';
               }
           },
