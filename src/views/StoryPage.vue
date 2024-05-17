@@ -33,7 +33,7 @@
           <img
             :key="storyStore.showLastTransition"
             :src="currentImageDisplayed"
-            alt="Final Story"
+            alt="Muséet"
             class="max-h-[480px] w-auto"
             @load="timerOnLastImage"
           >
