@@ -19,7 +19,7 @@ MemoryCard components in the grid -->
     </template>
   </NineCardsGrid>
   <!-- Item Won Popup -->
-  <ItemWonPopUp
+  <ItemInspectPopUp
     v-if="selectedItem"
     :item="selectedItem"
     @close="handleClose"
@@ -31,13 +31,13 @@ import { useBackpackStore } from '@/stores/backpackStore';
 import NineCardsGrid from '@/components/ui/NineCardsGrid.vue';
 import ItemCard from '@/components/backpack/ItemCard.vue';
 import SlotImage from '@/assets/images/illustrations/backpack/backpack-slot.png';
-import ItemWonPopUp from '@/components/game/ItemWonPopUp.vue'
+import ItemInspectPopUp from '@/components/backpack/ItemInspectPopUp.vue'
 
 export default {
   components: {
     NineCardsGrid,
     ItemCard,
-    ItemWonPopUp, // Register the ItemWonPopUp component
+    ItemInspectPopUp, // Register the ItemWonPopUp component
   },
   props: {
     items: {
