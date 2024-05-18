@@ -16,9 +16,6 @@
         <fwb-accordion-content>
           <div class="mb-2 text-gray-500">
             <p class="mb-2">
-              <strong>Totalt 24 848 föremål att upptäcka.</strong>
-            </p>
-            <p class="mb-2">
               Kliv in i historiens mysterier som Mullward, en modig liten mullvad som
               tar på sig sig uppdraget att återställa ett tomt museum med historiska skatter.
             </p>
@@ -26,14 +23,17 @@
               Upptäck spännande föremål och skapa egna äventyr genom att låta historien inspirera din fantasi!
             </p>
             <p class="mb-2">
-              När du gräver fram föremål så får du fram nio slumpmässiga föremål. Så här många föremål finns i varje kategori:
+              Föremålen slumpas fram och så här många finns i varje kategori:
             </p>
             <ul class="list-disc mb-2 ml-4">
               <li>Världen runt: 23 521 st</li>
               <li>Leksaker:  752 st</li>
               <li>Inramat: 575 st</li>
             </ul>
-            <p>Möjligheterna är oändliga!</p>
+            <p class="mb-2">
+              Totalt finns 24 848 föremål att upptäcka.
+            </p>
+            <p>Möjligheterna är <em>oändliga!</em></p>
           </div>
         </fwb-accordion-content>
       </fwb-accordion-panel>
@@ -64,8 +64,13 @@
         <fwb-accordion-content>
           <div>
             <p class="mb-2 text-gray-500">
-              Java utvecklare: Proffessor Ilja, Erik och Fredrik.<br>
-              UX-designers: Albin, Åsa, Emelie, Pascal och Erik.
+              Spelet är gjort som ett samarbetsprojekt på yrkeshögskolan Yrgo, Göteborg. Här är vi som gjort spelet (i alfabetisk ordning):
+            </p>
+            <p class="mb-2 text-gray-500">
+              <strong>Java utvecklare:</strong> Erik Gylleus, Fredrik Sjöbäck, Ilia Grigore.<br>
+            </p>
+            <p class="mb-2 text-gray-500">
+              <strong>UX-designers:</strong> Albin Larm, Emelie Berndtsson, Erik Vikingsson, Pascal Reicher, Åsa Eriksson
             </p>
           </div>
         </fwb-accordion-content>
@@ -77,7 +82,7 @@
         <fwb-accordion-content>
           <div>
             <p class="mb-2 text-gray-500">
-              Version 1.0!!!
+              Version 1.0
             </p>
           </div>
         </fwb-accordion-content>
