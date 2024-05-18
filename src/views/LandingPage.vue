@@ -1,13 +1,11 @@
 <template>
-  <div class="flex flex-col min-h-screen max-h-screen justify-center items-center">
-    <AppLogo class="h-16 w-auto" />
-  </div>
-  <div class="px-16 pt-6 pb-4">
+  <div class="flex flex-col min-h-screen max-h-screen justify-center items-center px-16 pt-2 pb-4">
+    <AppLogo class="h-16 w-auto pb-6" />
     <ProgressBar
       :progress="progress"
       :height="'5'"
     />
-  </div>
+  </div>  
 </template>
 
 <script setup>
