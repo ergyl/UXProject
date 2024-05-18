@@ -2,22 +2,25 @@
 
 <template>
   <div
-    class="grid grid-cols-8 overflow-scroll mb-8 lg:mt-10"
+    class="grid grid-cols-8 overflow-scroll mb-8 lg:mt-10 lg:flex lg:flex-col lg:justify-center lg:items-center"
   >
     <div
-      class="flex col-span-8 h-48"
+      class="flex col-span-8 h-48 lg:h-auto lg:flex lg:justify-center lg:items-end"
     >
-      <div class="flex ml-10 mr-5 w-full gap-5">
+      <div class="flex ml-10 mr-5 w-full gap-5 lg:w-[30%] lg:gap-0">
         <img
-          class="w-24 h-auto self-end"
+          class="w-24 h-auto self-end lg:w-[30%] lg:h-auto"
           :src="MullwardCloseUpImage"
           alt="closeup"
         >
         <SpeechBubble
-          class="p-4 mt-6 mb-8 self-center relative right-2 lg:p-0"
+          class="p-4 mt-6 mb-8 self-center relative right-2 lg:self-auto lg:w-full lg:px-2 lg:mb-2"
           :left="true"
         >
-          <span v-if="!backpackStore.isEmpty"><br>Vilket föremål<br>
+          <span
+            v-if="!backpackStore.isEmpty"
+            class="lg:pb-4"
+          ><br>Vilket föremål<br>
             vill du veta mer om?</span>
           <span v-else><strong>Inga fyllda fack!</strong><br>
             Tryck på hackan för att gräva fram nya föremål.</span>
@@ -26,7 +29,7 @@
     </div>
 
     <div
-      class="col-span-8 mx-5"
+      class="col-span-8 mx-5 lg:mx-0 lg:w-[31.7%]"
     >
       <BackpackCardsGrid
         :items="backpackStore.itemsObjects"

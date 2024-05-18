@@ -2,7 +2,6 @@
 MemoryCard components in the grid -->
 
 <template>
-
   <NineCardsGrid
     :items="items"
     :show-default-image="true"
@@ -15,7 +14,6 @@ MemoryCard components in the grid -->
         :slot-image="slotImage"
         @select-item="handleSelectItem(item)"
       />
-
     </template>
   </NineCardsGrid>
   <!-- Item Won Popup -->

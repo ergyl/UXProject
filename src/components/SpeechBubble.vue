@@ -47,6 +47,7 @@ const bubbleClass = computed(() => {
   @apply w-auto max-w-[60%] h-auto;
   position: relative;
   overflow: hidden;
+  z-index: 2;
 }
 
 .content-container {

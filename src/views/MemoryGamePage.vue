@@ -49,7 +49,7 @@
         >
         <SpeechBubble
           v-if="gameStore.gameState === 'loaded'"
-          class="p-6 mb-2 lg:self-center lg:absolute lg:left-36 lg:bottom-40 lg:p-0"
+          class="p-6 mb-2 lg:self-center lg:absolute lg:left-44 lg:bottom-40 lg:p-0"
           :left="true"
         >
           <span><strong>Memorera de<br>historiska skatterna!</strong>
