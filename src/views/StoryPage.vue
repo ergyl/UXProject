@@ -1,8 +1,8 @@
 <!-- Page in the SPA -->
 
 <template>
-  <div class="flex flex-col w-full h-fit justify-start items-center my-8">
-    <span class="self-end relative -top-4 -left-8">{{ storyStore.currentIndex + 1 }}/9</span>
+  <div class="flex flex-col w-full h-fit justify-start items-center my-8 lg:mt-10">
+    <span class="self-end relative -top-4 -left-8 select-none lg:self-center lg:static lg:top-0 lg:left-0 lg:pb-8">{{ storyStore.currentIndex + 1 }}/9</span>
     <div
       v-if="storyStore.currentIndex < storyStore.maximumIndex - 1"
       class="flex mx-8"

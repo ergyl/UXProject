@@ -3,7 +3,7 @@
 <template>
   <div class="grid grid-cols-8 overflow-auto lg:px-32 lg:pb-2">
     <div class="col-span-8 text-center">
-      <h2 class="mt-14 mb-8">
+      <h2 class="mt-14 mb-16 lg:mt-10 lg:mb-8">
         Hemma hos Mullward
       </h2>
     </div>

@@ -2,7 +2,7 @@
 
 <template>
   <div
-    class="grid grid-cols-8 overflow-scroll mb-8"
+    class="grid grid-cols-8 overflow-scroll mb-8 lg:mt-10"
   >
     <div
       class="flex col-span-8 h-48"
