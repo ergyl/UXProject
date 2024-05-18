@@ -47,14 +47,13 @@ const bubbleClass = computed(() => {
   @apply w-auto max-w-[60%] h-auto;
   position: relative;
   overflow: hidden;
-  z-index: 1;
 }
 
 .content-container {
   @apply flex flex-wrap select-none text-center;
   max-width: 100%;
   max-height: 80%; 
-  z-index: 5;
+  z-index: 10;
 }
 
 .rotate-180 img {

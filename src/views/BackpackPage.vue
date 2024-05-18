@@ -14,7 +14,7 @@
           alt="closeup"
         >
         <SpeechBubble
-          class="mt-6 mb-8 self-center relative right-2"
+          class="p-4 mt-6 mb-8 self-center relative right-2 lg:p-0"
           :left="true"
         >
           <span v-if="!backpackStore.isEmpty"><br>Vilket föremål<br>

@@ -4,7 +4,7 @@
 
 <template>
   <div
-    class="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center"
+    class="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50"
     @click.self="closePopup"
   >
     <div 

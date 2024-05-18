@@ -90,6 +90,7 @@ include utitilies for by deafult.
       margin-right: calc(8px + 1.5625vw);
     }
     body {
+      @apply selection:bg-ljusbrun selection:text-gra;
       font-size: 1.125rem;
     }
     h1 {

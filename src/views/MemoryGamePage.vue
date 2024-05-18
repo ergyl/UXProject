@@ -49,7 +49,7 @@
         >
         <SpeechBubble
           v-if="gameStore.gameState === 'loaded'"
-          class="mb-2 self-center lg:self-center lg:absolute lg:left-36 lg:bottom-40"
+          class="p-6 mb-2 lg:self-center lg:absolute lg:left-36 lg:bottom-40 lg:p-0"
           :left="true"
         >
           <span><strong>Memorera de<br>historiska skatterna!</strong>
@@ -82,7 +82,7 @@
         :style="{ backgroundImage: `url('${MullwardDigSuccessImage}')` }"
       >
         <SpeechBubble
-          class="relative left-8 rotate-3 bottom-2 lg:left-10 lg:bottom-10 lg:mt-20"
+          class="p-4 relative left-8 rotate-3 bottom-2 lg:left-10 lg:bottom-10 lg:mt-20 lg:p-0"
           :left="true"
         >
           <span><strong>WOW, vilka föremål!</strong><br>
@@ -97,7 +97,7 @@
       <!-- Game loaded / memorize -->
       <div v-if="gameStore.gameState === 'loaded' || gameStore.gameState === 'memorize'">
         <MemoryCardsGrid
-          class="mx-5 lg:mx-0 lg:max-w-[50%] z-0"
+          class="mx-5 lg:mx-0 lg:max-w-[50%]"
           :items="gameStore.items"
           :back-images="tileImages"
           @click="checkStartConditions"
@@ -107,7 +107,7 @@
       <div v-if="gameStore.gameState === 'play' || gameStore.gameState === 'finished'">
         <div v-if="thumbnailsLoaded && mullwardLoaded">
           <MemoryCardsGrid
-            class="mx-5 lg:mx-0 lg:max-w-[50%] z-0"
+            class="mx-5 lg:mx-0 lg:max-w-[50%]"
             :items="gameStore.items"
             :back-images="tileImages"
             @select-item="selectedItem = $event"
