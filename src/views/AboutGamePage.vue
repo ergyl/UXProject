@@ -1,7 +1,7 @@
 <!-- Page in the SPA -->
 
 <template>
-  <div class="flex flex-col justify-start mt-10 ml-8 mr-8 border border-black bg-white overflow-scroll lg:ml-44 lg:mr-44">
+  <div class="flex flex-col justify-start my-10 mx-8 border border-black bg-white overflow-scroll lg:mt-10 lg:mx-96 lg:pt-8 lg:pb-12 lg:px-10">
     <h2 class="self-center mt-4">
       Om spelet
     </h2>
@@ -28,7 +28,7 @@
             <p class="mb-2">
               När du gräver fram föremål så får du fram nio slumpmässiga föremål. Så här många föremål finns i varje kategori:
             </p>
-            <ul class="list-disc mb-2">
+            <ul class="list-disc mb-2 ml-4">
               <li>Världen runt: 23 521 st</li>
               <li>Leksaker:  752 st</li>
               <li>Inramat: 575 st</li>
