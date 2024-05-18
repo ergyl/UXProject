@@ -34,7 +34,7 @@
   const isEnabled = ref(true);
 
   const buttonClasses = computed(() => ({
-  'bg-beigebrun': isActive.value,
+  'bg-beige': isActive.value,
   'bg-transparent': !isActive.value,
   'motion-safe:animate-bounce': isInEmptyBackpack.value,
   'relative': isInEmptyBackpack.value,

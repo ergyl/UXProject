@@ -22,7 +22,7 @@
     </div>
     <div
       v-show="storyStore.lastPage"
-      class="fixed z-20 inset-0 bg-beigebrun flex justify-center items-center"
+      class="fixed z-20 inset-0 bg-beige flex justify-center items-center"
     >
       <div class="flex mx-8">
         <!-- Last image with bounce transition -->

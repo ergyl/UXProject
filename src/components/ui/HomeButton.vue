@@ -9,7 +9,7 @@
       :enabled-img="enabledImage"
       :is-active="isActive"
       :is-enabled="isEnabled"
-      :class="{ 'bg-beigebrun': isActive, 'bg-transparent': !isActive }"
+      :class="{ 'bg-beige': isActive, 'bg-transparent': !isActive }"
     />
   </div>
 </template>
