@@ -1,7 +1,6 @@
-<!-- This is used to display a popup in endgame of the
-  memory game if the player succeeds to flip all cards.
-  Uses item properties 'image' for image URL, 'itemName' and
-'description' from the object passed to this component -->
+<!-- This is used to display a popup in backpackPage when the
+  player selects an item. Uses item properties 'image' for image URL, 'itemName' and
+'description' from the object (item) passed to this component -->
 
 <template>
   <ItemDetailsPopup
@@ -9,9 +8,10 @@
     @close="closePopup"
   >
     <BasicButton
-      @click="handleClick()"
-      class="px-10"
+      :rounded="false"
       text="Donera"
+      class="w-full rounded-b-lg"
+      @click="handleClick()"
     /> 
   </ItemDetailsPopup>
 </template>

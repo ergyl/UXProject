@@ -16,7 +16,7 @@ MemoryCard components in the grid -->
       />
     </template>
   </NineCardsGrid>
-  <!-- Item Won Popup -->
+  <!-- Item selected Popup -->
   <ItemInspectPopUp
     v-if="selectedItem"
     :item="selectedItem"

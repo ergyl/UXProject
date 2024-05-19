@@ -40,13 +40,6 @@ npm run test:unit
 npm run lint
 ```
 
-### Format with [Prettier](https://prettier.io/)
-This command runs Prettier to format your code according to the specified rules. It will format files in the src/ directory.
-
-```sh
-npm run format
-```
-
 ## Icons using [Iconify for Tailwind CSS](https://iconify.design/docs/icon-components/vue/)
 Iconify offers native icon components for several popular UI frameworks.
 One syntax for over 200,000 icons from 150+ icon sets.

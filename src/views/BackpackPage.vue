@@ -1,11 +1,16 @@
 <!-- Page in the SPA -->
 
 <template>
-
-
-  <div class="col-span-8 mx-5 lg:mx-0 lg:w-[31.7%]" v-if="backpackStore.shouldShowOwl">
-      <img class="w-128 h-auto absolute z-20 left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2" :src="owlImage" alt="first image">
-      <div class="fixed inset-0 bg-beige opacity-100 z-10"></div>
+  <div
+    v-if="backpackStore.shouldShowOwl"
+    class="col-span-8 mx-5 lg:mx-0 lg:w-[31.7%]"
+  >
+    <img
+      class="w-128 h-auto absolute z-20 left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
+      :src="owlImage"
+      alt="Ugglan tackar dig för din donation!"
+    >
+    <div class="fixed inset-0 bg-beige opacity-100 z-10" />
   </div>
 
   <div
