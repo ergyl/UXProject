@@ -1,6 +1,13 @@
 <!-- Page in the SPA -->
 
 <template>
+
+
+  <div class="col-span-8 mx-5 lg:mx-0 lg:w-[31.7%]" v-if="backpackStore.shouldShowOwl">
+      <img class="w-128 h-auto absolute z-20 left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2" :src="owlImage" alt="first image">
+      <div class="fixed inset-0 bg-beige opacity-100 z-10"></div>
+  </div>
+
   <div
     class="grid grid-cols-8 overflow-scroll mb-8 lg:mt-0 lg:flex lg:flex-col lg:justify-center lg:items-center"
   >
@@ -28,6 +35,8 @@
       </div>
     </div>
 
+        
+
     <div
       class="col-span-8 mx-5 lg:mx-0 lg:w-[31.7%]"
     >
@@ -35,7 +44,7 @@
         :items="backpackStore.itemsObjects"
         @select-item="selectedItem = $event"
       />
-    </div>
+    </div>     
   </div>
 </template>
 
@@ -44,6 +53,7 @@ import { useBackpackStore } from '@/stores/backpackStore';
 import SpeechBubble from '@/components/SpeechBubble.vue';
 import BackpackCardsGrid from '@/components/backpack/BackpackCardsGrid.vue';
 import MullwardCloseUpImage from '@/assets/images/illustrations/characters/mullward-backpack-closeup.png';
+import owlImage from "@/assets/images/illustrations/backpack/owl-speaking.png";
 
 const backpackStore = useBackpackStore();
 </script>

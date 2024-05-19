@@ -59,6 +59,7 @@ export default {
       handleClick()
       {
         this.backpackStore.removeItem();
+        this.backpackStore.activateOwl();
         this.$emit('close');
       }
     }

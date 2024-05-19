@@ -10,9 +10,11 @@ export const useBackpackStore = defineStore('backpack', {
     maxCapacity: 9,
     items: new Map(), // Using Map to ensure all stored items have unique IDs
     selectedItemID: null,
+    shouldShowOwl: false,
   }),
 
   getters: {
+
     itemsObjects: (state) => {
       return Array.from(state.items.values());
     },
@@ -20,6 +22,7 @@ export const useBackpackStore = defineStore('backpack', {
     spaceLeft(state) {
       return state.maxCapacity - state.items.size;
     },
+    
 
     isEmpty(state) {
       return state.items.size === 0;
@@ -60,6 +63,13 @@ export const useBackpackStore = defineStore('backpack', {
       else {
         console.log("Item not found in backpack");
       }
+    },
+
+    activateOwl() {
+      this.shouldShowOwl = true;
+      setTimeout(() => {
+      this.shouldShowOwl = false;
+      }, 1500);
     }
   },
 });
