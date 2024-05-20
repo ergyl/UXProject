@@ -1,7 +1,7 @@
 <!-- Page in the SPA -->
 
 <template>
-  <div class="flex flex-col justify-start my-10 mx-8 border border-black bg-white overflow-scroll lg:mt-10 lg:mx-96 lg:pt-8 lg:pb-12 lg:px-10">
+  <div class="flex flex-col justify-start my-10 mx-8 border border-black bg-white lg:mt-10 lg:mx-96 lg:pt-8 lg:pb-12 lg:px-10">
     <h2 class="self-center mt-4">
       Om spelet
     </h2>
