@@ -20,7 +20,7 @@
     <!-- Main content grid -->
     <main
       :class="{'row-span-20 lg:row-span-21': !displayFooter, 'row-span-16 lg:row-span-18': displayFooter}"
-      class="col-span-8 bg-beige overflow-scroll"
+      class="col-span-8 bg-beige overflow-y-scroll"
     >
       <RouterView v-slot="{ Component }">
         <component

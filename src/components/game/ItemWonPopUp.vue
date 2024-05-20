@@ -13,8 +13,9 @@
       v-if="backpackIsFull"
       divide
       type="warning"
+      class="rounded-b-none"
     >
-      <span>Din ryggsäck är full.</span>
+      <span class="text-base">Din ryggsäck är full.</span>
     </FwbToast>
 
     <!-- Button changes based on backpack status -->

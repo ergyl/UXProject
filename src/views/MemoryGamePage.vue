@@ -4,7 +4,7 @@
     displaying the memory game with all its components -->
 
 <template>
-  <div class="grid grid-cols-8 overflow-scroll mb-8 lg:grid-cols-6 lg:mt-10 lg:gap-x-5 lg:magic-margin">
+  <div class="grid grid-cols-8 mb-8 lg:grid-cols-6 lg:mt-10 lg:gap-x-5 lg:magic-margin">
     <div
       v-if="gameStore.category === null"
       class="mx-5"
