@@ -1,3 +1,5 @@
+// Used to manage the state of the memory game, set timers and handle game logic.
+
 import { defineStore } from 'pinia';
 import { useBackpackStore } from '@/stores/backpackStore';
 import Ksamsok from '@/services/Ksamsok.js';
