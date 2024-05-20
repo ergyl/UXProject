@@ -2,7 +2,7 @@
 This project is a SPA application deployed via Netlify.
 
 It has been developed using:
-- Vue 3 (UI frameworK)
+- Vue 3 (UI framework)
 - Node.js (package manager)
 - Vite (building tool)
 - TailwindCSS (CSS styling)
