@@ -69,7 +69,7 @@ export const useBackpackStore = defineStore('backpack', {
       this.shouldShowOwl = true;
       setTimeout(() => {
       this.shouldShowOwl = false;
-      }, 1500);
+      }, 2000);
     }
   },
 });
