@@ -19,7 +19,7 @@ The data from K-samsök is used to fetch items with images, description etc for 
 - StoryStore.js <-- used to keep track of the current index of story via ArrowButton in MainLayout and feeds that state to StoryPage
 
 ## Live demo
-[Mullward Räddar Museet](https://mullward-raddar-museet.netlify.app/backpack).
+See how it looks: [Mullward Räddar Museet](https://mullward-raddar-museet.netlify.app/).
 
 ## Dev enviroment 
 #### Recommended IDE Setup
@@ -76,3 +76,5 @@ In the directory for your project, run the following command to create a new Net
 netlify init
 ```
 
+## Credits
+Developed by [ergyl](https://github.com/ergyl), [ciphercraftsman](https://github.com/ciphercraftsman), [Ounch1](https://github.com/Ounch1) and with the help of UX-designer students from Yrgo, Gothenburg.
