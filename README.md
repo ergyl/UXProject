@@ -65,6 +65,7 @@ To deploy for production we used Netlify.
 You can do this in several different ways, we used dashboard on [Netlify.com](https://www.netlify.com/) and deployed the project directly via Github. 
 
 *Optional*
+<br>
 You may also deploy this project from the command line with Netlify CLI.
 To ensure you have the latest version of Netlify CLI installed, run this command from any directory in your terminal:
 ```sh
