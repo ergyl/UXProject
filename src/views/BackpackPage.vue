@@ -14,7 +14,7 @@
   </div>
 
   <div
-    class="grid grid-cols-8 overflow-scroll mb-8 lg:mt-0 lg:flex lg:flex-col lg:justify-center lg:items-center"
+    class="grid grid-cols-8 mb-8 lg:mt-0 lg:flex lg:flex-col lg:justify-center lg:items-center"
   >
     <div
       class="flex col-span-8 h-48 lg:h-auto lg:flex lg:justify-center lg:items-end"
