@@ -22,6 +22,7 @@
     <TransitionGroup name="fade">
       <span
         v-if="itemAlreadyExists"
+        key="icon"
         class="icon-[material-symbols-light--check-rounded] mr-1"
         style="width: 2rem; height: 2rem;"
       />
@@ -87,9 +88,14 @@
 
 <style scoped>
 .fade-enter-active, .fade-leave-active {
-  transition: opacity 1.5s;
+  transition: opacity 1.5s, transform 1.5s ease;
 }
 .fade-enter-from, .fade-leave-to {
   opacity: 0;
+  transform: translateY(-10px);
+}
+.fade-enter-to, .fade-leave-from {
+  opacity: 1;
+  transform: translateY(0);
 }
 </style>
