@@ -1,31 +1,47 @@
-# ux-java-app
+# About
+This project is a SPA application deployed via Netlify.
 
-This template should help get you started developing with Vue 3 in Vite.
+It has been developed using:
+- Vue 3 (UI framework)
+- Node.js (package manager)
+- Vite (building tool)
+- TailwindCSS (CSS styling)
+- Pinia (state management)
+- Vitest (unit testing)
 
-## Recommended IDE Setup
+### Data from API
+This application retrieves data from the API [K-samsök](https://www.raa.se/hitta-information/k-samsok/) from Swedish National Heritage Board via a service class *Ksamsok.js*.
+The data from K-samsök is used to fetch items with images, description etc for the items in the memory game.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+### Stores
+- backpackStore.js <-- used to store items in the backpack and keep track of the state of the backpack (if backpack is full etc.)
+- gameStore.js <-- used to manage the state of the memory game, set timers and handle game logic.
+- StoryStore.js <-- used to keep track of the current index of story via ArrowButton in MainLayout and feeds that state to StoryPage
 
-## Customize configuration
+## Live demo
+See how it looks: [Mullward Räddar Museet](https://mullward-raddar-museet.netlify.app/).
 
+## Dev enviroment 
+#### Recommended IDE Setup
+[VSCode](https://code.visualstudio.com/) + [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).
+
+### Customize Vite configuration
 See [Vite Configuration Reference](https://vitejs.dev/config/).
 
-## Project Setup
-
+## Project setup
+Clone the git repository 
+```sh
+git clone https://github.com/ergyl/UXProject.git
+```
+Install all the necessary dependencies for the project:
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
-
+## Developing
+While developing the project use this command to compile and hot re-load for development:
 ```sh
 npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
 ```
 
 ### Run Unit Tests with [Vitest](https://vitest.dev/)
@@ -40,16 +56,25 @@ npm run test:unit
 npm run lint
 ```
 
-## Icons using [Iconify for Tailwind CSS](https://iconify.design/docs/icon-components/vue/)
-Iconify offers native icon components for several popular UI frameworks.
-One syntax for over 200,000 icons from 150+ icon sets.
-Renders SVG.
+## Compile and deploy
+Run this command to compile and Minify for Production:
+```sh
+npm run build
+```
+To deploy for production we used Netlify.
+You can do this in several different ways, we used dashboard on [Netlify.com](https://www.netlify.com/) and deployed the project directly via Github. 
 
-Note! Installing the full package may increase the size of your application unnecessarily 
-if you're only using a few icons from that package. When you install the full package, 
-it includes all available icons, even if you're not using them in your project.
-To optimize performance and reduce the size of your application, 
-it's better to install only the icon sets that you actually need. 
+*Optional*
+<br>
+You may also deploy this project from the command line with Netlify CLI.
+To ensure you have the latest version of Netlify CLI installed, run this command from any directory in your terminal:
+```sh
+npm install netlify-cli -g
+```
+In the directory for your project, run the following command to create a new Netlify site:
+```sh
+netlify init
+```
 
-Erik already added the material-symbols light by running the command 
-`npm install --save-dev @iconify-json/material-symbols-light`
+## Credits
+Developed by [ergyl](https://github.com/ergyl), [ciphercraftsman](https://github.com/ciphercraftsman), [Ounch1](https://github.com/Ounch1) and with the help of UX-designer students from Yrgo, Gothenburg.
