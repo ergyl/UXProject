@@ -7,7 +7,6 @@
   >
     <img
       :src="imageSource"
-      :alt="category"
       class="category-image"
     >
     <h2 class="category-title">
