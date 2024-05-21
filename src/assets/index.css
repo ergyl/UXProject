@@ -26,7 +26,7 @@ include utitilies for by deafult.
 
 @layer base {
   body {
-    @apply text-base leading-tight font-inter
+    @apply text-base leading-tight font-inter selection:bg-morkbrun selection:text-vit;
   }
 
   body strong {
@@ -90,7 +90,6 @@ include utitilies for by deafult.
       margin-right: calc(8px + 1.5625vw);
     }
     body {
-      @apply selection:bg-ljusbrun selection:text-gra;
       font-size: 1.125rem;
     }
     h1 {
