@@ -13,7 +13,7 @@
       <img
         :src="item.image"
         :alt="item.itemName"
-        class="w-full max-h-64 object-cover relative mt-12"
+        class="w-full max-h-64 object-cover relative mt-12 cursor-pointer"
         @click="openImageInNewTab(item.image)"
       >
       <div class="p-5 max-h-52 overflow-scroll">
