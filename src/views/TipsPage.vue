@@ -2,7 +2,7 @@
 
 <template>
   <div class="lg:mt-10">
-    <div class="flex flex-col justify-start mt-10 ml-8 mr-8 border border-black bg-white lg:mt-0 lg:mx-96 lg:pt-8 lg:pb-12 lg:px-10">
+    <div class="flex flex-col justify-start my-10 ml-8 mr-8 border border-black bg-white lg:mt-0 lg:mx-96 lg:pt-8 lg:pb-12 lg:px-10">
       <h2 class="mt-4 ml-4 self-center">
         Skrivtips
       </h2>
