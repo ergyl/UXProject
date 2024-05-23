@@ -16,7 +16,7 @@
         class="w-full max-h-64 object-cover relative mt-12 cursor-pointer"
         @click="openImageInNewTab(item.image)"
       >
-      <div class="p-5 max-h-52 overflow-scroll">
+      <div class="p-5 max-h-52 overflow-y-scroll">
         <h5 class="text-center mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
           {{ item.itemName }}
         </h5>
