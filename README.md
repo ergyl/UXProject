@@ -21,6 +21,12 @@ The data from K-samsök is used to fetch items with images, description etc for 
 ## Live demo
 See how it looks: [Mullward Räddar Museet](https://mullward-raddar-museet.netlify.app/).
 
+## Screenshots
+<img src="https://github.com/user-attachments/assets/4366cc94-97e0-4327-a6c0-266382d283e5" style="height: 20%; width:20%">
+<img src="https://github.com/user-attachments/assets/59811d11-fcff-4afd-b81e-2667a4907f17" style="height: 20%; width:20%">
+<img src="https://github.com/user-attachments/assets/7b085f90-b62a-4b4d-b004-7f9d0b6feb87" style="height: 20%; width:20%">
+<img src="https://github.com/user-attachments/assets/abefb8c0-e1da-4d91-9ead-57f112f2feb7" style="height: 20%; width:20%">
+
 ## Dev enviroment 
 #### Recommended IDE Setup
 [VSCode](https://code.visualstudio.com/) + [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).
